@@ -244,6 +244,12 @@
   <h2 class="al-show-sub-heading" id="<%= t("arclight.views.show.sections.contents").parameterize %>">
     <%= t("arclight.views.show.sections.contents") %>
   </h2>
+  <div class='al-show-actions-box-options d-flex'>
+    <%= render partial: 'arclight/requests', locals: { document: document } %>
+    <div class='al-show-actions-box-bookmarks flex-md-fill'>
+      <%= render partial: 'catalog/bookmark_control', locals: { document: document } %>
+    </div>
+  </div>
   <%= content_tag(
     :div, '',
     class: "al-contents child-components children-count-#{document.number_of_children}",
