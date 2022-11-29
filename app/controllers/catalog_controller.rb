@@ -315,7 +315,6 @@ class CatalogController < ApplicationController
       summary_field
       background_field
       related_field
-      additional_descriptive_data_field
       indexed_terms_field
       indexes_field
     ]
@@ -393,7 +392,6 @@ class CatalogController < ApplicationController
     config.add_background_field 'materialspec_tesim', label: 'Material Specific Details', helper_method: :render_html_tags
     config.add_background_field 'odd_tesim', label: 'Other Descriptive Data', helper_method: :render_html_tags
     config.add_background_field 'descrules_ssm', label: 'Rules or Conventions', helper_method: :render_html_tags
-    config.add_additional_descriptive_data_field 'add_bibliography_tesim', label: 'Bibliography', helper_method: :render_html_tags
 
     # Collection Show Page - Related Section
     config.add_related_field 'relatedmaterial_tesim', label: 'Related Material', helper_method: :render_html_tags
@@ -401,7 +399,6 @@ class CatalogController < ApplicationController
     config.add_related_field 'otherfindaid_tesim', label: 'Other Finding Aids', helper_method: :render_html_tags
     config.add_related_field 'altformavail_tesim', label: 'Alternative Form Available', helper_method: :render_html_tags
     config.add_related_field 'originalsloc_tesim', label: 'Location of Originals', helper_method: :render_html_tags
-
 
     # Collection Show Page - Indexed Terms Section
     config.add_indexed_terms_field 'access_subjects_ssim', label: 'Subjects', link_to_facet: true, separator_options: {
