@@ -121,6 +121,7 @@ to_field 'publicid_ssi', extract_xpath('/ead/eadheader/eadid/@publicid')
 # end
 
 to_field 'title_filing_si', extract_xpath('/ead/eadheader/filedesc/titlestmt/titleproper[@type="filing"]')
+to_field 'subarea_ssm', extract_xpath('/ead/archdesc/did/repository/subarea'), strip
 to_field 'title_ssm' do |record, accumulator|
   result = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
   result = result.collect do |n|
@@ -201,6 +202,9 @@ to_field 'normalized_title_formatted_ssm' do |_record, accumulator, context|
   accumulator << Arclight::NormalizedTitle.new(title, dates).to_s
 end
 
+to_field 'subarea_sim' do |_record, accumulator, context|
+  accumulator.concat context.output_hash.fetch('subarea_ssm', [])
+end
 to_field 'collection_ssm' do |_record, accumulator, context|
   accumulator.concat context.output_hash.fetch('normalized_title_ssm', [])
 end
