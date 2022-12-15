@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN"
+        "ead.dtd">
+<ead>
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" repositoryencoding="iso15511">
+    <eadid>restrictions</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Finding aid for testing restrictions</titleproper>
+      </titlestmt>
+    </filedesc>
+  </eadheader>
+  <archdesc level="recordgrp">
+    <did>
+      <repository>
+        <corpname>Bentley Historical Library</corpname>
+      </repository>
+      <unittitle>ArcLight restriction test</unittitle>
+      <physdesc>
+        <extent>4 component levels</extent>
+      </physdesc>
+      <abstract id="aspace_5890824b5abb417a7f2386_test">ArcLight + accessrestrict testing</abstract>
+    </did>
+    <dsc type="combined">
+      <!--
+        This is mostly a binary tree of components with and without their own restrictions, used
+        to test the inheritance behavior. We want restrictions to cascade downward to any children that
+        do not have their own restrictions, but also apply a generic restriction to any unrestricted node
+        whose descendents all have restrictions. This latter case is only demonstrated by the final c02.
+      -->
+
+      <!-- Top level restricted branch -->
+      <c01 id="1R" level="series">
+        <did><unittitle>1 - self restriction</unittitle></did>
+        <accessrestrict><p>c01 access restrict</p></accessrestrict>
+        <!-- Level 2 restricted branch -->
+        <c02 id="2RR" level="subseries">
+          <did><unittitle>2 - self restriction</unittitle></did>
+          <accessrestrict><p>c02 access restrict</p></accessrestrict>
+          <!-- Level 3 restricted branch -->
+          <c03 id="3RRR" level="file">
+            <did><unittitle>3 - self restriction</unittitle></did>
+            <accessrestrict><p>c03 access restrict</p></accessrestrict>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4RRRR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4RRRX" level="file">
+              <did><unittitle>4 - no self restriction</unittitle></did>
+            </c04>
+          </c03>
+          <!-- Level 3 unrestricted branch -->
+          <c03 id="3RRX" level="file">
+            <did><unittitle>3 - no self restriction</unittitle></did>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4RRXR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4RRXX" level="file">
+              <did><unittitle>4 - no self restriction</unittitle></did>
+            </c04>
+          </c03>
+        </c02>
+        <!-- Level 2 unrestricted branch -->
+        <c02 id="2RX" level="subseries">
+          <did><unittitle>2 - no self restriction</unittitle></did>
+          <!-- Level 3 restricted branch -->
+          <c03 id="3RXR" level="file">
+            <did><unittitle>3 - self restriction</unittitle></did>
+            <accessrestrict><p>c03 access restrict</p></accessrestrict>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4RXRR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4RXRX" level="file">
+              <did><unittitle>4 - no self restriction</unittitle></did>
+            </c04>
+          </c03>
+          <!-- Level 3 unrestricted branch -->
+          <c03 id="3RXX" level="file">
+            <did><unittitle>3 RXX</unittitle></did>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4RXXR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4RXXX" level="file">
+              <did><unittitle>4 RXXX</unittitle></did>
+            </c04>
+          </c03>
+        </c02>
+      </c01>
+      <!-- Top level unrestricted branch -->
+      <c01 id="1X" level="series">
+        <did><unittitle>1 - no self restriction</unittitle></did>
+        <!-- Level 2 restricted branch -->
+        <c02 id="2XR" level="subseries">
+          <did><unittitle>2 - self restriction</unittitle></did>
+          <accessrestrict><p>c02 access restrict</p></accessrestrict>
+          <!-- Level 3 restricted branch -->
+          <c03 id="3XRR" level="file">
+            <did><unittitle>3 - self restriction</unittitle></did>
+            <accessrestrict><p>c03 access restrict</p></accessrestrict>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4XRRR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4XRRX" level="file">
+              <did><unittitle>4 - no self restriction</unittitle></did>
+            </c04>
+          </c03>
+          <!-- Level 3 unrestricted branch -->
+          <c03 id="3XRX" level="file">
+            <did><unittitle>3 - no self restriction</unittitle></did>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4XRXR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4XRXX" level="file">
+              <did><unittitle>4 XRXX</unittitle></did>
+            </c04>
+          </c03>
+        </c02>
+        <!-- Level 2 unrestricted branch -->
+        <c02 id="2XX" level="subseries">
+          <did><unittitle>2 - no self restriction</unittitle></did>
+          <!-- Level 3 restricted branch -->
+          <c03 id="3XXR" level="file">
+            <did><unittitle>3 - self restriction</unittitle></did>
+            <accessrestrict><p>c03 access restrict</p></accessrestrict>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4XXRR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4XXRX" level="file">
+              <did><unittitle>4 - no self restriction</unittitle></did>
+            </c04>
+          </c03>
+          <!-- Level 3 unrestricted branch -->
+          <c03 id="3XXX" level="file">
+            <did><unittitle>3 - no self restriction</unittitle></did>
+            <!-- Level 4 restricted leaf -->
+            <c04 id="4XXXR" level="file">
+              <did><unittitle>4 - self restriction</unittitle></did>
+              <accessrestrict><p>c04 access restrict</p></accessrestrict>
+            </c04>
+            <!-- Level 4 unrestricted leaf -->
+            <c04 id="4XXXX" level="file">
+              <did><unittitle>4 XXXX</unittitle></did>
+            </c04>
+          </c03>
+        </c02>
+        <!-- Level 2 unrestricted branch, with all leaves restricted -->
+        <c02 id="2XX-ALL" level="subseries">
+          <did><unittitle>2 - no self restriction</unittitle></did>
+          <!-- Level 3 unrestricted branch, with all leaves restricted -->
+          <c03 id="3XXX-ALL" level="file">
+            <did><unittitle>3 - no self restriction</unittitle></did>
+            <!-- Level 4 restricted leaf, first -->
+            <c04 id="4XXXR-A" level="file">
+              <did><unittitle>4 - self restriction (first)</unittitle></did>
+              <accessrestrict><p>c04 access restrict (first)</p></accessrestrict>
+            </c04>
+            <!-- Level 4 restricted leaf, second -->
+            <c04 id="4XXXR-B" level="file">
+              <did><unittitle>4 - self restriction (second)</unittitle></did>
+              <accessrestrict><p>c04 access restrict (second)</p></accessrestrict>
+            </c04>
+          </c03>
+        </c02>
+      </c01>
+    </dsc>
+  </archdesc>
+</ead>

@@ -170,4 +170,42 @@ RSpec.describe 'EAD 2 traject indexing', type: :feature do
       end
     end
   end
+
+  describe 'downward and upward restriction inheritance' do
+    let(:fixture_path) do
+      Rails.root.join('spec', 'fixtures', 'ead', 'bhl', 'umich-bhl-restrictions.xml')
+    end
+
+    describe 'a first sibling level 4 component' do
+      it 'has its own level 4 restriction' do
+        component = result['components'].find { |c| c['id'] == ['restrictions_4XXXR-A'] }
+        expect(component['accessrestrict_tesim'].count).to eq 1
+        expect(component['accessrestrict_tesim'].first.to_xml).to eq '<p>c04 access restrict (first)</p>'
+      end
+    end
+
+    describe 'a second sibling level 4 component' do
+      it 'has its own level 4 restriction' do
+        component = result['components'].find { |c| c['id'] == ['restrictions_4XXXR-B'] }
+        expect(component['accessrestrict_tesim'].count).to eq 1
+        expect(component['accessrestrict_tesim'].first.to_xml).to eq '<p>c04 access restrict (second)</p>'
+      end
+    end
+
+    describe 'an unrestricted level 3 whose children are all restricted' do
+      it 'has a generic restriction' do
+        component = result['components'].find { |c| c['id'] == ['restrictions_3XXX-ALL'] }
+        expect(component['accessrestrict_tesim'].count).to eq 1
+        # expect(component['accessrestrict_tesim'].first.to_xml).to eq '<p>c04 access restrict</p>'
+      end
+    end
+
+    describe 'an unrestricted level 2 whose descendent leaves are all restricted' do
+      it 'has a generic restriction' do
+        component = result['components'].find { |c| c['id'] == ['restrictions_2XX-ALL'] }
+        expect(component['accessrestrict_tesim'].count).to eq 1
+        # expect(component['accessrestrict_tesim'].first.to_xml).to eq '<p>c04 access restrict</p>'
+      end
+    end
+  end
 end
