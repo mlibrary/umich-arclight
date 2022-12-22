@@ -223,6 +223,8 @@ to_field 'subarea_sim' do |record, accumulator, _context|
               'Janice Bluestein Longone Culinary Archive'
             when /^Labadie$/i
               'Joseph A. Labadie Collection'
+            when /^William\s(L\.\s)?Clements Library.?$/i
+              nil
             else
               subarea
             end
