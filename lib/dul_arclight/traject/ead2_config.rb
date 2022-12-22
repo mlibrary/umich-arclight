@@ -215,7 +215,7 @@ to_field 'collection_title_tesim' do |_record, accumulator, context|
 end
 
 to_field 'subarea_sim' do |record, accumulator, _context|
-  subarea = record.xpath('/ead/archdesc/did/repository/descendant::subarea')&.text.strip
+  subarea = record.xpath('/ead/archdesc/did/repository/descendant::subarea')&.text&.strip
   subarea = case subarea
             when /^subarea3$/i
               'Screen Arts Mavericks and Makers'
