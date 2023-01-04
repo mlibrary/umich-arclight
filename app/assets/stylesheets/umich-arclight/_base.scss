@@ -193,6 +193,18 @@ h1, h2, h3 {
   color: var(--color-orange-500);
 }
 
+.request-container {
+  margin: 1rem 0;
+
+  button {
+    margin: .5rem 0;
+  }
+
+  button:first-child {
+    margin-right: .5rem;
+  }
+}
+
 /* ====================== */
 /* TYPOGRAPHY     */
 /* ====================== */
