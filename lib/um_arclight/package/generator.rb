@@ -97,6 +97,8 @@ module UmArclight
       end
 
       def generate_pdf
+        generate_html() if @doc.nil?
+
         build_pdf()
 
         local_html_filename = "#{collection.id}.local.html"
