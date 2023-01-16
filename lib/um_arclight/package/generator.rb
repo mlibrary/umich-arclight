@@ -100,7 +100,7 @@ module UmArclight
           f.puts doc.serialize
         end
 
-        output_filename = File.join(Rails.root, generate_output_filename('.pdf'))
+        output_filename = generate_output_filename('.pdf')
         FileUtils.mkdir_p(File.dirname(output_filename))
 
         elapsed_time = Benchmark.realtime do
@@ -132,7 +132,11 @@ module UmArclight
       private
 
       def generate_output_filename(ext)
-        "#{DulArclight.finding_aid_data}/pdf/#{collection.repository_id}/#{collection.id}#{ext}"
+        filename = "#{DulArclight.finding_aid_data}/pdf/#{collection.repository_id}/#{collection.id}#{ext}"
+        if filename.start_with?('./')
+          filename = File.join(Rails.root, filename)
+        end
+        filename
       end
 
       def working_path_name
