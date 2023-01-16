@@ -1,6 +1,5 @@
 ---
 name: "Build unstable image"
-description: "Builds an image from any branch and push/tags it in the `-unstable` repository with only the commit hash"
 
 on:
   workflow_dispatch:  # This allows to kick-off the action manually from GitHub Actions
