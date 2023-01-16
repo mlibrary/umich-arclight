@@ -16,15 +16,17 @@ namespace :arclight do
     UmArclight::Package::Queue.new.setup(repository_ssm: repository_ssm)
   end
 
+  desc 'Build a full HTML out of an EAD document, use EADID=<id>'
   task generate_html: :environment do
     raise 'Please specify your EAD ID, ex. EADID=<id>' unless ENV['EADID']
+
     identifier = ENV['EADID']
 
     artifact = UmArclight::Package::Generator.new identifier: identifier
     artifact.generate_html
   end    
 
-  desc 'Build a PDF out of an EAD document, use FILE=<path/to/ead.xml> and REPOSITORY_ID=<myid>'
+  desc 'Build a PDF out of an EAD document, use EADID=<id>'
   task generate_pdf: :generate_html do
     # now set up the doc for the HTML PDF
     artifact.generate_pdf

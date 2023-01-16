@@ -9,33 +9,31 @@ RSpec.describe UmArclight::Package::Generator do
 
   before {
       allow(generator).to receive(:fetch_doc) do |identifier|
-        SolrDocument.new({
-          "id": "umich-test-9999",
-          "normalized_title_ssm": ["Finding Aid" ],
-          "ead_author_ssm": ["Finding Aid written by E. A. Document"],
-          "repository_ssm": ["University of Michigan XML Library"]
-        })
+        SolrDocument.new(
+          'id': 'umich-test-9999',
+          'normalized_title_ssm': ['Finding Aid'],
+          'ead_author_ssm': ['Finding Aid written by E. A. Document'],
+          'repository_ssm': ['University of Michigan XML Library']
+        )
       end
 
       allow(generator).to receive(:fetch_components) do |identifier|
         [
-          SolrDocument.new({
-            "id": "umich-test-9999-01",
-            "normalized_title_ssm": ["Component 1.0" ],
+          SolrDocument.new(
+            'id': 'umich-test-9999-01',
+            'normalized_title_ssm': ['Component 1.0'],
             "component_level_isim":[1],
-            "total_digital_object_count_isim": [1],
-            "parent_ssim":[
-              "umich-test-9999",
-            ],
-            "digital_objects_ssm": [
+            'total_digital_object_count_isim': [1],
+            "parent_ssim":['umich-test-9999'],
+            'digital_objects_ssm': [
               {
-                "label": "Digital Object",
-                "href": "https://quod.lib.umich.edu/x/xyzzy/x-9999-01/01",
-                "role": "image-service",
-                "xpointer": nil
+                'label': 'Digital Object',
+                'href': 'https://quod.lib.umich.edu/x/xyzzy/x-9999-01/01',
+                'role': 'image-service',
+                'xpointer': nil
               }.to_json
             ]
-          })
+          )
         ]
       end
 
@@ -58,7 +56,7 @@ RSpec.describe UmArclight::Package::Generator do
     expect(doc.css('style#utility-styles').first).to be_truthy
 
     # count that the components are in the doc
-    expect(doc.css('.al-contents-ish article')).to_not be_empty
+    expect(doc.css('.al-contents-ish article')).not_to be_empty
 
   end
 
@@ -67,7 +65,8 @@ RSpec.describe UmArclight::Package::Generator do
     generator.build_html
     generator.build_pdf
 
-    expect(true).to be_truthy
+    expect(doc.css('m-website-header')).to be_empty
+    expect(doc.css('header').first).to be_truthy
 
   end
 
