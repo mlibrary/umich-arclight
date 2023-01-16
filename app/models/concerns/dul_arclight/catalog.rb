@@ -40,6 +40,11 @@ module DulArclight
       )
     end
 
+    def pdf_available?
+      # _, @document = search_service.fetch(params[:id])
+      File.exists?(pdf_file_path)
+    end
+
     ##
     # Overriding the Blacklight method so that the hierarchy view does not start
     # a new search session
@@ -63,15 +68,19 @@ module DulArclight
     end
 
     def html_file_path
-      "#{DulArclight.finding_aid_data}/pdf/#{repo_id}/#{params[:id]}.html"
+      "#{DulArclight.finding_aid_data}/pdf/#{repo_id}/#{eadid}.html"
     end
 
     def pdf_file_path
-      "#{DulArclight.finding_aid_data}/pdf/#{repo_id}/#{params[:id]}.pdf"
+      "#{DulArclight.finding_aid_data}/pdf/#{repo_id}/#{eadid}.pdf"
     end
 
     def repo_id
       @document.repository_config&.slug
+    end
+
+    def eadid
+      @document.eadid
     end
   end
 end

@@ -206,7 +206,7 @@
   height: calc(2 * var(--radius));
   border-radius: 50%;
   background: var(--dark-grey);
-  margin-top: 0.5rem;
+  margin-top: 0.125rem;
 }
 
 .tree-buttons summary::before {
@@ -247,6 +247,12 @@
       border: none !important;
     }
 
+    article > h3 {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: space-between;
+    }
+
     .tree-padding ul li:nth-child(even) > details > summary {
       background-color: #f8f8f8;
     }
@@ -270,9 +276,11 @@
       display: block;
     }
 
-    ul span.box {
+    span.box {
       text-transform: capitalize;
       white-space: nowrap;
+      font-size: 0.875rem;
+      font-weight: normal;
     }
 
     .child-components article:nth-of-type(odd) {
