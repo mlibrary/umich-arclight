@@ -10,30 +10,29 @@ Deprecation.default_deprecation_behavior = :silence
 
 module UmArclight
   module Package
-    class Generator
-
-      COMPONENT_FIELDS = [
-        'id',
-        'parent_ssi',
-        'parent_ssim',
-        'ref_ssi',
-        'ref_ssm',
-        'component_level_isim',
-        'normalized_title_ssm',
-        'level_ssm',
-        'scopecontent_teism',
-        'unitid_ssm',
-        'odd_tesim',
-        'bioghist_tesim',
-        'total_digital_object_count_isim',
-        'digital_objects_ssm',
-        'containers_ssim',
-        'repository_ssm'
+    # Generate HTML and PDF packages of finding aids
+    class Generator # rubocop:disable Metrics/ClassLength
+      COMPONENT_FIELDS = %w[
+        id
+        parent_ssi
+        parent_ssim
+        ref_ssi
+        ref_ssm
+        component_level_isim
+        normalized_title_ssm
+        level_ssm
+        scopecontent_teism
+        unitid_ssm
+        odd_tesim
+        bioghist_tesim
+        total_digital_object_count_isim
+        digital_objects_ssm
+        containers_ssim
+        repository_ssm
       ].freeze
 
       attr_accessor :identifier, :doc, :fragment, :collection, :session
-      attr_reader :index
-      
+
       def initialize(identifier:)
         @identifier = identifier
         @collection = nil
@@ -43,7 +42,6 @@ module UmArclight
       end
 
       def build_html
-
         response = get("/catalog/#{identifier}")
         @doc = Nokogiri::HTML5(response.body)
 
@@ -63,16 +61,13 @@ module UmArclight
           update_package_html
         end
         puts "UM-Arclight generate package : #{collection.id} : build HTML (in #{elapsed_time.round(3)} secs)."
-
       end
 
       def generate_html
         build_html
 
         output_filename = generate_output_filename('.html')
-        unless Dir.exist?(File.dirname(output_filename))
-          FileUtils.makedirs(File.dirname(output_filename))
-        end
+        FileUtils.makedirs(File.dirname(output_filename)) unless Dir.exist?(File.dirname(output_filename))
 
         File.open(output_filename, 'w') do |f|
           f.puts doc.serialize
@@ -93,10 +88,9 @@ module UmArclight
           doc.root['data-media'] = 'print'
         end
         puts "UM-Arclight generate package: #{collection.id} : update HTML for PDF (in #{elapsed_time.round(3)} secs)."
-
       end
 
-      def generate_pdf
+      def generate_pdf # rubocop:disable Metrics/MethodLength
         generate_html if @doc.nil?
 
         build_pdf
@@ -161,7 +155,7 @@ module UmArclight
         response.documents.first
       end
 
-      def fetch_components(id)
+      def fetch_components(id) # rubocop:disable Metrics/MethodLength
         params = {
           fl: COMPONENT_FIELDS.join(','),
           q: ["ead_ssi:#{id}"],
@@ -170,10 +164,9 @@ module UmArclight
         }
         components = []
         response = index.search(params)
-        total = response.total
         start = 0
         while response.documents.present?
-          puts "UM-Arclight generate package : harvesting components : #{collection.id} : #{start} / #{total}"
+          puts "UM-Arclight generate package : harvesting components : #{collection.id} : #{start} / #{response.total}"
           response.documents.each do |doc|
             if doc.id == id
               # ignore the collection doc
@@ -208,6 +201,7 @@ module UmArclight
         end
       end
 
+      # rubocop:disable Metrics/AbcSize
       def update_package_html
         style_el = doc.xpath('/html/head/link[@rel="stylesheet"]').last
         style_el.add_next_sibling(fragment.css('#utility-styles').first)
@@ -219,6 +213,7 @@ module UmArclight
         doc.css('#navigate-collection-toggle').first.remove
         doc.css('#context-tree-nav .tab-pane.active').first.inner_html = '<div id="toc"><ul></ul></div>'
       end
+      # rubocop:enable Metrics/AbcSize
 
       def update_package_html_pdf
         doc.css('.access-preview-snippet').first.inner_html = '<div id="toc"><ul></ul></div>'
@@ -227,55 +222,55 @@ module UmArclight
         doc.css('div.x-printable').remove
       end
 
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
       def update_package_styles_pdf
         doc.xpath('/html/head/link').each do |link|
-          if link['rel'] == 'stylesheet' && link['href'].start_with?('/assets/')
-            response = get(link['href'])
-            stylesheet = response.body
+          next unless link['rel'] == 'stylesheet' && link['href'].start_with?('/assets/')
 
-            # now we have to look for url(/assets) here
-            buffer = stylesheet.split(/\n/)
-            buffer.each_with_index do |line, i|
-              if (matches = line.scan(%r{url\(\/assets\/([^\)]+)\)}))
-                matches.each do |match|
-                  asset_path = match[0]
-                  filename = asset_path.split(%r{[\?#]}).first
+          response = get(link['href'])
+          stylesheet = response.body
 
-                  next if File.exist?("assets/#{filename}")
+          # now we have to look for url(/assets) here
+          buffer = stylesheet.split(/\n/)
+          buffer.each_with_index do |line, i|
+            next unless (matches = line.scan(%r{url\(\/assets\/([^\)]+)\)}))
 
-                  response = get("/assets/#{asset_path}")
-                  resource = response.body
+            matches.each do |match|
+              asset_path = match[0]
+              filename = asset_path.split(/[\?#]/).first
 
-                  unless Dir.exist?(File.dirname("assets/#{filename}"))
-                    FileUtils.makedirs("assets/#{File.dirname(filename)}")
-                  end
+              next if File.exist?("assets/#{filename}")
 
-                  File.open("./assets/#{filename}", 'wb') do |f|
-                    f.puts resource
-                  end
-                  line.gsub!("/assets/#{asset_path}", "./assets/#{filename}")
-                end
-                buffer[i] = line
+              response = get("/assets/#{asset_path}")
+              resource = response.body
+
+              FileUtils.makedirs("assets/#{File.dirname(filename)}") unless Dir.exist?(File.dirname("assets/#{filename}"))
+
+              File.open("./assets/#{filename}", 'wb') do |f|
+                f.puts resource
               end
+              line.gsub!("/assets/#{asset_path}", "./assets/#{filename}")
             end
-
-            filename = link['href'].split(/[\?#]/).first
-
-            unless Dir.exist?(".#{File.dirname(filename)}")
-              FileUtils.makedirs(".#{File.dirname(filename)}")
-            end
-
-            File.open(".#{filename}", 'wb') do |f|
-              f.puts stylesheet
-            end
-            link['href'] = ".#{filename}"
+            buffer[i] = line
           end
+
+          filename = link['href'].split(/[\?#]/).first
+
+          FileUtils.makedirs(".#{File.dirname(filename)}") unless Dir.exist?(".#{File.dirname(filename)}")
+
+          File.open(".#{filename}", 'wb') do |f|
+            f.puts stylesheet
+          end
+          link['href'] = ".#{filename}"
         end
       end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       def update_package_scripts_pdf
         # remove the script tags
-        doc.xpath('/html/head/script').each do |script|
+        doc.xpath('/html/head/script').each do |script| # rubocop:disable Style/SymbolProc
           script.remove
         end
       end
@@ -285,8 +280,8 @@ module UmArclight
       end
     end
 
+    # Queue packaging
     class Queue
-
       attr_accessor :index
 
       def initialize
@@ -308,12 +303,9 @@ module UmArclight
           start: 0,
           rows: 1000
         }
-        if repository_ssm
-          params['fq'] = ["repository_ssm:\"#{repository_ssm}\""]
-        end
+        params['fq'] = ["repository_ssm:\"#{repository_ssm}\""] if repository_ssm
         identifiers = []
         response = index.search(params)
-        total = response.total
         start = 0
         while response.documents.present?
           response.documents.each do |doc|
@@ -327,6 +319,7 @@ module UmArclight
       end
     end
 
+    # Shared helper to Blacklight.repository
     class Index
       attr_accessor :index
       def initialize

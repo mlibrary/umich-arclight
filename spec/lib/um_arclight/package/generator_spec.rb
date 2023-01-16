@@ -7,48 +7,47 @@ RSpec.describe UmArclight::Package::Generator do
 
   let(:identifier) { 'umich-test-9999' }
 
-  before {
-      allow(generator).to receive(:fetch_doc) do |identifier|
+  before do
+    allow(generator).to receive(:fetch_doc) do |_identifier| # rubocop:disable RSpec/SubjectStub
+      SolrDocument.new(
+        'id': 'umich-test-9999',
+        'normalized_title_ssm': ['Finding Aid'],
+        'ead_author_ssm': ['Finding Aid written by E. A. Document'],
+        'repository_ssm': ['University of Michigan XML Library']
+      )
+    end
+
+    allow(generator).to receive(:fetch_components) do |_identifier| # rubocop:disable RSpec/SubjectStub
+      [
         SolrDocument.new(
-          'id': 'umich-test-9999',
-          'normalized_title_ssm': ['Finding Aid'],
-          'ead_author_ssm': ['Finding Aid written by E. A. Document'],
-          'repository_ssm': ['University of Michigan XML Library']
+          'id': 'umich-test-9999-01',
+          'normalized_title_ssm': ['Component 1.0'],
+          "component_level_isim": [1],
+          'total_digital_object_count_isim': [1],
+          "parent_ssim": ['umich-test-9999'],
+          'digital_objects_ssm': [
+            {
+              'label': 'Digital Object',
+              'href': 'https://quod.lib.umich.edu/x/xyzzy/x-9999-01/01',
+              'role': 'image-service',
+              'xpointer': nil
+            }.to_json
+          ]
         )
-      end
+      ]
+    end
 
-      allow(generator).to receive(:fetch_components) do |identifier|
-        [
-          SolrDocument.new(
-            'id': 'umich-test-9999-01',
-            'normalized_title_ssm': ['Component 1.0'],
-            "component_level_isim":[1],
-            'total_digital_object_count_isim': [1],
-            "parent_ssim":['umich-test-9999'],
-            'digital_objects_ssm': [
-              {
-                'label': 'Digital Object',
-                'href': 'https://quod.lib.umich.edu/x/xyzzy/x-9999-01/01',
-                'role': 'image-service',
-                'xpointer': nil
-              }.to_json
-            ]
-          )
-        ]
+    allow(generator).to receive(:get) do |url| # rubocop:disable RSpec/SubjectStub
+      response = double('response') # rubocop:disable RSpec/VerifiedDoubles
+      output = mock_get(url)
+      allow(response).to receive(:body) do
+        output
       end
-
-      allow(generator).to receive(:get) do |url|
-        response = double('response')
-        output = mock_get(url)
-        allow(response).to receive(:body) do
-          output
-        end
-        response
-      end
-  }
+      response
+    end
+  end
 
   it 'generate HTML for an identifier' do
-
     generator.build_html
     doc = generator.doc
 
@@ -57,22 +56,19 @@ RSpec.describe UmArclight::Package::Generator do
 
     # count that the components are in the doc
     expect(doc.css('.al-contents-ish article')).not_to be_empty
-
   end
 
   it 'modify HTML for to generate PDF' do
-
     generator.build_html
     generator.build_pdf
+    doc = generator.doc
 
     expect(doc.css('m-website-header')).to be_empty
     expect(doc.css('header').first).to be_truthy
-
   end
-
 end
 
-def mock_get(url)
+def mock_get(url) # rubocop:disable Metrics/MethodLength
   if url.start_with?('/catalog')
     <<-HTML
     <html>

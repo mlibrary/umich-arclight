@@ -3,6 +3,7 @@
 require 'um_arclight/errors'
 require 'um_arclight/package/generator'
 
+# Job to queue packaging
 class PackageFindingAidJob < ApplicationJob
   queue_as :index
 

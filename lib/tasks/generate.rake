@@ -24,7 +24,7 @@ namespace :arclight do
 
     artifact = UmArclight::Package::Generator.new identifier: identifier
     artifact.generate_html
-  end    
+  end
 
   desc 'Build a PDF out of an EAD document, use EADID=<id>'
   task generate_pdf: :generate_html do
