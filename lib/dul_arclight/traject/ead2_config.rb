@@ -756,7 +756,7 @@ to_field 'revdesc_changes_ssm', extract_xpath('/ead/eadheader/revisiondesc/chang
   accumulator.map! do |change|
     {
       date: change.xpath('string(date)'),
-      item: change.xpath('string(item)'),
+      item: change.xpath('string(item)')
     }.to_json
   end
 end

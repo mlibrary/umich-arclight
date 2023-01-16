@@ -12,5 +12,4 @@ class PackageFindingAidJob < ApplicationJob
       raise UmArclight::GenerateError, identifier
     end
   end
-
 end

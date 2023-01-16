@@ -42,7 +42,7 @@ module DulArclight
 
     def pdf_available?
       # _, @document = search_service.fetch(params[:id])
-      File.exists?(pdf_file_path)
+      File.exist?(pdf_file_path)
     end
 
     ##

@@ -45,7 +45,7 @@ Rails.application.routes.draw do
                           constraints: { id: collection_slug_constraint }
 
   get '/catalog/:id/html', action: 'html_download', controller: 'catalog', as: 'html_download',
-                          constraints: { id: collection_slug_constraint }
+                           constraints: { id: collection_slug_constraint }
 
   get '/catalog/:id/pdf', action: 'pdf_download', controller: 'catalog', as: 'pdf_download',
                           constraints: { id: collection_slug_constraint }

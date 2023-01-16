@@ -176,13 +176,14 @@ module UmArclight
         response = index.search(params)
         total = response.total
         start = 0
-        while ( response.documents.present? )
+        while response.documents.present?
           puts "UM-Arclight generate package : harvesting components : #{collection.id} : #{start} / #{total}"
           response.documents.each do |doc|
             if doc.id == id
               # ignore the collection doc
               next
             end
+
             components << doc
           end
           start += 1000
@@ -193,7 +194,7 @@ module UmArclight
       end
 
       def render_fragment(variables)
-        paths = ActionView::PathSet.new(["app/views"])
+        paths = ActionView::PathSet.new(['app/views'])
         lookup_context = ActionView::LookupContext.new(paths)
         renderer = ActionView::Renderer.new(lookup_context)
         view_context = ActionView::Base.new(renderer)
@@ -254,10 +255,9 @@ module UmArclight
                     FileUtils.makedirs("assets/#{File.dirname(filename)}")
                   end
 
-                  File.open("./assets/#{filename}", "wb") do |f|
+                  File.open("./assets/#{filename}", 'wb') do |f|
                     f.puts resource
                   end
-                  content_type = session.response.content_type
                   line.gsub!("/assets/#{asset_path}", "./assets/#{filename}")
                 end
                 buffer[i] = line
@@ -309,18 +309,18 @@ module UmArclight
       def fetch_collection_identifiers(repository_ssm)
         params = {
           fl: 'id',
-          q: [ "level_ssm:collection"],
+          q: ["level_ssm:collection"],
           start: 0,
           rows: 1000
         }
         if repository_ssm
-          params['fq'] = [ "repository_ssm:\"#{repository_ssm}\"" ]
+          params['fq'] = ["repository_ssm:\"#{repository_ssm}\""]
         end
         identifiers = []
         response = index.search(params)
         total = response.total
         start = 0
-        while ( response.documents.present? )
+        while response.documents.present?
           response.documents.each do |doc|
             identifiers << doc.id
           end
