@@ -1,5 +1,5 @@
 ---
-name: Build unstable image
+name: "Build unstable image"
 description: "Builds an image from any branch and push/tags it in the `-unstable` repository with only the commit hash"
 
 on:
