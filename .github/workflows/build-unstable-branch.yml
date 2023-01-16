@@ -27,4 +27,4 @@ jobs:
           context: .
           push: true
           tags: 'ghcr.io/mlibrary/umich-arclight/umich-arclight-unstable:${{ github.sha }}'
-          file: .docker/Dockerfile.testing
+          file: .docker/Dockerfile.unstable
