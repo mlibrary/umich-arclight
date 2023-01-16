@@ -22,14 +22,14 @@ namespace :arclight do
     identifier = ENV['EADID']
 
     artifact = UmArclight::Package::Generator.new identifier: identifier
-    artifact.build_html
+    artifact.generate_html
   end    
 
   desc 'Build a PDF out of an EAD document, use FILE=<path/to/ead.xml> and REPOSITORY_ID=<myid>'
   task :generate_pdf => :generate_html do
     # now set up the doc for the HTML PDF
 
-    artifact.build_pdf
+    artifact.generate_pdf
 
 
   end

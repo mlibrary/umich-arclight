@@ -39,7 +39,6 @@ module UmArclight
         @session = ActionDispatch::Integration::Session.new(Rails.application)
         @session.host = 'findingaids.lib.umich.edu'
         @session.https!(true)
-        @index = Index.new()
       end
 
       def build_html
@@ -53,10 +52,8 @@ module UmArclight
           components = fetch_components(identifier)
         end
         puts "UM-Arclight generate package : #{collection.id} : fetch components (in #{elapsed_time.round(3)} secs)."      
-
         elapsed_time = Benchmark.realtime do
           @fragment = render_fragment({
-            repository: collection.repository_config,
             collection: collection,
             components: components
           })
@@ -69,6 +66,8 @@ module UmArclight
       end
 
       def generate_html
+        build_html()
+
         output_filename = generate_output_filename('.html')
         unless Dir.exists?(File.dirname(output_filename))
           FileUtils.makedirs(File.dirname(output_filename))
@@ -98,6 +97,8 @@ module UmArclight
       end
 
       def generate_pdf
+        build_pdf()
+
         local_html_filename = "#{collection.id}.local.html"
         File.open(local_html_filename, "w") do |f|
           f.puts doc.serialize
@@ -127,7 +128,7 @@ module UmArclight
           end
         end
 
-        File.unlink(local_html_filename)
+        File.unlink(local_html_filename) unless ENV.fetch('DEBUG_GENERATOR', 'FALSE') == 'TRUE'
 
         puts "UM-Arclight generate package: #{collection.id} : puppeteer render (in #{elapsed_time.round(3)} secs)."      
       end
@@ -174,7 +175,7 @@ module UmArclight
         total = response.total
         start = 0
         while ( response.documents.present? )
-          puts "-- harvesting: #{start} / #{total}"
+          puts "UM-Arclight generate package : harvesting components : #{collection.id} : #{start} / #{total}"
           response.documents.each do |doc|
             if doc.id == id
               # ignore the collection doc
@@ -241,7 +242,7 @@ module UmArclight
                   asset_path = match[0]
                   filename = asset_path.split(/[\?#]/).first
 
-                  return if File.exists?("assets/#{filename}")
+                  next if File.exists?("assets/#{filename}")
 
                   session.get("/assets/#{asset_path}")
                   resource = session.response.body
@@ -281,6 +282,10 @@ module UmArclight
           script.remove
         end
       end
+
+      def index
+        @index ||= Index.new()
+      end
     end
 
     class Queue
@@ -291,7 +296,7 @@ module UmArclight
       def setup(repository_ssm: nil)
         identifiers = fetch_collection_identifiers(repository_ssm)
         identifiers.each do |identifier|
-          STDERR.puts "-- queueing #{identifier}"
+          puts "UM-Arclight queue package: #{identifier}"
           ::PackageFindingAidJob.perform_later(identifier)
         end
       end

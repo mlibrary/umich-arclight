@@ -5,7 +5,15 @@
     }
 
     html[data-media="print"] #content {
-      max-width: 100%; flex: 0 0 100%;
+      max-width: 100%; 
+      flex: 0 0 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    html[data-media="print"] #document {
+      padding-left: 0;
+      padding-right: 0;
     }
 
     html[data-media="print"] footer {
@@ -56,6 +64,15 @@
     html[data-media="print"] header > div.repository a {
       color: var(--color-neutral-500);
       text-decoration: none;
+    }
+
+    html[data-media="print"] .viewport-container {
+      padding: 0;
+    }
+
+    html[data-media="print"] .row {
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .fs-7 {
