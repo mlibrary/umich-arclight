@@ -8,13 +8,13 @@ namespace :arclight do
   artifact = nil
 
   desc 'Generate packages for indexed finding aids via background jobs'
-  task :queue => :environment do
+  task :generate_enqueue => :environment do
     repository_ssm = nil
     if ENV['REPOSITORY_ID']
       repository_config = Arclight::Repository.find_by(slug: ENV['REPOSITORY_ID'])
       repository_ssm = repository_config.name
     end
-    UmArclight::Package::Queue.setup(repository_ssm: repository_ssm)
+    UmArclight::Package::Queue.new.setup(repository_ssm: repository_ssm)
   end
 
   task :generate_html => :environment do

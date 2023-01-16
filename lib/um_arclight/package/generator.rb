@@ -289,6 +289,9 @@ module UmArclight
     end
 
     class Queue
+
+      attr_accessor :index
+
       def initialize
         @index = Index.new
       end
