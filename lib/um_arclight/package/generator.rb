@@ -144,6 +144,13 @@ module UmArclight
       end
 
       def get(url)
+        if (url.start_with?('/assets/') && File.exist?(File.join(Rails.root, 'public', url)))
+          contents = File.read(File.join(Rails.root, 'public', url))
+          response = OpenStruct.new
+          response.body = contents
+          STDERR.puts ":: SHORT CIRCUITING : #{url}"
+          return response
+        end
         session.get(url)
         session.response
       end
