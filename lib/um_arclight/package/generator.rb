@@ -133,9 +133,7 @@ module UmArclight
 
       def generate_output_filename(ext)
         filename = "#{DulArclight.finding_aid_data}/pdf/#{collection.repository_id}/#{collection.id}#{ext}"
-        if filename.start_with?('./')
-          filename = File.join(Rails.root, filename)
-        end
+        filename = File.join(Rails.root, filename) if filename.start_with?('./')
         filename
       end
 
@@ -144,11 +142,10 @@ module UmArclight
       end
 
       def get(url)
-        if (url.start_with?('/assets/') && File.exist?(File.join(Rails.root, 'public', url)))
+        if url.start_with?('/assets/') && File.exist?(File.join(Rails.root, 'public', url))
           contents = File.read(File.join(Rails.root, 'public', url))
           response = OpenStruct.new
           response.body = contents
-          STDERR.puts ":: SHORT CIRCUITING : #{url}"
           return response
         end
         session.get(url)
