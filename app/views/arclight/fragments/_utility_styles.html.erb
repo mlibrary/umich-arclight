@@ -1,5 +1,16 @@
 <style id="utility-styles">
 
+    :root {
+      --width: 36;
+      --rounding: 4px;
+      --accent: #696;
+      --dark-grey: #ddd;
+      --grey: #eee;
+      --light-grey: #f8f8f8;
+      --spacing: 1.5rem;
+      --radius: 10px;
+    }
+
     html[data-media="print"] #sidebar {
       display: none;
     }
@@ -75,8 +86,18 @@
       margin-right: 0;
     }
 
+    html[data-media="print"] #toc {
+      padding: 1rem;
+      margin: 2rem 4rem;
+      /* border: 1px solid #666; */
+    }
+
     .fs-7 {
       font-size: 0.875rem;
+    }
+
+    ul.list-unbulleted li {
+      list-style: none;
     }
 
     dl.record {
@@ -116,122 +137,89 @@
       margin-top: 0;
     }
 
-    html[data-media="print"] #toc {
-      padding: 1rem;
-      margin: 2rem 4rem;
-      /* border: 1px solid #666; */
-    }
-
     address {
       font-style: normal;
     }
 
-    :root {
-  --width: 36;
-  --rounding: 4px;
-  --accent: #696;
-  --dark-grey: #ddd;
-  --grey: #eee;
-  --light-grey: #f8f8f8;
-}
+    article[data-component-level] {
+      margin-left: calc(( var(--component-level, 1) - 1) * 2rem);
+      padding-left: 1rem;
+      border-left: 2px solid var(--dark-grey);
+      border-bottom: 2px solid var(--dark-grey);
+      border-top: 2px solid var(white);
+      margin-top: -2px;
+      background: #fff;
+      position: relative;
+    }
 
-.tree-padding {
-  --spacing: 1.5rem;
-  --radius: 10px;
-  padding-left: 1rem;
-}
+    article[data-component-level] h4 {
+      font-size: 1rem;
+    }
 
-.tree-padding li {
-  display: block;
-  position: relative;
-  padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
-  padding-bottom: 1rem;
+    article[data-component-level] h5 {
+      font-size: 1rem;
+    }
 
-  /* page-break-before: auto; */ /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-  /* page-break-after: auto; */ /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-  /* page-break-inside: avoid; */
-}
+    article[data-component-level] h6 {
+      font-size: 1rem;
+    }
 
-.tree-padding ul {
-  margin-left: calc(var(--radius) - var(--spacing));
-  padding-left: 0;
-}
+    article[data-component-level] h7 {
+      font-size: 0.875rem;
+    }
 
-.tree-vertical-lines ul li {
-  border-left: 2px solid var(--dark-grey);
-}
+    .component-wrapper {
+      margin-left: 1rem;
+      padding-left: 2rem;
+      padding-top: 0.25rem;
+      position: relative;
+      min-height: calc(3 * var(--radius));
+    }
 
-.tree-vertical-lines ul li:last-child {
-  border-color: transparent;
-}
+    .component-wrapper::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(var(--spacing) / 2 - var(--radius));
+      left: calc(var(--spacing) - var(--radius) - 1px);
+      width: calc(2 * var(--radius));
+      height: calc(2 * var(--radius));
+      border-radius: 50%;
+      background: var(--dark-grey);
+      margin-top: 0.125rem;
+      left: 0;
+    }
 
-.tree-horizontal-lines ul li::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: calc(var(--spacing) / -2);
-  left: -2px;
-  width: calc(var(--spacing) + 2px);
-  height: calc(var(--spacing) + 1px);
-  border: solid var(--dark-grey);
-  border-width: 0 0 2px 2px;
-}
+    .child-components article:nth-of-type(odd) {
+      background: #fff;
+    }
 
-.tree-summaries summary {
-  display: block;
-  cursor: pointer;
-}
+    .child-components article:nth-of-type(odd) .component-wrapper {
+      background: #f8f8f8;
+    }
 
-.tree-summaries summary::marker,
-.tree-summaries summary::-webkit-details-marker {
-  display: none;
-}
+    article[data-component-level]::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: calc(var(--spacing) / -2);
+      left: -2px;
+      width: calc(var(--spacing) + 2px);
+      height: calc(var(--spacing) + 1px);
+      border: solid var(--dark-grey);
+      border-width: 0 0 2px 2px;
+      margin-top: 0.75rem;
+    }
 
-.tree-summaries summary:focus {
-  outline: none;
-}
+    .tree-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 0 1rem;
+      padding-top: 0.5rem;
+    }
 
-.tree-summaries summary:focus-visible {
-  outline: 1px dotted #000;
-}
-
-.tree-markers li::after,
-.tree-markers summary::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: calc(var(--spacing) / 2 - var(--radius));
-  left: calc(var(--spacing) - var(--radius) - 1px);
-  width: calc(2 * var(--radius));
-  height: calc(2 * var(--radius));
-  border-radius: 50%;
-  background: var(--dark-grey);
-  margin-top: 0.125rem;
-}
-
-.tree-buttons summary::before {
-  content: "+";
-  z-index: 1;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 400;
-  line-height: calc(2 * var(--radius) - 2px);
-  text-align: center;
-}
-
-.tree-buttons details[open] > summary::before {
-  content: "−";
-}
-
-.tree-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 0 1rem;
-  padding-top: 0.5rem;
-}
-
-    .tree-container blockquote, details blockquote, .details blockquote {
+    .tree-container blockquote, article blockquote {
       margin: 0 1rem;
       font-size: 0.875rem;
       border: none !important;
@@ -240,40 +228,7 @@
     .tree-title {
       display: flex;
       gap: 0.5rem;
-    }
-
-    article blockquote {
-      font-size: 0.875rem;
-      border: none !important;
-    }
-
-    article > h3 {
-      display: flex;
-      gap: 0.5rem;
       justify-content: space-between;
-    }
-
-    .tree-padding ul li:nth-child(even) > details > summary {
-      background-color: #f8f8f8;
-    }
-    .tree-padding ul li:nth-child(even) > .details > .summary {
-      background-color: #f8f8f8;
-    }
-
-    .tree-padding > li:not(:has(ul)):nth-child(even) > details > summary {
-      background-color: #f8f8f8;
-    }
-
-    .tree-padding > li:not(:has(ul)):nth-child(even) > .details > .summary {
-      background-color: #f8f8f8;
-    }
-
-    ul ul {
-      padding: 0 0 0 1rem;
-    }
-
-    ul span {
-      display: block;
     }
 
     span.box {
@@ -283,7 +238,4 @@
       font-weight: normal;
     }
 
-    .child-components article:nth-of-type(odd) {
-      background-color: initial;
-    }
 </style>

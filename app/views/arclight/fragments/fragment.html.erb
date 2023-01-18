@@ -14,7 +14,17 @@
       </div>
     </header>
 
-    <div id="toc"><ul></ul></div>
+    <div id="toc">
+      <ul class="nav">
+        <% @components.select { |v| v.component_level == 1 }.each do |component| %>
+          <li class="nav-item">
+            <a class="nav-link" href="#<%= component.id %>">
+              <%= component.normalized_title %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
     <dl id="ead_author_block">
       <%= render 'arclight/fragments/dt_record', { label: 'Author', values: @collection.ead_author } %>
@@ -46,68 +56,6 @@
       </table>
     <% end %>
     </div>
-
-    <script id="toc-script">
-      function build_toc_print(rootEl) {
-        let isPrintable = document.documentElement.dataset.media == 'print'
-        rootEl.dataset.tagName = isPrintable ? 'H2' : 'H3';
-        let headings = isPrintable ? 
-          [...document.querySelector('#content').querySelectorAll('h1,h2,h3,h4')] : 
-          [...document.querySelectorAll('.al-contents-ish > article h3,.al-contents-ish > article h4')];
-
-        if ( isPrintable ) {
-          while ( headings.length && headings[0].tagName != 'H1' ) {
-            headings.shift();
-          }
-          headings.shift(); /* the H1 */
-        } else {
-          rootEl.classList.add('nav');
-        }
-
-        let lastEl = headings[0]; let parents = [ rootEl ];
-
-        let _add_link = function(el, elIdx) {
-          if ( ! el.getAttribute("id") ) {
-            el.setAttribute('id', `h${elIdx}`);
-          }
-          let linkEl = document.createElement('li');
-          let anchorEl = document.createElement('a');
-          if ( ! isPrintable ) {
-            linkEl.classList.add('nav-item');
-            anchorEl.classList.add('nav-link');
-          }
-          anchorEl.setAttribute('href', `#${el.getAttribute('id')}`);
-          anchorEl.innerText = el.innerText.trim();
-          linkEl.append(anchorEl);
-          parents[0].append(linkEl);
-          lastEl = el;
-        }
-
-        headings.forEach((el, elIdx) => {
-          console.log("-- lastEl", lastEl.tagName, el.tagName);
-          if ( lastEl.tagName == el.tagName ) {
-            // we're at the same level
-          } else if ( lastEl.tagName < el.tagName ) {
-            // we're nesting
-            let ulEl = document.createElement('ul'); ulEl.dataset.tagName = el.tagName;
-            parents[0].querySelector(':scope > li:last-of-type').appendChild(ulEl);
-            parents.unshift(ulEl);
-          } else if ( lastEl.tagName > el.tagName ) {
-            // we're bouncing out a level
-            while ( parents.length && parents[0].dataset.tagName > el.tagName ) {
-              parents.shift();
-            }
-          }
-          _add_link(el, elIdx);
-        })
-      }
-
-      let rootEl = document.querySelector('#toc > ul');
-      if ( rootEl ) {
-        build_toc_print(rootEl);
-      }
-
-    </script>
 
   </body>
 </html>

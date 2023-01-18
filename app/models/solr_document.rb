@@ -111,6 +111,12 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     parent_ids.present?
   end
 
+  def parent_ids_keyed
+    parent_ids.map do |parent_id|
+      parent_id.gsub('.', '-')
+    end
+  end
+
   def accessrestrict
     fetch('accessrestrict_tesim', [])
   end

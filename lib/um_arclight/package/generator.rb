@@ -163,14 +163,20 @@ module UmArclight
         response.documents.first
       end
 
-      def fetch_components(id) # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
+      def fetch_components(id)
         params = {
           fl: COMPONENT_FIELDS.join(','),
           q: ["ead_ssi:#{id}"],
+          sort: 'sort_ii asc, title_sort asc',
           start: 0,
           rows: 1000
         }
         components = []
+        tmp = {}
+        tmp_map = {}
+        component_mapper = {}
         response = index.search(params)
         start = 0
         while response.documents.present?
@@ -181,14 +187,48 @@ module UmArclight
               next
             end
 
-            components << doc
+            tmp[doc.component_level] = [] if tmp[doc.component_level].nil?
+            tmp[doc.component_level] << doc
+            tmp_map[doc.reference] = doc
           end
           start += 1000
           params[:start] = start
           response = index.search(params)
         end
+
+        # now attach child components
+        tmp.keys.sort.each do |component_level|
+          next if component_level == 1
+
+          tmp[component_level].each do |doc|
+            # find the parent_doc because nothing is easy
+            parent_doc = nil
+            doc.parent_ids_keyed.reverse.each do |parent_id|
+              if tmp_map[parent_id]
+                parent_doc = tmp_map[parent_id]
+                break
+              end
+            end
+
+            component_mapper[parent_doc.reference] = [] if component_mapper[parent_doc.reference].nil?
+            component_mapper[parent_doc.reference].unshift doc
+          end
+        end
+
+        # now flatten this into components?
+        queue = [tmp[1]].flatten
+        until queue.empty?
+          doc = queue.shift
+          components << doc
+          component_mapper.fetch(doc.reference, []).each do |v|
+            queue.unshift v
+          end
+        end
+
         components
       end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       def render_fragment(variables)
         paths = ActionView::PathSet.new(['app/views'])
@@ -216,19 +256,53 @@ module UmArclight
         doc.css('#summary dl').first << fragment.css('dl#ead_author_block dt,dd')
         doc.css('#background').first << fragment.css('#revdesc_changes')
         doc.css('div.al-contents').first.replace(fragment.css('div.al-contents-ish').first)
-        doc.css('body').first << fragment.css('script').first
         doc.css('.card-img').first.remove
         doc.css('#navigate-collection-toggle').first.remove
-        doc.css('#context-tree-nav .tab-pane.active').first.inner_html = '<div id="toc"><ul></ul></div>'
+        doc.css('#context-tree-nav .tab-pane.active').first.inner_html = ''
+        doc.css('#context-tree-nav .tab-pane.active').first << fragment.css('#toc').first
       end
       # rubocop:enable Metrics/AbcSize
 
       def update_package_html_pdf
-        doc.css('.access-preview-snippet').first.inner_html = '<div id="toc"><ul></ul></div>'
+        build_package_html_toc
         doc.css('m-website-header').first.replace(fragment.css('header').first)
         doc.css('footer').first.remove
         doc.css('div.x-printable').remove
       end
+
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
+      def build_package_html_toc
+        doc.css('.access-preview-snippet').first.inner_html = '<div id="toc"><ul class="list-unbulleted"></ul></ul>'
+        current_ul = doc.css('#toc ul').first
+        idx = 0
+        last_li = nil
+        last_heading = 'h2'
+        has_seen_h1 = false
+        doc.css('#content').first.css('h1,h2,h3').each do |heading|
+          next if heading.name != 'h1' && !has_seen_h1
+
+          if heading.name == 'h1'
+            has_seen_h1 = true
+            next
+          end
+          if heading['id'].nil?
+            idx += 1
+            heading['id'] = "id#{idx}"
+          end
+          if last_heading < heading.name
+            last_li << '<ul></ul>'
+            current_ul = last_li.css('ul').first
+          elsif last_heading > heading.name
+            current_ul = current_ul.parent.parent # should be the parent, right?
+          end
+          current_ul << %(<li><a href="##{heading['id']}">#{heading.content.strip}</a></li>)
+          last_li = current_ul.css('li').last
+          last_heading = heading.name
+        end
+      end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       # rubocop:disable Metrics/AbcSize
       # rubocop:disable Metrics/MethodLength

@@ -1,25 +1,19 @@
-<% @components.select { |v| v.component_level == 1 }.each do |component| %>
-  <article>
-    <h3 id="<%= component.id %>">
-      <span>
-        <%= component.normalized_title %>
-        <% if component.level.present? %> (<%= component.level %>)<% end %>
-      </span>
-      <% if component.containers.present? %>
-        <span class="box">
-          <%= component.containers.join(', ') %>
+<% @components.each do |component| %>
+  <article data-component-level="<%= component.component_level %>" style="--component-level: <%= component.component_level %>">
+    <div class="component-wrapper">
+      <%= content_tag "h#{component.component_level + 2}", class: 'tree-title', id: component.id do -%>
+        <span>
+          <%= component.normalized_title %>
+          <% if component.level.present? %> (<%= component.level %>)<% end %>
         </span>
-      <% end %>
-    </h3>
+        <% if component.containers.present? %>
+          <span class="box">
+            <%= component.containers.join(', ') %>
+          </span>
+        <% end %>
+      <% end -%>
 
-    <%= render 'arclight/fragments/component_details', { component: component } %>
-
-    <% if ( components = @components.select{ |v| v.parent_ids.last == component.reference } ).present? %>
-    <ul class="tree-padding tree-vertical-lines tree-horizontal-lines tree-summaries tree-markers">
-      <% components.each do |subcomponent| %>
-        <%= render 'arclight/fragments/component_tree', { component: subcomponent, level: 5 } %>
-      <% end %>
-    </ul>
-    <% end %>
+      <%= render 'arclight/fragments/component_details', { component: component } %>
+    </div>
   </article>
 <% end %>
