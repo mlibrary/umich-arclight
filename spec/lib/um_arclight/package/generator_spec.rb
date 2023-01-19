@@ -75,6 +75,8 @@ def mock_get(url) # rubocop:disable Metrics/MethodLength
       <head>
         <title>Finding Aid</title>
         <link rel="stylesheet" href="/assets/styles.css" />
+        <meta name="csrf-param">
+        <meta name="csrf-token">
         <script>console.log('NOP');</script>
       </head>
       <body>
