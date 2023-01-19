@@ -27,7 +27,24 @@ module DulArclight
 
     def html_download
       _, @document = search_service.fetch(params[:id])
-      render file: html_file_path, layout: false
+
+      headers['Content-Type'] = 'text/html'
+      headers['X-Accel-Buffering'] = 'no' # Stop NGINX from buffering
+      headers.delete('Content-Length')
+      headers.delete('ETag')
+
+      # replace m-arclight-placeholder with current asset styles/scripts
+      self.response_body = Enumerator.new do |output|
+        File.foreach(html_file_path) do |line|
+          if line.index('<m-arclight-placeholder></m-arclight-placeholder>')
+            output << helpers.stylesheet_link_tag('application', media: 'all')
+            output << helpers.javascript_include_tag('application')
+            output << helpers.csrf_meta_tags
+            next
+          end
+          output << line
+        end
+      end
     end
 
     def pdf_download

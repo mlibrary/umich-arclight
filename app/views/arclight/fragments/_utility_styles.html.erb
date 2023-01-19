@@ -8,7 +8,13 @@
       --grey: #eee;
       --light-grey: #f8f8f8;
       --spacing: 1.5rem;
-      --radius: 10px;
+      --radius: 4px;
+    }
+
+    @media print {
+      :root {
+        --font-base-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+      }
     }
 
     html[data-media="print"] #sidebar {
@@ -88,8 +94,12 @@
 
     html[data-media="print"] #toc {
       padding: 1rem;
-      margin: 2rem 4rem;
+      margin: 2rem 2rem;
       /* border: 1px solid #666; */
+    }
+
+    html[data-media="print"] #toc .nav-link {
+      padding: 0.25rem 1rem;
     }
 
     .fs-7 {
@@ -186,7 +196,7 @@
       height: calc(2 * var(--radius));
       border-radius: 50%;
       background: var(--dark-grey);
-      margin-top: 0.125rem;
+      /* margin-top: 0.125rem; */
       left: 0;
     }
 
