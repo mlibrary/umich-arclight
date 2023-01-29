@@ -97,7 +97,7 @@ module DulArclight
     end
 
     def eadid
-      @document.eadid
+      @document.eadid.tr('.', '-')
     end
   end
 end
