@@ -23,31 +23,21 @@
 
   <% counter = document_counter_with_offset(document_counter) %>
 
-  <div class="d-flex align-items-center flex-nowrap gap-1" style="x-width: 100%">
+  <div class="d-flex align-items-center flex-nowrap gap-3" style="x-width: 100%">
 
-    <div class="align-self-center">
-      <% if document.is_checkbox_requestable? %>
-        <%= render "aeon_request_checkbox", document: document, class: '', label_class: 'btn btn-outline-secondary btn-outline-request squat p-2' %>
-      <% elsif true && document.children? %>
-        <button data-toggle="collapse" data-target="#<%= document.id %>-collapsible-hierarchy" class="btn btn-outline-light" style="min-width: 2.875rem; min-height: 2.875rem;" type="button">
-          <i class="text-dark far <%= show_expanded?(document) ? 'fa-minus-square' : 'fa-plus-square' %>"></i>
+    <div class="align-self-center d-flex align-items-center flex-nowrap gap-1">
+      <% if document.children? %>
+        <button data-toggle="collapse" data-target="#<%= document.id %>-collapsible-hierarchy" class="btn btn-outline-light btn-toggle" style="" type="button">
+          <i class="text-dark fas <%= show_expanded?(document) ? 'fa-chevron-circle-down' : 'fa-chevron-circle-right' %>"></i>
         </button>
-      <% elsif false && document.children? %>
-        <div class="al-toggle-children-container">
-        <%= link_to(
-          '',
-          "##{document.id}-collapsible-hierarchy",
-          class: "al-toggle-view-children #{!show_expanded?(document) ? 'collapsed' : ''}",
-          'aria-label': t('arclight.hierarchy.view_all'),
-            data: {
-              toggle: 'collapse'
-            }
-          )
-        %>
-      </div>
-
       <% else %>
-        <span style="padding: 0.375rem 0.75rem"><i class="text-black-50 far fa-circle"></i></span>
+        <span style="padding: 0.6rem 1.25rem;"><i class="text-blended fas fa-circle"></i></span>
+      <% end %>
+
+      <% if document.is_checkbox_requestable? %>
+        <%= render "aeon_request_checkbox", document: document, class: '', label_class: 'btn btn-outline-secondary btn-outline-request squat p-2 mb-0' %>
+      <% else %>
+        <span style="padding: 0.375rem 1rem;"><i class="text-blended fas fa-circle"></i></span>
       <% end %>
     </div>
 
