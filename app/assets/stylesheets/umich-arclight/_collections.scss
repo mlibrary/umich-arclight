@@ -12,13 +12,17 @@ nav#about-collection-nav {
 .indented {
 
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
+  border-left: 1px solid var(--color-indigo-100);
+
+  // 2rem is respectable, but 4rem aligns better
   article {
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
 
   .indented {
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
 }
 
