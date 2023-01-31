@@ -9,6 +9,10 @@ nav#about-collection-nav {
   padding-left: 0.25em;
 }
 
+#documents {
+  margin-left: 3rem;
+}
+
 .indented {
 
   margin-top: 1rem;
@@ -29,7 +33,10 @@ nav#about-collection-nav {
 #documents {
   button[aria-expanded="true"] {
     i::before {
-      content: "" !important;
+      // // angle down
+      // content: "" !important;
+      // minus circle
+      content: "\f056" !important;
     }
   }
 }

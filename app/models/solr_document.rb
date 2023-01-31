@@ -153,6 +153,10 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     fetch('collection_creator_ssm', [])[0]
   end
 
+  def collection_has_requestable_components? # rubocop:disable Naming/PredicateName
+    repository_config.request_config_present_for_type?('aeon_hidden_form_request')
+  end
+
   def is_checkbox_requestable? # rubocop:disable Naming/PredicateName
     config_present = repository_config.request_config_present_for_type?('aeon_hidden_form_request')
     container_requestable = containers.all? do |container|
