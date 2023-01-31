@@ -167,6 +167,10 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     config_present && !containers.empty? && container_requestable
   end
 
+  def is_linkable?
+    !(total_digital_object_count == 0 && number_of_children == 0)
+  end
+
   # DUL override ArcLight core; we want all extent values, and to singularize e.g. 1 boxes.
   # document.extent is used for the "extent badge"; note other locations in the app use
   # the full physdesc field and may still be labeled as "Extent".

@@ -59,7 +59,11 @@
     <div class="d-flex" xclass="documentHeader d-flex order-1" data-document-id="<%= document.id %>">
       <h3 xclass="index_title document-title-heading">
         <!-- def link_to_document(doc, field_or_opts = nil, opts = { counter: nil }, url_options = { anchor: nil })-->
-        <%= link_to_document(document, document_show_link_field(document), { counter: counter }, { anchor: "contents" }) %>
+        <% if document.is_linkable? %>
+          <%= link_to_document(document, document_show_link_field(document), { counter: counter }, { anchor: "contents" }) %>
+        <% else %>
+          <span><%= index_presenter(document).label %></span>
+        <% end %>
         <% if document.children? %>
           <span class="badge badge-pill badge-secondary al-number-of-children-badge"><%= document.number_of_children %> <%= t(:'um_arclight.views.index.number_of_components', count: document.number_of_children) %></span>
         <% end %>
