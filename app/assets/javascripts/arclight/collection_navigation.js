@@ -110,6 +110,7 @@
 
         $el.hide().html('').append(isNested ? '' : sortPerPage).append(newDocs)
           .fadeIn(500);
+
         if (showDocs.length > 0) {
           $el.trigger('navigation.contains.elements');
         }
@@ -141,10 +142,14 @@ Blacklight.onLoad(function () {
   $('.al-contents').on('navigation.contains.elements', function (e) {
 
     $(e.target).find('article').each(function(idx) {
+
       let config = $(this).find('[data-config="true"]').get(0);
       let arclightData = $(config).data('arclight');
+
+      if (arclightData.childrencount == 0) { return; }
+
       // console.log(config);
-      let html = `<div class="collapse indented" id="${this.dataset.documentId}-collapsible-hierarchy">
+      let html = `<div class="collapse indented" id="${config.dataset.target}">
         <div 
           class="al-contents child-components nested-components children-count-${config.dataset.numberOfChildren}"></div>
       </div>`;
@@ -156,8 +161,6 @@ Blacklight.onLoad(function () {
           $div.collapse();
         }, 1000);
       }
-
-      // console.log("-->", config.dataset.arclight);
     })
 
     var toEnable = $('[data-hierarchy-enable-me]');

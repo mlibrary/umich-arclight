@@ -1,4 +1,5 @@
 <%# <div class="al-search-result-index-article d-flex flex-column"> %>
+<% target = "xp-#{document.id}" %>
 <%= content_tag(
       :div,
       '',
@@ -7,6 +8,7 @@
         collapse: I18n.t('arclight.views.show.collapse'),
         expand: I18n.t('arclight.views.show.expand'),
         config: true,
+        target: target,
         number_of_children: document.number_of_children,
         arclight: {
           path: search_catalog_path,
@@ -27,7 +29,7 @@
 
     <div class="align-self-center d-flex align-items-center flex-nowrap gap-1" style="margin-left: -3.5rem;">
       <% if document.children? %>
-        <button data-toggle="collapse" data-target="#<%= document.id %>-collapsible-hierarchy" class="btn btn-outline-light btn-toggle" style="" type="button">
+        <button data-toggle="collapse" data-target="#<%= target %>" class="btn btn-outline-light btn-toggle" style="" type="button">
           <% if false %><i class="text-dark fas <%= show_expanded?(document) ? 'fa-chevron-circle-down' : 'fa-chevron-circle-right' %>"></i><% end %>
           <i class="text-dark fas <%= show_expanded?(document) ? 'fa-minus-circle' : 'fa-plus-circle' %>"></i>
         </button>
