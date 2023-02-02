@@ -29,8 +29,7 @@
 
     <div class="align-self-center d-flex align-items-center flex-nowrap gap-1" style="margin-left: -3.5rem;">
       <% if document.children? %>
-        <button data-toggle="collapse" data-target="#<%= target %>" class="btn btn-outline-light btn-toggle" style="" type="button">
-          <% if false %><i class="text-dark fas <%= show_expanded?(document) ? 'fa-chevron-circle-down' : 'fa-chevron-circle-right' %>"></i><% end %>
+        <button aria-label="View" data-toggle="collapse" data-target="#<%= target %>" class="btn btn-outline-light btn-toggle" style="" type="button">
           <i class="text-dark fas <%= show_expanded?(document) ? 'fa-minus-circle' : 'fa-plus-circle' %>"></i>
         </button>
       <% else %>
@@ -46,17 +45,6 @@
       <% end %>
 
     </div>
-
-<% if false %>
-<%# with the DCP2-250 work I don't think you'd _expand_ this child %>
-    <div class=""> <%# how to handle ordering with an optional thing at the front? %>
-      <% if document.is_checkbox_requestable? %>
-        <%= render "aeon_request_checkbox", document: document, class: '', label_class: 'btn btn-outline-secondary btn-outline-request squat p-2' %>
-      <% else %>
-        <div style="height: 46px; width: 46px; border: 1px dotted goldenrod;"></div>
-      <% end %>
-    </div>
-<% end %>
 
     <div class="d-flex" xclass="documentHeader d-flex order-1" data-document-id="<%= document.id %>">
       <h3 xclass="index_title document-title-heading">
