@@ -4,5 +4,5 @@
 # k3s 1.22.17
 FROM golang:1.16.15-alpine3.15
 
-RUN apk add strace
+RUN apk add strace tcpdump
 CMD ["sleep", "infinity"]
