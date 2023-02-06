@@ -1,4 +1,8 @@
-FROM golang:1.16.10-alpine3.13
+# k3s 1.21.11-k3s1 (and 1.21.14)
+#FROM golang:1.16.10-alpine3.13
+
+# k3s 1.22.17
+FROM golang:1.16.15-alpine3.15
 
 RUN apk add strace
 CMD ["sleep", "infinity"]
