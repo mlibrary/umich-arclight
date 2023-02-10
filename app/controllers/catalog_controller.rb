@@ -122,7 +122,7 @@ class CatalogController < ApplicationController
                            label: 'Online Content',
                            collapse: false,
                            query: {
-                             online: { label: I18n.t('um_arclight.advanced_search.available_online'), fq: 'has_online_content_ssim:true' }
+                             online: {label: I18n.t('um_arclight.advanced_search.available_online'), fq: 'has_online_content_ssim:true'}
                            }
     config.add_facet_field 'repository_sim', label: 'Repository', limit: 10
     config.add_facet_field 'subarea_sim', label: 'Collecting Area', limit: 10
@@ -320,6 +320,9 @@ class CatalogController < ApplicationController
     config.show.metadata_partials = %i[
       summary_field
       background_field
+      biography_history_field
+      arrangement_field
+      scope_content_field
       related_field
       indexed_terms_field
       indexes_field
@@ -374,6 +377,7 @@ class CatalogController < ApplicationController
                                                       if: lambda { |_context, _field_config, document|
                                                             /^\s*bhl\s*$/i.match?(document.repository_id)
                                                           }
+    config.add_summary_field 'otherfindaid_tesim', label: 'Other Finding Aids', helper_method: :render_html_tags
 
     config.add_summary_field 'ua_record_group_ssim', label: 'University Archives Record Group',
                                                      helper_method: :link_to_ua_record_group_facet, separator_options: {
@@ -391,25 +395,30 @@ class CatalogController < ApplicationController
 
     # Collection Show Page - Background Section
     config.add_background_field 'para_tesim', label: '', helper_method: :render_html_tags
-    config.add_background_field 'scopecontent_tesim', label: 'Scope and Content', helper_method: :render_html_tags
-    config.add_background_field 'bioghist_tesim', label: 'Biographical / Historical', helper_method: :render_bioghist
-    config.add_background_field 'acqinfo_ssim', label: 'Acquisition Information', helper_method: :render_html_tags
-    config.add_background_field 'appraisal_tesim', label: 'Appraisal Information', helper_method: :render_html_tags
-    config.add_background_field 'custodhist_tesim', label: 'Custodial History', helper_method: :render_html_tags
-    config.add_background_field 'processinfo_tesim', label: 'Processing information', helper_method: :render_html_tags
-    config.add_background_field 'arrangement_tesim', label: 'Arrangement', helper_method: :render_html_tags
-    config.add_background_field 'fileplan_tesim', label: 'File Plan', helper_method: :render_html_tags
-    config.add_background_field 'accruals_tesim', label: 'Accruals', helper_method: :render_html_tags
-    config.add_background_field 'physloc_tesim', label: 'Physical Location', helper_method: :render_html_tags
-    config.add_background_field 'materialspec_tesim', label: 'Material Specific Details', helper_method: :render_html_tags
-    config.add_background_field 'odd_tesim', label: 'Other Descriptive Data', helper_method: :render_html_tags
-    config.add_background_field 'descrules_ssm', label: 'Rules or Conventions', helper_method: :render_html_tags
+
+    # Biographical / Historical
+    config.add_biography_history_field 'bioghist_tesim', label: 'Biographical / Historical', helper_method: :render_bioghist
+
+    # Arrangement
+    config.add_arrangement_field 'arrangement_tesim', label: 'Arrangement', helper_method: :render_html_tags
+
+    # Scope / Content
+    config.add_scope_content_field 'scopecontent_tesim', label: 'Scope and Content', helper_method: :render_html_tags
 
     # Collection Show Page - Related Section
+    config.add_related_field 'acqinfo_ssim', label: 'Acquisition Information', helper_method: :render_html_tags
+    config.add_related_field 'appraisal_tesim', label: 'Appraisal Information', helper_method: :render_html_tags
+    config.add_related_field 'custodhist_tesim', label: 'Custodial History', helper_method: :render_html_tags
+    config.add_related_field 'processinfo_tesim', label: 'Processing information', helper_method: :render_html_tags
+    config.add_related_field 'fileplan_tesim', label: 'File Plan', helper_method: :render_html_tags
+    config.add_related_field 'accruals_tesim', label: 'Accruals', helper_method: :render_html_tags
+    config.add_related_field 'physloc_tesim', label: 'Physical Location', helper_method: :render_html_tags
+    config.add_related_field 'materialspec_tesim', label: 'Material Specific Details', helper_method: :render_html_tags
+    config.add_related_field 'odd_tesim', label: 'Other Descriptive Data', helper_method: :render_html_tags
+    config.add_related_field 'descrules_ssm', label: 'Rules or Conventions', helper_method: :render_html_tags
     config.add_related_field 'add_tesim', label: 'Additional Descriptive Data', helper_method: :render_html_tags
     config.add_related_field 'relatedmaterial_tesim', label: 'Related Material', helper_method: :render_html_tags
     config.add_related_field 'separatedmaterial_tesim', label: 'Separated Material', helper_method: :render_html_tags
-    config.add_related_field 'otherfindaid_tesim', label: 'Other Finding Aids', helper_method: :render_html_tags
     config.add_related_field 'altformavail_tesim', label: 'Alternative Form Available', helper_method: :render_html_tags
     config.add_related_field 'originalsloc_tesim', label: 'Location of Originals', helper_method: :render_html_tags
     config.add_related_field 'bibliography_tesim', label: 'Bibliography', helper_method: :render_html_tags
