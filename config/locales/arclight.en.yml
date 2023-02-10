@@ -25,11 +25,15 @@ en:
         expand: "Show More ..."
         context: "Navigate the Collection"
         sections:
+          arrangement_field: "Arrangement"
+          biography_history_field: "Biography/History"
+          component_indexed_terms_field: "Subjects"
           contents: "Contents"
-          component_indexed_terms_field: Subjects
-          indexed_terms_field: Subjects
-          using_field: "Using These Materials"
+          indexed_terms_field: "Subjects"
           indexes_field: "Other Indexes"
+          related_field: "Additional Information"
+          scope_content_field: "Scope and Content"
+          using_field: "Using These Materials"
         download:
           pdf: "Download PDF Finding Aid"
     within_collection_dropdown:
