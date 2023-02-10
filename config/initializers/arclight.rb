@@ -13,6 +13,9 @@ Arclight::Engine.config.catalog_controller_field_accessors = %i[
   access_field
   contact_field
   background_field
+  biography_history_field
+  arrangement_field
+  scope_content_field
   related_field
   terms_field
   cite_field

@@ -1,0 +1,341 @@
+<ead><eadheader countryencoding="iso3166-1" dateencoding="iso8601" findaidstatus="completed" langencoding="iso639-2b" repositoryencoding="iso15511"><eadid publicid="-//us::MiU//TEXT us::MiU::myers.xml//EN" countrycode="US" mainagencycode="US-MiU">umich-scl-myers</eadid><filedesc>
+      <titlestmt>
+        <titleproper>Finding Aid for Myers in Germany World War II Collection
+          </titleproper>
+        <author>Processed by and finding aid created by Gerhard Weinberg and Anneliese Kramer, circa
+          1960; Kate Theimer, 2000; Special Collections Library staff, 2002 and 2007. Encoded by
+          Joan Huang using ArchivesSpace, 2017.</author>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>University of Michigan Library (Special Collections Research Center)</publisher>
+        <p><date>circa 1960 - 2007</date></p>
+        <address><addressline>University of Michigan, Special Collections Research Center</addressline><addressline>Harlan Hatcher Graduate Library (South)</addressline><addressline>913 S. University Avenue</addressline><addressline>Ann Arbor, MI 48109-1190</addressline><addressline>URL:  http://www.lib.umich.edu/special-collections-library </addressline></address>
+      </publicationstmt>
+    </filedesc><profiledesc>
+      <creation>This finding aid was produced using ArchivesSpace on <date>2018-01-24 14:39:41
+          -0500</date>.</creation>
+      <langusage>English</langusage>
+      <descrules>Describing Archives: A Content Standard</descrules>
+    </profiledesc></eadheader><frontmatter><titlepage><publisher>University of Michigan Library (Special Collections Research Center)</publisher><titleproper>Finding Aid for Myers in Germany World War II Collection
+          </titleproper><author>Processed by and finding aid created by Gerhard Weinberg and Anneliese Kramer, circa
+          1960; Kate Theimer, 2000; Special Collections Library staff, 2002 and 2007. Encoded by
+          Joan Huang using ArchivesSpace, 2017.</author></titlepage></frontmatter><archdesc level="collection"><did><origination label="source">
+        <persname rules="local" source="local">Myers, Rowland M.</persname>
+      </origination><unittitle>Rowland Myers Germany in World War II Collection <unitdate normal="1933/1942" type="inclusive">1933-1942</unitdate></unittitle><physdesc><extent>1 Linear Feet  (1 record center box) </extent></physdesc><unitid>myers</unitid><langmaterial>The material is in
+         <language langcode="ger">German</language>.
+		</langmaterial><repository>
+        <corpname>University of Michigan Library (Special Collections Research Center)</corpname>
+      </repository></did><descgrp type="admin"><acqinfo audience="internal" id="aspace_156d8a59e749cd9e9a4e7d96c0e79b1d">
+      <head>Immediate Source of Acquisition</head>
+      <p>Acquired from Lt. Rowland Myers, circa 1946</p>
+    </acqinfo><accessrestrict audience="internal" id="aspace_012ebebb47290fe505bbb2278a4ae9d2">
+      <head>Conditions Governing Access</head>
+      <p>The collection is open for research.</p>
+    </accessrestrict><userestrict audience="internal" id="aspace_d4c5f1c83bada0ecd40cbb69e15fecd3">
+      <head>Conditions Governing Use</head>
+      <p>Copyright has not been transferred to the Regents of the University of Michigan. Permission
+        to publish must be obtained from the copyright holder(s).</p>
+    </userestrict><processinfo audience="internal" id="aspace_a88779acb19008e1506185f68affd4ac">
+      <head>Processing Information</head>
+      <p>Processed by Gerhard Weinberg and Anneliese Kramer, circa 1960; Kate Theimer, 2000; Special
+        Collections Library staff, 2002 and 2007.</p>
+    </processinfo><prefercite audience="internal" id="aspace_a8052dce924a8e35ba45241abf244781">
+      
+      <p>Rowland Myers Germany in World War II Collection, University of Michigan Library (Special Collections Research Center)</p>
+    </prefercite></descgrp><bioghist audience="internal">
+      
+      <p> According to his obituary, Rowland M. Myers was born in Brooklyn in 1907, and received his
+        bachelor's degree from Dartmouth College in 1928. He earned a Ph.D. in Romance Languages and
+        Literature from Johns Hopkins University in 1931, then taught Romance Languages at Union
+        College and the University of Texas before World War II. During the war, he served in "Army
+        intelligence," but the exact nature of his service is not known. In 1946, his mailing
+        address was for the Internal Affairs and Communication Division of the OMGUS (Office of
+        Military Government, United States), the office governing the U.S. controlled sections of
+        Germany at the close of World War II.</p>
+      <p>During and after World War II, the University of Michigan mounted an effort to document the
+        war's history, and soldiers were encouraged to donate materials to what was named the
+        "University War Collection." According to F. Clever Bald, the University War Historian,
+        writing in 1946: "The response of alumni to requests for printed materials relating to the
+        war has surpassed all expectations. A veritable avalanche of books, leaflets, newspapers,
+        broadsides, posters, and other important documents poured into the office of the War
+        Historian from all the fighting fronts. More than 5,000 books and thousands of newspapers
+        and other items have been received."[1]</p>
+      <p>In 1943 Lt. Rowland M. Myers, who had apparently attended the Judge Advocate General's
+        School at the University of Michigan for a summer, began shipping (via government freight)
+        crates of German books, newspapers, and pamphlets to the University. Many fo the books were
+        incorporated directly into the general collection with a bookplate attributing Myers as the
+        donor. The pamphlets were later placed in the University's Department of Rare Books and
+        Special Collections (now the Special Collections Library), where they were merged with
+        similar materials, including the 1960 purchase of the Ludendorff collection of approximately
+        400 books and pamphlets.</p>
+      <p>Although it is not mentioned in any correspondence, Myers also sold to the University five
+        linear feet of documents and publications apparently seized from a local office of the Nazi
+        party in Eisenach, Germany. Little attention was paid to these materials until 1959, when
+        Gerhard L. Weinberg joined the faculty. Weinberg had served as a research analyst for the
+        War Documentation Project at Columbia University and as the director of the American
+        Historical Association Project for Microfilming Capture German Documents. Weinberg pulled
+        out the archives from the materials sent by Myers, creating a brief inventory entitled
+        "German Archival Material in the Rare Book Room" where he described them thus: "There are
+        the files of Hermann Köhler, the Kreisleiter der NSDAP, Kreis Eisenach. Included is
+        correspondence, notes, incoming and outgoing mimeographed circulars, special and secret
+        publications from Köhler's files, and albums of photographs." </p>
+    </bioghist><controlaccess><controlaccess><head>Subjects:</head><geogname source="lcsh">Nationalsozialistische Deutsche
+        Arbeiter-Partei</geogname><geogname source="lcsh">Germany -- History -- 1933-1945</geogname><persname role="fmo" source="local">Myers, Rowland M.</persname></controlaccess></controlaccess><dsc>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series I. Hans Frank Materials </unittitle>
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Photograph Album, Wahlkampf <unitdate normal="1936/1936">1936</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">1</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Undated Album </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">2</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Jahresabschluss 1939/NS Rechtswahrerbund
+              e.V </unittitle>
+            <physdesc><extent>42
+                Pages</extent></physdesc>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">3</container>
+          </did>
+        </c02>
+      </c01>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series II. Gefechtsberichten <unitdate normal="1941/1941">1941</unitdate></unittitle>
+          
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Gefechts-Bericht der 1. Gebirgs-Division über die
+                Verfolgungskämpfe Winniza-Golowanewsk und die Vernichtungs-Schlacht von Podwissokoje
+                (Uman) <unitdate normal="1941-06-21/1941-08-07" type="inclusive">June 21 - August 7,
+              1941</unitdate></unittitle>
+            <physdesc><extent>53
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">4</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Gefechts-Bericht der 1. Gebirgs-Division übergang über
+                den Dnjepr – Die Schlacht von Antonowka Verfolgung in der Steppe – Der Kampf am
+                Panzergraben - Der Durchbruch über den Tschingul – Die Schlacht am Mogila
+                Tokmak <unitdate normal="1941-09-10/1941-10-10" type="inclusive">September 6 - October 10,
+              1941</unitdate></unittitle>
+            <physdesc><extent>102
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">5</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Karte 1:100,000 zum Gefechts-Bericht der 1. Gebirgs-Division <unitdate normal="1941-09-06/1941-10-10" type="inclusive">September 6 - October 10,
+              1941</unitdate></unittitle>
+            <physdesc><extent>3
+                Sheets</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">6</container>
+          </did>
+        </c02>
+      </c01>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series III. Malmédy materials <unitdate normal="1940/1944" type="inclusive">1940-1944</unitdate></unittitle>
+          
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Miscellaneous papers of the Kreisbauernschaft Malmedy  <unitdate normal="1940/1941" type="inclusive">1940-1941</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">7</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Haushaltssatzung des Landkreises Malmedy für das
+                Rechnungsjahr 1941 <unitdate normal="1941/1941">1941</unitdate></unittitle>
+            <physdesc><extent>103
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">8</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>"Stellenplan der Kreiskommunalverwaltung Malmedy nach dem Stande vom 1,
+              Januar 1942" <unitdate normal="1942-01/1942-01">1942</unitdate></unittitle>
+            <physdesc><extent>5
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">9</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>"Auftragsbuch I" <unitdate normal="1943/1944" type="inclusive">1943-44</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">10</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>"Auftragsbuch II" <unitdate normal="1942/1942">1942</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">11</container>
+          </did>
+        </c02>
+      </c01>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series IV. Christmas materials for troops <unitdate normal="1939/1941" type="inclusive">1939-1941</unitdate></unittitle>
+          
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Kreigsweinacht des W. B. Kdo.
+              Siegen <unitdate normal="1939/1939">1939</unitdate></unittitle>
+            <physdesc><extent>40
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">12</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Kreigs-Weinachten <unitdate normal="1940/1940">1940</unitdate></unittitle>
+            <physdesc><extent>58
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">13</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>[Kreigsweinachten] <unitdate normal="1941/1941">1941</unitdate></unittitle>
+            <physdesc><extent>29
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">14</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>"Festfolgel!" <unitdate normal="1939/1939">1939</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">15</container>
+          </did>
+        </c02>
+      </c01>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series V. Recruiting Materials </unittitle>
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>"Rekruten-Ausbildung" <unitdate normal="1936-04/1936-09" type="inclusive">April 1936 - September
+              1936</unitdate></unittitle>
+            <physdesc><extent>45
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">16</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Recruiting materials for the Waffen-SS, Ergänzungsstelle West (VI),
+              Düsseldorf <unitdate normal="1941/1941">1941</unitdate></unittitle>
+            <physdesc><extent>20
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">17</container>
+          </did>
+        </c02>
+      </c01>
+      <c01 audience="internal" level="series">
+        <did>
+          <unittitle>Series VI: Miscellaneous </unittitle>
+        </did>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Correspondence </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">18</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Schoolgirl history notebook <unitdate>undated</unitdate></unittitle>
+            <physdesc><extent>64
+                Pages</extent></physdesc>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">19</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Group of 31 commemorative holy cards and other commemorative
+              items <unitdate normal="1827/1934" type="inclusive">1827-1934</unitdate></unittitle>
+            
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">20</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Propaganda leaflets, photographs </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">21</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Propaganda leaflets, in English </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">22</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Propaganda leaflets, in French and miscellaneous </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="Folder">23</container>
+          </did>
+        </c02>
+        <c02 audience="internal" level="file">
+          <did>
+            <unittitle>Photographs </unittitle>
+            <container label="Mixed Materials" type="Box">1</container>
+            <container type="folder">24</container>
+          </did>
+        </c02>
+      </c01>
+    </dsc></archdesc></ead>

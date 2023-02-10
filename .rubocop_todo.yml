@@ -148,12 +148,10 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # SupportedStylesForEmptyBraces: space, no_space
 Layout/SpaceInsideHashLiteralBraces:
   Exclude:
-    - 'app/controllers/catalog_controller.rb'
     - 'app/controllers/concerns/dul_arclight/field_config_helpers.rb'
     - 'app/helpers/blacklight/url_helper.rb'
     - 'app/jobs/index_finding_aid_job.rb'
     - 'lib/dul_arclight/digital_object.rb'
-    - 'spec/controllers/catalog_controller_spec.rb'
     - 'spec/helpers/google_analytics_helper_spec.rb'
     - 'spec/models/solr_document_spec.rb'
     - 'spec/spec_helper.rb'
@@ -246,13 +244,6 @@ RSpec/BeNil:
 RSpec/BeforeAfterAll:
   Exclude:
     - 'spec/models/blacklight/document/email_spec.rb'
-
-# Offense count: 2
-# Configuration parameters: Prefixes, AllowedPatterns.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Exclude:
-    - 'spec/controllers/catalog_controller_spec.rb'
 
 # Offense count: 8
 # Configuration parameters: CountAsOne.
