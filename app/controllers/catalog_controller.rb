@@ -461,6 +461,15 @@ class CatalogController < ApplicationController
     }, if: lambda { |_context, _field_config, document|
       document.containers.present?
     }, ignore_interesting: true
+
+    config.add_component_field 'inherited_containers', label: 'Inherited Containers', accessor: 'inherited_containers', separator_options: {
+      words_connector: ', ',
+      two_words_connector: ', ',
+      last_word_connector: ', '
+    }, if: lambda { |_context, _field_config, document|
+      document.fetch('has_inherited_containers_ssi', 'false') == 'true'
+    }, ignore_interesting: true
+
     config.add_component_field 'abstract_tesim', label: 'Abstract', helper_method: :render_html_tags
 
     # DUL CUSTOMIZATION: Present all physdesc as extent

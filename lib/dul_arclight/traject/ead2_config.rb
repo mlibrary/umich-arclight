@@ -767,7 +767,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
   to_field 'language_ssm', extract_xpath('./did/langmaterial/language')
   to_field 'langmaterial_ssm', extract_xpath('./did/langmaterial[not(descendant::language)]')
 
-  to_field 'inhertaible_containers_ssim' do |record, accumulator, context|
+  to_field 'inherited_containers_ssim' do |record, accumulator, context|
     containers_data = {}
     record_data = {}
     record_data['#id'] = record['id']
@@ -778,7 +778,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
     # fill in container gaps IF this in the repository list
     # AND there are no children with top-level containers
-    # do_debug = false # record['id'] == 'al_54b06e5ad77cab05ec7f6beeaca50022c47d9c7b'
+    # do_debug = (record['id'] == 'al_54b06e5ad77cab05ec7f6beeaca50022c47d9c7b') || (record['id'] == 'al_4bf70b448ac8351a147acff1dd8b1c0b9a791980')
     did_build_inheritance = false
     xpext = NokogiriXpathExtensions.new
 
@@ -790,7 +790,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
         # add ancestors + sibling ancestors
         record.xpath('ancestor::*[@level][did][is_component(.)]', xpext).reverse_each do |ancestor|
-          # STDERR.puts "$$ #{ancestor['id']} :: #{ancestor.name}" if do_debug
+          # STDERR.puts "$$ #{ancestor['id']} :: #{ancestor.name} :: #{INHERITABLE_CACHE[ancestor['id']]}" if do_debug
           nodes = [ancestor]
           ancestor.xpath('./preceding-sibling::*[@level][is_component(.)]', xpext).reverse_each do |preceding_ancestor_sibling|
             nodes << preceding_ancestor_sibling
@@ -810,6 +810,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
         if record_data.keys.select { |key| key != '#id' }.empty?
           # if the are no containers, duplicate the first available queued
+          # STDERR.puts "?? record_tmp empty <- should be cloning" if do_debug
           possible_inheritable_data.each do |inheritable_data|
             next if inheritable_data.nil?
             unless inheritable_data.select { |key| key != '#id' }.empty?
@@ -824,7 +825,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
           possible_inheritable_data.each do |inheritable_data|
             next if inheritable_data.nil?
             next if inheritable_data.select { |key| key != '#id' }.empty?
-            break unless containers_data.empty?
+            break unless containers_data.select { |k| k != '#id' }.empty?
 
             # could inherit a boxish root
             INHERITABLE_TYPES.each do |type, parent|
@@ -844,16 +845,18 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
         # STDERR.puts ":: record_tmp not inheriting #{containers_data.keys}" if do_debug
       end
 
-      INHERITABLE_CACHE[record['id']] = containers_data
-      context.output_hash['has_inherited_components_ssi'] = did_build_inheritance.to_s
+      # STDERR.puts containers_data if do_debug
+      context.output_hash['has_inherited_containers_ssi'] = did_build_inheritance.to_s
 
       containers_data = record_data.dup if containers_data.empty?
+      INHERITABLE_CACHE[record['id']] = containers_data
+
       containers_data.each do |key, value|
         next if key == '#id'
         accumulator << value
       end
 
-      # STDERR.puts "== #{accumulator.join(' / ' )}" if do_debug
+      # STDERR.puts "== #{accumulator.join(' / ' )} :: #{INHERITABLE_CACHE[record['id']]}" if do_debug
     end
   end
 
