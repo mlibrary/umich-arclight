@@ -74,6 +74,21 @@ RESTRICTION_FIELDS = %w[
   phystech
 ].freeze
 
+INHERITABLE_CONTAINERS_REPOSITORIES = %w[
+  clements
+].freeze
+
+INHERITABLE_TYPES = {
+  'page' => 'volume',
+  'folder' => 'box'
+}.freeze
+
+INHERITABLE_CACHE = {}
+
+# def has_top_subcomponents(node)
+#   subcomponents = node.
+# end
+
 settings do
   # DUL Customization: Swap out Arclight::Traject::NokogiriNamespacelessReader with
   # custom DulCompressedReader to remove namespaces AND squish unwanted whitespace.
@@ -752,6 +767,96 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
   to_field 'language_ssm', extract_xpath('./did/langmaterial/language')
   to_field 'langmaterial_ssm', extract_xpath('./did/langmaterial[not(descendant::language)]')
 
+  to_field 'inhertaible_containers_ssim' do |record, accumulator, context|
+    containers_data = {}
+    record_data = {}
+    record_data['#id'] = record['id']
+    record.xpath('./did/container').each do |node|
+      label = node['label'] || node['type'].capitalize
+      record_data[node['type']] = [label, node.text].join(' ').strip
+    end
+
+    # fill in container gaps IF this in the repository list
+    # AND there are no children with top-level containers
+    # do_debug = false # record['id'] == 'al_54b06e5ad77cab05ec7f6beeaca50022c47d9c7b'
+    did_build_inheritance = false
+    xpext = NokogiriXpathExtensions.new
+
+    if INHERITABLE_CONTAINERS_REPOSITORIES.include?(settings['repository'])
+      # STDERR.puts "WTF : #{record.xpath('.//*[@level][is_component(.)][did/container[is_top_container(.)]]', xpext).empty?}" if do_debug
+      if record.xpath('.//*[@level][is_component(.)][did/container[is_top_container(.)]]', xpext).empty?
+
+        possible_inheritable_data = [record_data]
+
+        # add ancestors + sibling ancestors
+        record.xpath('ancestor::*[@level][did][is_component(.)]', xpext).reverse_each do |ancestor|
+          # STDERR.puts "$$ #{ancestor['id']} :: #{ancestor.name}" if do_debug
+          nodes = [ancestor]
+          ancestor.xpath('./preceding-sibling::*[@level][is_component(.)]', xpext).reverse_each do |preceding_ancestor_sibling|
+            nodes << preceding_ancestor_sibling
+          end
+          nodes.each do |node|
+            possible_inheritable_data << INHERITABLE_CACHE[node['id']]
+            node.xpath(%{.//*[@level][is_component(.)][has_inheritable_cache(.)][did/container]}, xpext).reverse_each do |descendant|
+              possible_inheritable_data << INHERITABLE_CACHE[descendant['id']] if INHERITABLE_CACHE[descendant['id']]
+            end
+            # and the ancestor last
+            possible_inheritable_data << INHERITABLE_CACHE[node['id']]
+          end
+        end
+
+        # STDERR.puts record_data if do_debug
+        # STDERR.puts possible_inheritable_data if do_debug
+
+        if record_data.keys.select { |key| key != '#id' }.empty?
+          # if the are no containers, duplicate the first available queued
+          possible_inheritable_data.each do |inheritable_data|
+            next if inheritable_data.nil?
+            unless inheritable_data.select { |key| key != '#id' }.empty?
+              containers_data = inheritable_data.dup
+              did_build_inheritance = true
+              # STDERR.puts ":: record_tmp empty -> cloning #{containers_data.keys}" if do_debug
+              break
+            end
+          end
+        elsif !(record_data.keys.select { |key| key != '#id' } & INHERITABLE_TYPES.keys).empty?
+          # if the record has INHERITABLE_TYPES containers, fill in any gaps
+          possible_inheritable_data.each do |inheritable_data|
+            next if inheritable_data.nil?
+            next if inheritable_data.select { |key| key != '#id' }.empty?
+            break unless containers_data.empty?
+
+            # could inherit a boxish root
+            INHERITABLE_TYPES.each do |type, parent|
+              if inheritable_data[parent]
+                containers_data[parent] = inheritable_data[parent]
+                containers_data[type] = record_data[type]
+                did_build_inheritance = inheritable_data[parent] != record_data[parent]
+                # STDERR.puts ":: record_tmp building -> inheriting #{containers_data.keys}" if do_debug
+                break
+              end
+            end
+          end
+        end
+      else
+        # record has no INHERITABLE_TYPES containers
+        containers_data = record_data.dup
+        # STDERR.puts ":: record_tmp not inheriting #{containers_data.keys}" if do_debug
+      end
+
+      INHERITABLE_CACHE[record['id']] = containers_data
+      context.output_hash['has_inherited_components_ssi'] = did_build_inheritance.to_s
+
+      containers_data = record_data.dup if containers_data.empty?
+      containers_data.each do |key, value|
+        next if key == '#id'
+        accumulator << value
+      end
+
+      # STDERR.puts "== #{accumulator.join(' / ' )}" if do_debug
+    end
+  end
+
   to_field 'containers_ssim' do |record, accumulator|
     record.xpath('./did/container').each do |node|
       accumulator << [node.attribute('type'), node.text].join(' ').strip
@@ -804,6 +909,18 @@ class NokogiriXpathExtensions
       component_elements = (1..12).map { |i| "c#{'%02d' % i}" }
       component_elements.push 'c'
       component_elements.include? node.name
+    end
+  end
+
+  def is_top_container(node_set)
+    node_set.find_all do |node|
+      node['type'] && INHERITABLE_TYPES.value?(node['type'])
+    end
+  end
+
+  def has_inheritable_cache(node_set)
+    node_set.find_all do |node|
+      !INHERITABLE_CACHE[node['id']].nil?
     end
   end
   # rubocop:enable Naming/PredicateName, Style/FormatString
