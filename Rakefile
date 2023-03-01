@@ -4,6 +4,7 @@
 require_relative 'config/application'
 
 require 'rubocop/rake_task'
+require 'sneakers/tasks'
 RuboCop::RakeTask.new
 
 Rails.application.load_tasks

@@ -39,6 +39,11 @@ services:
     volumes:
       - solr-conf:/opt/solr/server/solr/configsets/umich-arclight
       - solr-data:/var/solr
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
   redis:
     image: redis:6-buster
     ports:
