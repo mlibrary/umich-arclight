@@ -5,6 +5,13 @@
 /.yarn
 /.vegas
 
+# local files that might pop up when working in containers/tools
+/.bash_history
+/.idea/
+/.irb_history
+/.vim/
+/.viminfo
+
 /log
 /node_modules
 /resque_web
