@@ -12,6 +12,7 @@ class IndexFindingAidJob < ApplicationJob
       "solr.url" => ENV.fetch("SOLR_URL", Blacklight.default_index.connection.base_uri).to_s.chomp("/"),
       "writer_class" => "SolrJsonWriter",
       "solr_writer.batch_size" => 1, # send to solr for each record, no batching
+      "solr_writer.commit_on_close" => true,
       "repository" => repo_id
     ) do
       load_config_file(Rails.root.join("lib/dul_arclight/traject/ead2_config.rb"))
@@ -19,6 +20,7 @@ class IndexFindingAidJob < ApplicationJob
 
     begin
       traject_indexer << Nokogiri::XML(File.open(path, 'r'))
+      traject_indexer.complete
       dest_path = File.join(DulArclight.finding_aid_data, "xml", repo_id)
       FileUtils.mkdir_p(dest_path)
       dest = File.join(dest_path, "#{eadid_slug(path)}.xml")
