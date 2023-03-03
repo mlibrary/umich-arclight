@@ -1,23 +1,35 @@
-# Sneakers worker that listens to a given queue for ActiveJobs.
+# Adapter between Sneakers and ActiveJob
 #
 # The ActiveJob::QueueAdapters::SneakersAdapter has implementation to both
 # enqueue and work jobs. The difficulty is that enqueuing can target different
 # named queues, and the worker, as implemented by JobWrapper only listens to
-# the "default" queue. Invoking Sneakers involves identifying which workers you
-# want to run, so we need to have different class/worker names to listen to
-# different queues.
+# the "default" queue. The Sneakers design is that a Worker listens to a given
+# queue (by calling `from_queue`) and the Runner that is invoked by the rake
+# task `sneakers:run` can be given a list of named worker classes, or use the
+# default set of all classes that include the Worker module.
 #
-# We could extend ActiveJob::QueueAdapters::SneakersAdapter::JobWrapper but
-# that name is unwieldy and its implmentation is simple -- decode the JSON
-# event, dispatch, and acknowledge. So, we reimplement it here and specify
-# the queue in subclasses.
-class ActiveJobWorker
-  include Sneakers::Worker
-  from_queue :default
+# We could extend JobWrapper, but its name is unwieldy and doing so defeats the
+# autoregistration of the workers. Its implementation is simple, so we
+# duplicate it here: decode the JSON message, dispatch the ActiveJob, and
+# acknowledge the receipt to the queue. This module separates the ActiveJob
+# piece from the Sneakers piece, allowing a Worker to include it and get the
+# default behavior. The `work` method can be overridden in case other steps
+# should be taken around the ActiveJob piece, or acknowledgement should be done
+# differently.
+module ActiveJobWorker
+  def self.included(worker)
+    worker.include InstanceMethods
+  end
 
-  def work(msg)
-    job_data = ActiveSupport::JSON.decode(msg)
-    ActiveJob::Base.execute job_data
-    ack!
+  module InstanceMethods
+    def execute_active_job(msg)
+      job_data = ActiveSupport::JSON.decode(msg)
+      ActiveJob::Base.execute job_data
+    end
+
+    def work(msg)
+      execute_active_job(msg)
+      ack!
+    end
   end
 end
