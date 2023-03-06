@@ -25,12 +25,18 @@ class IndexFindingAidJob < ApplicationJob
       FileUtils.mkdir_p(dest_path)
       dest = File.join(dest_path, "#{eadid_slug(path)}.xml")
       FileUtils.copy_file(path, dest, preserve: true, dereference: true, remove_destination: true)
+
+      broker.publish(FindingAids::EadIndexed.new(repo_id: repo_id, ead_id: eadid_slug(path)))
     rescue => e
       raise DulArclight::IndexError, e.message
     end
   end
 
   private
+
+  def broker
+    @broker ||= FindingAids::Broker.new
+  end
 
   def eadid_slug(path)
     basename = File.basename(path, ".*")

@@ -23,13 +23,16 @@ module ActiveJobWorker
 
   module InstanceMethods
     def execute_active_job(msg)
-      job_data = ActiveSupport::JSON.decode(msg)
-      ActiveJob::Base.execute job_data
+      ActiveJob::Base.execute job_data(msg)
     end
 
     def work(msg)
-      execute_active_job(msg)
+      execute_active_job msg
       ack!
+    end
+
+    def job_data(msg)
+      ActiveSupport::JSON.decode(msg)
     end
   end
 end
