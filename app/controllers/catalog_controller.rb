@@ -454,21 +454,31 @@ class CatalogController < ApplicationController
 
     # DUL CUSTOMIZATION: add creators field; it's missing in ArcLight core.
     config.add_component_field 'creators_ssim', label: 'Creator', link_to_facet: true, ignore_interesting: true
+
+    # UM CUSTOMIZATION: switch between containers vs. inherited containers as needed
     config.add_component_field 'containers', label: 'Containers', accessor: 'containers', separator_options: {
       words_connector: ', ',
       two_words_connector: ', ',
       last_word_connector: ', '
     }, if: lambda { |_context, _field_config, document|
-      document.containers.present?
+      document.containers.present? and !document.has_inherited_containers?
     }, ignore_interesting: true
-
-    config.add_component_field 'inherited_containers', label: 'Inherited Containers', accessor: 'inherited_containers', separator_options: {
+    config.add_component_field 'inherited_containers', label: 'Containers', accessor: 'inherited_containers', separator_options: {
       words_connector: ', ',
       two_words_connector: ', ',
       last_word_connector: ', '
     }, if: lambda { |_context, _field_config, document|
-      document.fetch('has_inherited_containers_ssi', 'false') == 'true'
+      document.has_inherited_containers?
     }, ignore_interesting: true
+
+    ## --- IN CASE OF NEEDING TO COMPARE INHERITED CONTAINERS
+    # config.add_component_field 'inherited_containers', label: 'Inherited Containers', accessor: 'inherited_containers', separator_options: {
+    #   words_connector: ', ',
+    #   two_words_connector: ', ',
+    #   last_word_connector: ', '
+    # }, if: lambda { |_context, _field_config, document|
+    #   document.fetch('has_inherited_containers_ssi', 'false') == 'true'
+    # }, ignore_interesting: true
 
     config.add_component_field 'abstract_tesim', label: 'Abstract', helper_method: :render_html_tags
 

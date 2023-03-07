@@ -862,7 +862,8 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
   to_field 'containers_ssim' do |record, accumulator|
     record.xpath('./did/container').each do |node|
-      accumulator << [node.attribute('type'), node.text].join(' ').strip
+      label = node['label'] || node['type'].capitalize
+      accumulator << [label, node.text].join(' ').strip
     end
   end
 

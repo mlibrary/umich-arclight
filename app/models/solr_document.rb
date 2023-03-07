@@ -101,9 +101,13 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     end
   end
 
-  ### DCP2-482 FOR REVIEW
+  ### Inheritred containers
+  def has_inherited_containers?
+    fetch('has_inherited_containers_ssi', 'false') == 'true'
+  end
+
   def inherited_containers
-    return [] if fetch('has_inherited_containers_ssi', 'false') == 'false'
+    return [] unless has_inherited_containers?
     fetch('inherited_containers_ssim', []).map do |container|
       container[0] = container[0].capitalize
       container
