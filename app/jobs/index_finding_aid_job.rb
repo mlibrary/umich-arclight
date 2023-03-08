@@ -4,23 +4,39 @@ class IndexFindingAidJob < ApplicationJob
   queue_as :index
 
   def perform(path, repo_id)
-    env = { 'REPOSITORY_ID' => repo_id }
-    cmd = "bundle exec traject -u #{ENV.fetch('SOLR_URL', Blacklight.default_index.connection.base_uri).to_s.chomp('/')} -i xml -c ./lib/dul_arclight/traject/ead2_config.rb #{path}"
+    traject_indexer = Traject::Indexer::NokogiriIndexer.new(
+      # disable Indexer processing thread pool, to keep things simple and not interfering with Rails.
+      "processing_thread_pool" => 0,
+      "solr_writer.thread_pool" => 0, # writing to solr is done inline, no threads
 
-    stdout_and_stderr, process_status = Open3.capture2e(env, cmd)
+      "solr.url" => ENV.fetch("SOLR_URL", Blacklight.default_index.connection.base_uri).to_s.chomp("/"),
+      "writer_class" => "SolrJsonWriter",
+      "solr_writer.batch_size" => 1, # send to solr for each record, no batching
+      "solr_writer.commit_on_close" => true,
+      "repository" => repo_id
+    ) do
+      load_config_file(Rails.root.join("lib/dul_arclight/traject/ead2_config.rb"))
+    end
 
-    if process_status.success?
+    begin
+      traject_indexer << Nokogiri::XML(File.open(path, 'r'))
+      traject_indexer.complete
       dest_path = File.join(DulArclight.finding_aid_data, "xml", repo_id)
       FileUtils.mkdir_p(dest_path)
       dest = File.join(dest_path, "#{eadid_slug(path)}.xml")
       FileUtils.copy_file(path, dest, preserve: true, dereference: true, remove_destination: true)
-      puts stdout_and_stderr
-    else
-      raise DulArclight::IndexError, stdout_and_stderr
+
+      broker.publish(FindingAids::EadIndexed.new(repo_id: repo_id, ead_id: eadid_slug(path)))
+    rescue => e
+      raise DulArclight::IndexError, e.message
     end
   end
 
   private
+
+  def broker
+    @broker ||= FindingAids::Broker.new
+  end
 
   def eadid_slug(path)
     basename = File.basename(path, ".*")
