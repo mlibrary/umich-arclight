@@ -8,7 +8,7 @@ The application currently runs at [https://findingaids.lib.umich.edu](https://fi
 #### Handy Dandy Aliases (Optional)
 ```shell
 alias dc="docker-compose"
-alias dce="docker-compose exec --"
+alias dce="dc exec --"
 alias abe="dce app bundle exec"
 ```
 NOTES
@@ -107,6 +107,34 @@ you'll need to run the appropriate steps depending on which volumes you deleted:
 * For solr run the [Create solr cores](#create-solr-cores) step.
 * For redis there is nothing else to do.
 ## Indexing [Encoded Archival Description (EAD)](https://www.loc.gov/ead/eadschema.html) Files
+Initially the application data directory contains only the **ead2002** directory which contains the 2002 specifications.
+```text
+/var/opt/app/data/ead2002
+  /related_optional
+  dtd2schema.xsl
+  ead.dtd
+  ead2002.xsd
+```
+The convention is for finding aid EAD XML files to be located in the appropriate repository subdirectory under the **ead** directory in the application data directory where the repository **slug** is used as the subdirectory name.
+```text
+/var/opt/app/data
+  /ead
+    /bhl
+    /clarke
+    /clements
+    ...
+```
+If you don't have any particular finding aid EAD XML files you can just copy the **sample-ead/ead** directory into the application data directory.
+```shell
+docker-compose exec -- app cp -r sample-ead/ead /var/opt/app/data
+```
+or equivalently (because of the way the volume is mapped in the docker-compose.yml file)
+```shell
+cp -r ./sample-ead/ead ./data
+```
+NOTES
+* Environment variable **FINDING_AID_DATA** is set to /var/opt/app/data in the **Dockerfile**.
+* The docker volume **data** is mapped to **${PWD}/data** (a.k.a. /opt/app/data) in the **docker-compose.yml** file.
 ### Index all the EAD files.
 ```shell
 docker-compose exec -- app bundle exec rake dul_arclight:reindex_everything
