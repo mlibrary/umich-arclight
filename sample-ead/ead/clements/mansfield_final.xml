@@ -1,0 +1,1718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ead PUBLIC "+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN" "ead.dtd">
+
+<ead>
+   <eadheader audience="internal" langencoding="iso639-2b" repositoryencoding="iso15511" dateencoding="iso8601" relatedencoding="Dublin Core" scriptencoding="iso15924" countryencoding="iso3166-1">
+      <eadid countrycode="us" mainagencycode="MiU-C" publicid="us//::miu-c//TXT us::miu-c::mansfield_final.xml//EN" encodinganalog="Identifier">umich-wcl-M-2930man</eadid>
+      <filedesc>
+         <titlestmt>
+            <titleproper encodinganalog="Title">Finding Aid for James V. Mansfield Papers</titleproper>
+            <author encodinganalog="Creator">Collection processed and finding aid created by Bethany Anderson, 2008</author>
+         </titlestmt>
+         <publicationstmt>
+            <publisher encodinganalog="Publisher">William L. Clements Library, University of Michigan</publisher>
+            <date encodinganalog="Date" normal="2008">2008</date>
+         </publicationstmt>
+      </filedesc>
+      <profiledesc>
+         <creation>Encoded finding aid created by Cheney J. Schopieray, <date>September 2008</date>
+         </creation>
+         <langusage encodinganalog="Language">The finding aid is written in  <language langcode="eng" scriptcode="Latn">English</language>
+         </langusage>
+         <descrules>Finding aid prepared using Describing Archives: A Content Standard (DACS)</descrules>
+      </profiledesc>
+      <revisiondesc>
+         <change>
+            <date>2008-09-24</date>
+            <item> Original encoding from Word 2000 file using Word macros and Xmetal.</item>
+         </change>
+      </revisiondesc>
+   </eadheader>
+   <frontmatter>
+      <titlepage>
+         <publisher>Manuscripts Division<lb/>William L. Clements Library<lb/>University of Michigan</publisher>
+         <titleproper>Finding aid for<lb/>James V. Mansfield Papers, 1859-1933</titleproper>
+         <author>Finding aid created by<lb/> Bethany Anderson, 2008</author>
+      </titlepage>
+   </frontmatter>
+   <archdesc level="collection" audience="external" type="inventory" relatedencoding="MARC21">
+      <did>
+         <origination>
+            <persname source="lcnaf" encodinganalog="100">Mansfield, James V., b. c. 1817</persname>
+         </origination>
+         <unittitle encodinganalog="245" type="main">James V. Mansfield papers <unitdate type="inclusive" encodinganalog="245$f">1859-1933</unitdate>
+            <unitdate type="bulk" encodinganalog="245$g">1862-1864</unitdate>
+         </unittitle>
+         <unittitle type="sort">Mansfield, James V. papers</unittitle>
+         <physdesc>
+            <extent encodinganalog="300">29 volumes and 13 loose items</extent>
+         </physdesc>
+         <unitid type="identifier">wclmss001337</unitid>
+         <langmaterial>The material is in <language langcode="eng" encodinganalog="041">English</language>
+         </langmaterial>
+         <abstract> The James V. Mansfield papers include 27 volumes of bound letters and 2 account books.  With the exception of two letters, each volume contains the outgoing correspondence of Mansfield, who was a "writing medium" by profession, and a prominent member of the spiritualist movement during the mid- to late-nineteenth century.  The letters were sent to his wife and children in Chelsea, Massachusetts, when he lived in San Francisco, California, for two years.  His letters provide detailed description of Civil War era San Francisco, and are an excellent source of common attitudes regarding women and various ethnic groups. Two alphabetized account books contain unfinished entries on his séances from December 24, 1860, to March 26, 1883. </abstract>
+         <repository>
+            <corpname encodinganalog="852">
+               <subarea>William L. Clements Library</subarea>, University of Michigan</corpname>
+            <extptr href="wcladd" show="embed" actuate="onload"/>
+         </repository>
+      </did>
+      <descgrp type="admin">
+         <acqinfo encodinganalog="541">
+            <p>1993 and 1996. <num type="accession">M-2930, M-3219.3</num>.</p>
+         </acqinfo>
+         <accessrestrict encodinganalog="506">
+            <p>The collection is open for research.</p>
+         </accessrestrict>
+         <userestrict encodinganalog="540">
+            <p> Copyright status is unknown.</p>
+         </userestrict>
+         <prefercite encodinganalog="524">
+            <p> James V. Mansfield Papers, William L. Clements Library, The University of Michigan</p>
+         </prefercite>
+      </descgrp>
+      <bioghist encodinganalog="545">
+         <head>Biography</head>
+         <p>	James V. Mansfield (b. c. 1817) was known as a "writing medium," and a prominent member of the spiritualist movement during the mid- to late-nineteenth century.  Born in Dudley, Massachusetts, Mansfield was one of many children of Jera Mansfield (b. c.1790) and Lucretia Corbin Mansfield (b. c.1795).  Not much is known of his early life, though he eventually settled in Chelsea, Massachusetts, with his wife, Mary Hopkinson (b. c.1827), and two children, Mary Gertrude "Gertie" (b. c.1854) and John Worthington (1849-1933).  The latter became a well-known artist, whose paintings are still extant.  Mansfield endured many financial struggles, and was impelled at times to travel in search of work.  This included trips to San Francisco, California, and to New York City. </p>
+         <p>Mansfield provided spirit communications solely through letter writing, and this earned him the title of the "spirit postmaster."  Those who wished to communicate with the departed could do so in two ways: they could have a séance with him in person, or they could mail a letter to the spirit in care of Mansfield.  In the latter case, Mansfield would provide answers to unopened letters.  Being very confident in his abilities, he also referred to himself as a "test medium," providing free communications for skeptics.     </p>
+         <p>Mansfield was both admired and loathed for his "talents."  Allegedly satirizing him in his book<title render="italic" href="http://mirlyn.lib.umich.edu:80/F/?func=direct&amp;doc_number=004627962&amp;local_base=AA_PUB" actuate="onrequest" show="replace">Life on the Mississippi</title>, Mark Twain writes, "If this man is not the paltriest fraud that lives, I owe him an apology."  Though Mansfield claimed to have converted a number of people into "believers," and many wrote admiringly of his abilities, he could not escape the scrutiny of skeptics.  In 1885, he was studied by the University of Pennsylvania's Seybert Commission, which was established to investigate spiritualist phenomena.  After observing Mansfield, Dr. Horace Howard Furness of the Commission concluded in the official report that he was at best a charlatan, thus tarnishing his name. </p>
+      </bioghist>
+      <scopecontent encodinganalog="520">
+         <p>The James V. Mansfield papers amount to approximately 10,000 pages of outgoing correspondence to his wife and children in Chelsea, Massachusetts.  Spanning from March 7, 1862, to June 3, 1864, the letters cover Mansfield's journey to, as well as his two-year stay in, San Francisco, California.  The collection's historical significance, however, is largely derived from Mansfield's meticulous recording of major events that occurred during this period, such as news of Civil War battles, earthquakes, and the <emph render="italic">S.S. Golden Gate</emph> disaster, and from his detailed descriptions of the cultural milieu of San Francisco between 1862 and 1864.</p>
+         <p>In his first journal, Mansfield recounts his journey from New York City to San Francisco.  He traveled aboard the ship the <emph render="italic">North Star</emph> until he reached the Isthmus of Panama, and then continued the rest of his journey on the <emph render="italic">Sonora</emph>.  He describes the deplorable conditions on the overly crowded ships, including shortages of food and clean drinking water, and flea and bedbug infestations in the sleeping quarters.  He also reports his first impressions of San Francisco, such as the general appearance and attitudes of the people, as well as the climate and geography.</p>
+         <p>His correspondence is particularly instrumental in illuminating the social conditions and cultural life of San Francisco.  Mansfield describes the diverse array of people he encountered, social attitudes, and ethnic tensions.  In addition to indigenous peoples of California, immigrants from Mexico, China, Ireland, and Germany were all living in the city in substantial numbers.  Those from China and Ireland comprised the largest immigrant groups that he observed.  A large number of people had also traveled from the East Coast or the southern states to San Francisco.  Some of these newcomers found work as miners or servants.  Like Mansfield, most New Englanders came to California with the intention of staying only for a short period of time before returning home.</p>
+         <p>Although San Francisco was far removed from the operations of the Civil War, the people felt the impact of Confederate and Union victories and defeats.  Likewise, Mansfield was deeply concerned by the war, and records his impressions of the news of battles as it was reported in San Francisco.  Though California was part of the Union, Mansfield witnessed discrimination against free African Americans and frequently encountered anti-Union sentiments.  He notes, "…they will not for a long time submit to allow the colored man or woman the <emph render="underline">same</emph> rights, same privileges as they themselves <emph render="underline">claim</emph> a Strong Southern feeling is Evident on the face of things <emph render="underline">here</emph>…" 19: 224.  He provides examples of African Americans being barred from privileges the white people enjoyed, such as not being able to ride on steam engines and in horse carriages.  One such case was brought before a municipal judge, who decided in favor of African Americans, granting them the right to use public transportation.  Although such victories were possible in Civil War era San Francisco, racial segregation remained prevalent.    </p>
+         <p>Mansfield observed vast differences between New Englanders and the people in California.  Of the latter he writes, "…they are a hard set of people driving on from 4 oclock in the morning till 10 or 12 oclock at night, their general appearance is of Brown Complexion long hair, long whiskers and not more than one in 4 Ever shave; so you can imagine what for a looking people they are and all invariably Chew &amp; Smoke Tobaco and drink the meanest Kinds of Whiskey.  Consequently they swear much and their word is usually not worth a fig either…" 12: 115-116.  Throughout the 27 journals, he provides a substantial amount of commentary on the indigenous people of California and Native Americans in general, of which his opinion is also not high.  He thought Native Americans deliberately interfered with mail sent overland, especially when he had not received his wife's letters: "…the mails are to be conveyed by steam and not overland -- you see the trouble the Indians gave the mail carriers…" 1: 16-17.  He did, however, recognize the atrocities white people committed against them, and later admitted that the Native Americans were not at fault for poor mail service.</p>
+         <p>Mansfield also provides a great deal of commentary on gender, noting differences between women on the East Coast and in San Francisco, especially in terms of appearance and dress.  He was very conscious of feminine beauty, and was quick to note the physical aspect of a woman he encountered, and whether or not she was sufficiently attractive.  He describes women from different ethnic backgrounds, including Chinese and Irish immigrant women.  A great number of the former worked as prostitutes, while the latter were overwhelmingly employed as servants.  In several instances, he discusses the hard life such women endured, especially those who worked as domestic servants.  He also notes differences between the ways in which "Western" and "Eastern" women are treated, especially after noticing public displays of subservience among Chinese women.</p>
+         <p>Perhaps one of the most remarkable aspects of San Francisco was its markets.  Mansfield found a variety of foods in San Francisco, which he had not seen before, or at least in such abundance.  The overwhelming plentitude of fruits of all kinds included strawberries, cherries, apples, pineapples, bananas, figs, peaches, mangoes, pears, grapes, oranges, and watermelon.  He also relates what he ate for his daily meals and the prices of food.  Wine was widely available, which "…they drink here as they would water in the East…" 11: 83.  Mansfield periodically visited his brother and sister-in-law, Jera (b. c.1825) and Nellie Mansfield (b. c.1836), who had moved to Napa several years before his arrival.  In Napa, they planted a vineyard, where Mansfield was first exposed to the blossoming wine culture in California. </p>
+         <p>Mansfield became acquainted with a number of important people in San Francisco.  The one who perhaps had the greatest influence on him was the preacher Thomas Starr King (1824-1864).  Mansfield dutifully attended King's sermons every Sunday, and wrote about him profusely, including his impact on the city.  He considered King to be one of the greatest minds of the 19th century.  When he died on March 4, 1864, the entire city mourned, including Mansfield.  Shortly after his death he wrote, "How lovely the Sabbath morning appears to those who were wont to attend Thomas Starr King's meeting there is no use his departure has created a vacuum that cannot be filled in the minds in the hearts of this people -- The Bell Tolls now for church service but it has lost its charm for me.  It seems like tolling for the funeral requiem of the great good man rather than an invitation to listen to his heavenly soul stirring thoughts…" 26: 509.  With the exception of his fellow spiritualist, Emma Hardinge Britten (1823-1899), Mansfield wrote of no other person with such admiration. </p>
+         <p>Spiritualism and the general religious community also figured prominently in his correspondence.  Although he referred to himself as the "…notorious Spiritual Writing <emph render="underline">Medium</emph>…" 2:51, his being a public person did not always guarantee financial success.  He did, nevertheless, procure enough business to send money to his family on a regular basis, via Wells Fargo and Company.  Mansfield often gives detailed accounts of these séances, revealing the names and messages of the spirits.  Likewise, he describes a variety of individuals who came to him to communicate with the departed, some wanting advice, others seeking comfort in the wake of the death of a loved one.  He usually charged five dollars for a one-hour session, and three dollars for a half hour.  Even the famous wished to utilize his talents, such as Mary Todd Lincoln (1818-1882).  Only once, however, does he describe the process by which a spirit "entered" his body and commenced writing.  He wrote communications in many different languages and alphabets, most of which, he claimed to not know.  He often spoke of other mediums, especially his friend, the eminent clairvoyant and public speaker Emma Hardinge Britten.  After much encouragement, Mansfield convinced her to travel to San Francisco, thinking her talents would earn her great success.  Indeed, once in California, her lectures attracted sizeable crowds that rivaled those of Thomas Starr King.  </p>
+         <p>As he was meticulous in his observations of San Francisco, so too did he keep detailed records of his séances.  Also owned by the Clements Library are two alphabetized account books that originally belonged to Mansfield, containing entries on séances from December 24, 1860, to March 26, 1883.  Volume 1 contains names and dates of séances of people with last names of the letters "A" through "B," but he never finished his entries.  Inside the inner cover is a printed advertisement for Mansfield, which includes a lithograph of him.  The rest of this volume, as well as volume 2, are blank, with the exception of two pages of the latter that were used in 1933 by an unknown individual.</p>
+         <p>In addition to these 29 volumes are 13 miscellaneous items that include two letters written in 1874 and 1875 to his son while he studied art in Paris.  At this time, Mansfield was living in New York City.  Two earlier letters to his daughter are also present, one written in 1859 and the other in 1860.  Another letter that dates to 1877 is addressed to a grandson named Bertie.  Among these items are also a lithograph of Mansfield and his business card.  </p>
+         <p>The Mansfield collection is very valuable for the chronicling of Civil War era San Francisco, and for the insight it provides into the spiritualist movement.  It is an excellent source of common attitudes regarding women and various ethnic groups.  Although the lure of wealth drew many enterprising individuals to California, Mansfield's writings, above all, bring to light the many hardships endured by those endeavoring to attain such prosperity.  </p>
+      </scopecontent>
+      <controlaccess>
+         <p>
+            <extptr href="accnote" show="embed" actuate="onload"/>
+         </p>
+         <controlaccess>
+            <head>Subjects:</head>
+            <subject encodinganalog="650" source="lcsh">African Americans--California--San Francisco--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">African Americans--California--Social Conditions--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">African Americans--Legal status, laws, etc.--California--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Agriculture--California.</subject>
+            <geogname encodinganalog="651" source="lcsh">California--Climate.</geogname>
+            <geogname encodinganalog="651" source="lcsh">California--Geography.</geogname>
+            <geogname encodinganalog="651" source="lcsh">California--Social Life &amp; customs--19th century.</geogname>
+            <subject encodinganalog="650" source="lcsh">Chinese Americans--California--San Francisco--History.</subject>
+            <subject encodinganalog="650" source="lcsh">Chinese Americans--California--San Francisco--Social life and customs.</subject>
+            <subject encodinganalog="650" source="lcsh">Death--United States--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Dogs--California.</subject>
+            <subject encodinganalog="650" source="lcsh">Earthquakes--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Fleas--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Footbinding.</subject>
+            <subject encodinganalog="650" source="lcsh">Fruit--California.</subject>
+            <subject encodinganalog="650" source="lcsh">German Americans--California--History.</subject>
+            <subject encodinganalog="650" source="lcsh">Gold mines &amp; mining--California--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Hair.</subject>
+            <subject encodinganalog="650" source="lcsh">Horses--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Indians of North America--1860-1870.</subject>
+            <subject encodinganalog="650" source="lcsh">Indians of North America--California--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Irish Americans--California--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Irish Americans--California--San Francisco--Social conditions.</subject>
+            <subject encodinganalog="650" source="lcsh">Italian Americans--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Markets--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Mediums--United States.</subject>
+            <subject encodinganalog="650" source="lcsh">Murder--California--San Francisco--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Prices--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Prostitution--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Religious institutions--California--San Francisco Bay area.</subject>
+            <geogname encodinganalog="651" source="lcsh">San Francisco Bay Area (Calif.)--History--19th century.</geogname>
+            <geogname encodinganalog="651" source="lcsh">San Francisco Bay Area (Calif.)--Social life and customs--19th century.</geogname>
+            <subject encodinganalog="650" source="lcsh">Séances--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Slavery--United States.</subject>
+            <subject encodinganalog="650" source="lcsh">Spirit photography.</subject>
+            <subject encodinganalog="650" source="lcsh">Spiritualism--United States--History--19th century.</subject>
+            <subject encodinganalog="650" source="lcsh">Steamboats--California--San Francisco.</subject>
+            <subject encodinganalog="650" source="lcsh">Steamboat disasters--United States--History--19th century.</subject>
+            <geogname encodinganalog="651" source="lcsh">United States--History--Civil War, 1861-1865.</geogname>
+            <corpname encodinganalog="610" source="lcnaf">Wells, Fargo &amp; Company--History.</corpname>
+            <subject encodinganalog="650" source="lcsh">Wine and wine making--California--Napa Valley.</subject>
+            <subject encodinganalog="650" source="lcsh">Women--California.</subject>
+            <subject encodinganalog="650" source="lcsh">Women--Social conditions.</subject>
+            <subject encodinganalog="650" source="lcsh">Women mediums.</subject>
+            <subject encodinganalog="650" source="lcsh">Working class--California--San Francisco--Social conditions.</subject>
+         </controlaccess>
+         <controlaccess>
+            <head>Genre Terms:</head>
+            <genreform encodinganalog="655" source="aat">Account books.</genreform>
+         </controlaccess>
+      </controlaccess>
+      <dsc type="combined">
+         <c01 level="series">
+            <did>
+               <unittitle>Correspondence</unittitle>
+            </did>
+            <c02 level="item">
+               <did>
+                  <container type="box" label="Box">1</container>
+                  <unittitle>Volume 1: 
+                     <unitdate type="inclusive">1862 March 7-May 30</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 2: 
+                     <unitdate type="inclusive">1862 May 31-June 27</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 3: 
+                     <unitdate type="inclusive">1862 June 29-July 10</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 4: <unitdate type="inclusive">1862 July 28-August 09</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 5: 
+                     <unitdate type="inclusive">1862 August 11-August 20</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 6: <unitdate type="inclusive">1862 August 21-August 30</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 7: <unitdate type="inclusive">1862 September 1-September 10</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 8: <unitdate type="inclusive">1862 September 11-September 22</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 9: <unitdate type="inclusive">1862 September 20-September 30</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 10: <unitdate type="inclusive">1862 October 11-October 19</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 11: <unitdate type="inclusive">1862 October 20-November 22</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  <container type="box" label="Box">2</container>
+                  <unittitle>Volume 12: 
+                     <unitdate type="inclusive">1862 November 18-December 8</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 13: <unitdate type="inclusive">1862 December 19-1863 January 9</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 14: <unitdate type="inclusive">1863 February 23-March 10</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 15: 
+                     <unitdate type="inclusive">1863 March 11-April 1</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 16: 
+                     <unitdate type="inclusive">1863 April 2-April 22</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 17: <unitdate type="inclusive">1863 April 23-May 12</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 18: <unitdate type="inclusive">1863 May 13-May 22</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 19: <unitdate type="inclusive">1863 May 23-June 12</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 20: <unitdate type="inclusive">1863 June 13-July 2</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  <container type="box" label="Box">3</container>
+                  <unittitle>
+                     Volume 21: <unitdate type="inclusive">1863 July 3-July 20</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 22: <unitdate type="inclusive">1863 July 22-August 12</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 23: <unitdate type="inclusive">1863 August 13-September 2</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 24: <unitdate type="inclusive">1863 September 4-September 28</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 25: <unitdate type="inclusive">1863 November 9-December 17</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>
+                     Volume 26: <unitdate type="inclusive">1864 February 4-March 23</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 27: 
+                     <unitdate type="inclusive">1864 April 23-June 3</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+         </c01>
+         <c01 level="series">
+            <did>
+               <unittitle>Account books</unittitle>
+            </did>
+            <c02 level="item">
+               <did>
+                  <container type="box" label="Box">4</container>
+                  <unittitle>
+                     Volume 28: <unitdate type="inclusive">1860 December 24-1883 March 26</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+            <c02 level="item">
+               <did>
+                  
+                  <unittitle>Volume 29: 
+                     <unitdate type="inclusive">1933 April 28-June 1</unitdate>
+                  </unittitle>
+               </did>
+            </c02>
+         </c01>
+         <c01 level="series">
+            <did>
+               
+               <unittitle>Volume 30: 13 Loose items, <unitdate type="inclusive">1859 November 18-1877 July 8,</unitdate>
+                  <unitdate type="inclusive">undated</unitdate>
+               </unittitle>
+            </did>
+         </c01>
+      </dsc>
+      <descgrp type="add">
+         <relatedmaterial>
+            <p>Item located in Book Division:</p>
+            <p>Britten, Emma Hardinge.<title render="italic" href="http://mirlyn.lib.umich.edu/F/?func=direct&amp;doc_number=005247606&amp;local_base=AA_PUB" actuate="onrequest" show="replace">Funeral oration on the late Rev. T. Starr King to be delivered by Miss Emma Hardinge, at Platt's New Music Hall, Thursday evening, March 10th, at 8 o'lock, P.M.</title>   Clements Broadsides Small.</p>
+            <p>Materials at other institutions:</p>
+            <p>
+               <title render="italic">John W. Mansfield papers</title> (1864-1931), Archives of American Art, The Smithsonian Institution. </p>
+            <p>
+               <title render="italic">    Seybert Commission records</title> (1884-1922), University of Pennsylvania, Franklin Library.</p>
+         </relatedmaterial>
+         <bibliography>
+            <p>Britten, Emma Hardinge.  <title render="italic">Modern American spiritualism: A twenty years' record of the communion between earth and the world of spirits</title>.  New York, 1870.</p>
+            <p>Cox, Robert S.  <title render="italic" href="http://mirlyn.lib.umich.edu:80/F/?func=direct&amp;doc_number=004914723&amp;local_base=AA_PUB" actuate="onrequest" show="replace">Body and Soul: A sympathetic history of American Spiritualism.</title>   University of Virginia Press: Charlottesville, 2003.</p>
+            <p>Kerr, Howard.  <title render="italic">Mediums, and spirit-rappers, and roaring radicals; Spiritualism in American literature, 1850-1900.</title>. University of Illinois Press: Urbana, 1972.</p>
+            <p>Spence, Lewis.  <title render="italic">Encyclopedia of Occultism and Parapsychology, Part 2</title>. Gale Research Inc.: Detroit, 1991.</p>
+            <p>Twain, Mark.  <title render="italic" href="http://mirlyn.lib.umich.edu:80/F/?func=direct&amp;doc_number=004627962&amp;local_base=AA_PUB" actuate="onrequest" show="replace">Life on the Mississippi</title>.  J.R. Osgood &amp; Company: Boston, 1883.</p>
+            <p>Wolfe, Napoleon Bonaparte.  <title render="italic">Startling Facts in Modern Spiritualism</title>.  Religio-Philosophical Publishing House: Chicago, 1875.</p>
+         </bibliography>
+         <list>
+            <head>The following lists and indexes are located below:</head>
+            <item>1. List of personal names.</item>
+            <item>2. List of geographical locations.</item>
+            <item>3. Partial subject index (with textual references)</item>
+            <item>4. Partial name index (with textual references)</item>
+            <item>5.  Partial geographical index (with textual references)</item>
+         </list>
+         <list>
+            <head>List of Personal Names</head>
+            <item>Andrew, John Albion, 1818-1867.</item>
+            <item>Beecher, Henry Ward, 1813-1887.</item>
+            <item>Beecher, Lyman, 1775-1863.</item>
+            <item>Bellows, Henry Whitney, 1814-1882.</item>
+            <item>Britten, Emma Hardinge, 1823-1899.</item>
+            <item>Brown, Charles Farrar (Artemus Ward), 1834-1867.</item>
+            <item>Brown, John, 1800-1859.</item>
+            <item>Brownlow, William Gannaway, 1805-1877.</item>
+            <item>Butler, Benjamin F., 1818-1893.</item>
+            <item>Child, Asaph Bemis, 1813-1879.</item>
+            <item>Davis, Andrew Jackson, 1826-1910.</item>
+            <item>Davis, Jefferson, 1808-1889.</item>
+            <item>Edwards, Amasa, 1814-1885.</item>
+            <item>Edwards, Matilda "Mattie", 1821-1884.</item>
+            <item>Farnham, Eliza, 1815-1864.</item>
+            <item>Fitch, Col. H.S.</item>
+            <item>Forster, Thomas Gales, 1816-1886.</item>
+            <item>Fremont, John Charles, 1813-1890.</item>
+            <item>Grant, Ulysses S., 1822-1885.</item>
+            <item>Hooker, Joseph, 1814-1879.</item>
+            <item>Kalakaua I, 1836-1891.</item>
+            <item>King, Edith, b. c. 1851.</item>
+            <item>King, Julia Wiggin, b. c. 1828.</item>
+            <item>King, Thomas Starr, 1824-1864.</item>
+            <item>Lee, Robert E., 1807-1870.</item>
+            <item>Lincoln, Abraham, 1809-1865.</item>
+            <item>Lincoln, Mary Todd, 1818-1882.</item>
+            <item>Macondray, Capt. Frederick William, 1803-1862.</item>
+            <item>Mansfield, Bertie.</item>
+            <item>Mansfield, Daniel.</item>
+            <item>Mansfield, James Valentine, b. c. 1817.</item>
+            <item>Mansfield, Jera M., b. c. 1825.</item>
+            <item>Mansfield, John Worthington, 1849-1933.</item>
+            <item>Mansfield, Mary Gertrude "Gertie", b. c. 1854.</item>
+            <item>Mansfield, Mary Hopkinson, b. c. 1827.</item>
+            <item>Mansfield, Ellen "Nellie" Greenwood Estabrook, b. c. 1836.</item>
+            <item>Mansfield, Walter D., b. c. 1860.</item>
+            <item>McClellan, George Brinton, 1826-1885.</item>
+            <item>McClellan, R. Guy.</item>
+            <item>McDougal, Governor John, 1818-1866.</item>
+            <item>Montez, Lola, 1821-1861.</item>
+            <item>Napoleon III (Charles Louis Napoleon Bonaparte), 1808-1873.</item>
+            <item>Owen, James Jerome, 1827-1895.</item>
+            <item>Peebles, James Martin, 1822-1922.</item>
+            <item>Rowe, Gen. George.</item>
+            <item>Stow, Marietta L., d. 1902.</item>
+            <item>Stidger, O.B.</item>
+            <item>Strickland, Edward F.</item>
+            <item>Twiggs, David Emanuel, 1790-1862.</item>
+            <item>Young, Brigham, 1801-1877.</item>
+         </list>
+         <list>
+            <head>List of Geographical Locations</head>
+            <item>Alcatraz Island, California.</item>
+            <item>Baltimore, Maryland.</item>
+            <item>Benicia, California.</item>
+            <item>Boston, Massachusetts.</item>
+            <item>Chelsea, Massachusetts.</item>
+            <item>Denver, Colorado.</item>
+            <item>Grass Valley, California.</item>
+            <item>Marysville, California.</item>
+            <item>Napa, California.</item>
+            <item>New York City, New York.</item>
+            <item>Paris, France.</item>
+            <item>Philadelphia, Pennsylvania.</item>
+            <item>Sacramento, California.</item>
+            <item>San Francisco, California.</item>
+            <item>Sierra Nevada Mountains, California.</item>
+            <item>Sonoma, California.</item>
+            <item>Virginia City, Nevada.</item>
+            <item>Washoe County, Nevada.</item>
+            <item>Yuba County, California.</item>
+         </list>
+         <index>
+            <head>Partial Subject Index</head>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">African Americans--California--San Francisco--History--19th Century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>16: 67-71</item>
+                     <item>23: 233</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">African Americans--California--Social Conditions--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>10: 97</item>
+                     <item>15: 280-281, 396</item>
+                     <item>16: 67-68</item>
+                     <item>17: 486-494</item>
+                     <item>19: 222-228</item>
+                     <item>21: 199</item>
+                     <item>23: 233</item>
+                     <item>24: 300-301</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">African Americans--Legal status, laws, etc.--California--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>19: 222-224</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Agriculture--California</subject>
+               <ref>
+                  <list type="simple">
+                     <item>11: 165</item>
+                     <item>13: 43</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">California--Climate</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 175</item>
+                     <item>8: 149-150</item>
+                     <item>14: 76-78</item>
+                     <item>16: 207, 512</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">California--Geography</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 46-48, 75-79, 137-138</item>
+                     <item>11: 80-81</item>
+                     <item>13: 46-47, 96-97</item>
+                     <item>16: 512</item>
+                     <item>20: 127</item>
+                     <item>24: 270, 315-317</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">California--Social Life &amp; customs--19th century</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>1: 46-47</item>
+                     <item>2: 319</item>
+                     <item>12: 115-117</item>
+                     <item>20: 140</item>
+                     <item>22: 568</item>
+                     <item>26: 481</item>
+                     <item>27: 442</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Chinese Americans--California--San Francisco—History</subject>
+               <ref>
+                  <list type="simple">
+                     <item>13: 163-168, 320</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Chinese Americans--California--San Francisco--Social life and customs</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 327-329</item>
+                     <item>2: 289</item>
+                     <item>10: 48-54</item>
+                     <item>13: 77-78</item>
+                     <item>15: 283-285</item>
+                     <item>22: 487-488</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Death--United States--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Dogs--California</subject>
+               <ref>
+                  <list type="simple">
+                     <item>2: 127-132</item>
+                     <item>5: 186</item>
+                     <item>6: 137-140</item>
+                     <item>17: 166-167</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Earthquakes--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>9: 187</item>
+                     <item>26: 169-171, 198-198, 304, 321, 326 </item>
+                     <item>27: 463-463</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Fleas--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>2: 18</item>
+                     <item>4: 127</item>
+                     <item>9: 46</item>
+                     <item>15: 159-161</item>
+                     <item>17: 326</item>
+                     <item>19: 37</item>
+                     <item>23: 63-67</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Footbinding</subject>
+               <ref>
+                  <list type="simple">
+                     <item>10: 51-54</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Fruit--California</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 132-133, 270, 347</item>
+                     <item>2: 175</item>
+                     <item>4: 158</item>
+                     <item>6: 39</item>
+                     <item>8: 32-33</item>
+                     <item>9: 57</item>
+                     <item>14: 76</item>
+                     <item>16: 44</item>
+                     <item>17: 38</item>
+                     <item>19: 133, 251</item>
+                     <item>20: 21, 161-167, 280-281</item>
+                     <item>21: 201</item>
+                     <item>22: 564-568</item>
+                     <item>24: 318-319</item>
+                     <item>27: 600</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">German Americans--California--History</subject>
+               <ref>
+                  <list type="simple">
+                     <item>14: 153</item>
+                     <item>24: 41-43</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Gold mines &amp; mining--California--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 347</item>
+                     <item>6: 78-80</item>
+                     <item>8: 71</item>
+                     <item>13: 4-5, 14-15, 22-26</item>
+                     <item>15: 3-6, 199-205, 316-319</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Hair</subject>
+               <ref>
+                  <list type="simple">
+                     <item>2: 88</item>
+                     <item>17: 376-380</item>
+                     <item>20: 339-343</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Horses--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>8: 11-13</item>
+                     <item>9: 189-192</item>
+                     <item>12: 71-75</item>
+                     <item>13: 19-22</item>
+                     <item>17: 239</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Indians of North America--1860-1870</subject>
+               <ref>
+                  <list type="simple">
+                     <item>2: 228</item>
+                     <item>6: 127-129</item>
+                     <item>16: 88-89</item>
+                     <item>20: 117-118, 202-205</item>
+                     <item>21: 206</item>
+                     <item>22: 118</item>
+                     <item>27: 469, 570</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Indians of North America--California--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 291</item>
+                     <item>2: 144, 268, 287-288, 309-310</item>
+                     <item>12: 117-120</item>
+                     <item>20: 409</item>
+                     <item>21: 123-124, 206</item>
+                     <item>27: 469, 570</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Irish Americans--California--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>16: 72</item>
+                     <item>26: 462</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Irish Americans--California--San Francisco--Social conditions</subject>
+               <ref>
+                  <list type="simple">
+                     <item>4: 105-110</item>
+                     <item>16: 72</item>
+                     <item>21: 84</item>
+                     <item>22: 487-488</item>
+                     <item>23: 355-357</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Italian Americans--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>23: 189</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Jews--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>15: 273-277, 371</item>
+                     <item>16: 7</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Markets--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>9: 57</item>
+                     <item>14: 78-79</item>
+                     <item>15: 230</item>
+                     <item>21: 201</item>
+                     <item>22: 564-567</item>
+                     <item>24: 318-319</item>
+                     <item>27: 600</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Mediums--United States</subject>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>15: 36-40</item>
+                     <item>17: 213</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Murder--California--San Francisco--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>17: 213</item>
+                     <item>21: 15-19, 45-48</item>
+                     <item>26: 198-200</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Prices--California--History</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 136, 176</item>
+                     <item>8: 32-33</item>
+                     <item>16: 72, 116</item>
+                     <item>19: 105</item>
+                     <item>21: 366</item>
+                     <item>23: 145</item>
+                     <item>25: 117, 181</item>
+                     <item>27: 254</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Prostitution--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>15: 283-285</item>
+                     <item>16: 214</item>
+                     <item>20: 175-176</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Religious institutions--California--San Francisco Bay area</subject>
+               <ref>
+                  <list type="simple">
+                     <item>5: 203-215</item>
+                     <item>12: 155</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">San Francisco Bay Area (Calif.)--History--19th century</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">San Francisco Bay Area (Calif.)--Social life and customs--19th century</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Séances--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>2: 95</item>
+                     <item>11: 104-105</item>
+                     <item>14: 35</item>
+                     <item>20: 246-250</item>
+                     <item>23: 24, 135-136, 244-245</item>
+                     <item>28: passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Slavery--United States</subject>
+               <ref>
+                  <list type="simple">
+                     <item>15: 282-283</item>
+                     <item>25: 327</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Spirit photography</subject>
+               <ref>
+                  <list type="simple">
+                     <item>13: 66-67; 525</item>
+                     <item>14: 42</item>
+                     <item>15: 164, 235-238</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Spiritualism--United States--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially </item>
+                     <item>3: 21-37</item>
+                     <item>4: 229-230</item>
+                     <item>5: 28-30</item>
+                     <item>8: 100-102, 116-118</item>
+                     <item>10: 9-12</item>
+                     <item>12: 54-61, 86-90</item>
+                     <item>13: 54-59, 494</item>
+                     <item>15: 26-29, 229, 402-403</item>
+                     <item>16: 161-169</item>
+                     <item>20: 294-296</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Steamboats--California--San Francisco</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 1-20, 136, 283-284</item>
+                     <item>2: 175</item>
+                     <item>17: 136</item>
+                     <item>20: 405</item>
+                     <item>24: 48</item>
+                     <item>27: 601</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Steamboat disasters--United States--History--19th century</subject>
+               <ref>
+                  <list type="simple">
+                     <item>4: 220-242, 259-260</item>
+                     <item>5: 9-16, 33-34</item>
+                     <item>14: 153</item>
+                     <item>21: 259</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">United States--History--Civil War, 1861-1865</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>1: 353-354</item>
+                     <item>3: 123-124</item>
+                     <item>4: 99-101, 152-155, 194-198</item>
+                     <item>5: 35, 96-98, 121-124, 134-146</item>
+                     <item>6: 50-52, 70-71, 94-95, 108-109, 141-143</item>
+                     <item>7: 11-12, 64-65, 83-86, 111, 123-124, 151-153, 156-160, 170, 181-188</item>
+                     <item>8: 2-4, 30-31, 135-136 143-144</item>
+                     <item>9: 199-200</item>
+                     <item>11: 132-134</item>
+                     <item>12: 180-183</item>
+                     <item>13: 44-50, 384-395, 466-70, 513-515</item>
+                     <item>14: 21-24</item>
+                     <item>15: 79-88, 136-141 144-145, 198-199, 385-387</item>
+                     <item>16: 5-6, 31-39</item>
+                     <item>17: 284, 467-477</item>
+                     <item>19: 29</item>
+                     <item>20: 72-76</item>
+                     <item>21: 41 54-58</item>
+                     <item>22: 48, 127, 130-131, 278, 284</item>
+                     <item>24: 144, 250-251</item>
+                     <item>25: 327</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Wells, Fargo &amp; Company--History</subject>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Wine and wine making--California--Napa Valley</subject>
+               <ref>
+                  <list type="simple">
+                     <item>11: 163-167</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Women--Appearance</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 108-109</item>
+                     <item>2: 219</item>
+                     <item>3: 50, 79-80</item>
+                     <item>4: 30-33</item>
+                     <item>5: 107-109, 153</item>
+                     <item>6: 6-8</item>
+                     <item>7: 101-102</item>
+                     <item>10: 81-82</item>
+                     <item>14: 88-91</item>
+                     <item>17: 32-37, 83-84, 172-175, 306-307, 376-380</item>
+                     <item>20: 339-343</item>
+                     <item>21: 237</item>
+                     <item>22: 151-152</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Women--California</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 105</item>
+                     <item>2: 219, 261-262</item>
+                     <item>3: 51-52, 178-179</item>
+                     <item>6: 6-8 </item>
+                     <item>9: 80</item>
+                     <item>11: 161</item>
+                     <item>13: 478</item>
+                     <item>14: 88-91</item>
+                     <item>17: 32-37, 172-175, 306-307</item>
+                     <item>19: 76, 96</item>
+                     <item>21: 377-378</item>
+                     <item>22: 151-152, 266-286, 344</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Women--Social conditions </subject>
+               <ref>
+                  <list type="simple">
+                     <item>15: 283-285</item>
+                     <item>22: 130-131, 266-268</item>
+                     <item>23: 284</item>
+                     <item>24: 41-46, 184</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Women mediums</subject>
+               <ref>
+                  <list type="simple">
+                     <item>13: 26-27, 69-75, 179, 407</item>
+                     <item>14: 154</item>
+                     <item>16: 266</item>
+                     <item>24: 149</item>
+                     <item>27: 801</item>
+                     <item>See also Britten, Emma Hardinge</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <subject encodinganalog="650" source="lcsh">Working class--California--San Francisco--Social conditions</subject>
+               <ref>
+                  <list type="simple">
+                     <item>1: 39-40</item>
+                     <item>16: 72</item>
+                     <item>22: 266-268</item>
+                     <item>24: 41-46</item>
+                     <item>27: 525-527</item>
+                  </list>
+               </ref>
+            </indexentry>
+         </index>
+         <index>
+            <head>Partial Name Index</head>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Andrew, John Albion, 1818-1867</persname>
+               <ref>
+                  <list type="simple">
+                     <item>10: 17-18</item>
+                     <item>16: 37</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Beecher, Henry Ward, 1813-1887</persname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 132-133</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Beecher, Lyman, 1775-1863</persname>
+               <ref>
+                  <list type="simple">
+                     <item>14: 79</item>
+                     <item>27: 510</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Bellows, Henry Whitney, 1814-1882</persname>
+               <ref>
+                  <list type="simple">
+                     <item>26: 458</item>
+                     <item>27: 138</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Britten, Emma Hardinge, 1823-1899</persname>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>1: 120</item>
+                     <item>2: 35, 87</item>
+                     <item>3: 94-95, 170-171</item>
+                     <item>5: 26-28, 238-240</item>
+                     <item>13: 68-69</item>
+                     <item>15: 231, 399-402</item>
+                     <item>25: passim</item>
+                     <item>26: 319</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Brown, Charles Farrar (Artemus Ward), 1834-1867</persname>
+               <ref>
+                  <list type="simple">
+                     <item>1: 236</item>
+                     <item>25: 28, 93</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Brown, John, 1800-1859</persname>
+               <ref>
+                  <list type="simple">
+                     <item>9: 40-41</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Brownlow, William Gannaway, 1805-1877</persname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 10-11</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Butler, Benjamin F., 1818-1893</persname>
+               <ref>
+                  <list type="simple">
+                     <item>10: 17-18</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Child, Asaph Bemis, 1813-1879</persname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 77</item>
+                     <item>13: 53, 246-248, 441-442</item>
+                     <item>15: 40</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Davis, Andrew Jackson, 1826-1910</persname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 201</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Davis, Jefferson, 1808-1889</persname>
+               <ref>
+                  <list type="simple">
+                     <item>21: 41</item>
+                     <item>26: 475</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Edwards, Amasa, 1814-1885</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Edwards, Matilda "Mattie", 1821-1884</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Estabrook, Col.</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Estabrook, Hattie</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Farnham, Eliza, 1815-1864</persname>
+               <ref>
+                  <list type="simple">
+                     <item>1: 173</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Fitch, Col. Henry S. </persname>
+               <ref>
+                  <list type="simple">
+                     <item>21: 2-8</item>
+                     <item>25: 109-110</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Forster, Thomas Gales, 1816-1886</persname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 43-44, 62</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Fremont, John Charles, 1813-1890</persname>
+               <ref>
+                  <list type="simple">
+                     <item>5: 191-199</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Grant, Ulysses S., 1822-1885</persname>
+               <ref>
+                  <list type="simple">
+                     <item>21: 127</item>
+                     <item>27: 377</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Hooker, Joseph, 1814-1879</persname>
+               <ref>
+                  <list type="simple">
+                     <item>17: 467-468</item>
+                     <item>20: 72-76</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Kalakaua I, 1836-1891</persname>
+               <ref>
+                  <list type="simple">
+                     <item>June 20, 1874</item>
+                     <item>January 2, 1875</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">King, Edith, b.c. 1851</persname>
+               <ref>
+                  <list type="simple">
+                     <item>27: 796-797</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">King, Julia Wiggin, b.c. 1828</persname>
+               <ref>
+                  <list type="simple">
+                     <item>3: 167-169</item>
+                     <item>13: 526-527</item>
+                     <item>22: 312-314</item>
+                     <item>23: 397-399</item>
+                     <item>26: 357-358</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">King, Thomas Starr, 1824-1864</persname>
+               <ref>
+                  <list type="simple">
+                     <item>Passim, but especially</item>
+                     <item>2: 229</item>
+                     <item>3: 5-9, 128-130, 165-172</item>
+                     <item>4: 75-79, 94-98, 130-133</item>
+                     <item>6: 52-55, 69</item>
+                     <item>7: 44-45, 94</item>
+                     <item>8: 55-57, 68-69</item>
+                     <item>9: 66-70, 156-159</item>
+                     <item>10: 20-21, 113-115</item>
+                     <item>14: 1-5</item>
+                     <item>15: 57, 350-366, 425-432</item>
+                     <item>18: 21-22</item>
+                     <item>19: 121</item>
+                     <item>20: 44</item>
+                     <item>25: 427, 432-433</item>
+                     <item>26: 291-303, 319, 509</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Lee, Robert E., 1807-1870</persname>
+               <ref>
+                  <list type="simple">
+                     <item>21: 41, 146</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Lincoln, Abraham, 1809-1865</persname>
+               <ref>
+                  <list type="simple">
+                     <item>1: 354-355</item>
+                     <item>4: 151-152</item>
+                     <item>15: 455-456</item>
+                     <item>16: 67-68</item>
+                     <item>26: 97</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Lincoln, Mary Todd, 1818-1882</persname>
+               <ref>
+                  <list type="simple">
+                     <item>14: 165</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Macondray, Capt. Frederick William, 1803-1862</persname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 24-25</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Bertie</persname>
+               <ref>
+                  <list type="simple">
+                     <item>July 8, 1877</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Daniel</persname>
+               <ref>
+                  <list type="simple">
+                     <item>20: 29</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, James Valentine, b.c. 1817</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Jera M., b.c. 1825</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, John Worthington, 1849-1933</persname>
+               <ref>
+                  <list type="simple">
+                     <item>3: 83</item>
+                     <item>4: 39</item>
+                     <item>6: 100</item>
+                     <item>15: 3, 10-12, 149-150</item>
+                     <item>19: 231</item>
+                     <item>21: 141-142, 169-170, 231</item>
+                     <item>23: 154-155, 158-164</item>
+                     <item>24: 10-11, 241-242</item>
+                     <item>25: 97, 279, 409</item>
+                     <item>June 20, 1874</item>
+                     <item>January 2, 1875</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Mary Gertrude "Gertie", b.c. 1854</persname>
+               <ref>
+                  <list type="simple">
+                     <item>1: 296</item>
+                     <item>2: 25</item>
+                     <item>3: 79-80</item>
+                     <item>10: 93</item>
+                     <item>14: 88-89</item>
+                     <item>15: 10-12, 151</item>
+                     <item>17: 229-230, 376-380</item>
+                     <item>20: 339-343</item>
+                     <item>21: 237-238</item>
+                     <item>23: 170</item>
+                     <item>24: 104, 189</item>
+                     <item>27: 259</item>
+                     <item>November 18, 1859</item>
+                     <item>April 27, 1860</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Mary Hopkinson, b.c. 1827</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Ellen "Nellie" Greenwood Estabrook, b.c. 1836</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Mansfield, Walter D., b.c. 1860</persname>
+               <ref>
+                  <list type="simple">
+                     <item>11: 41</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">McClellan, George Brinton, 1826-1885</persname>
+               <ref>
+                  <list type="simple">
+                     <item>6: 50</item>
+                     <item>8: 144</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">McClellan, R. Guy</persname>
+               <ref>
+                  <list type="simple">
+                     <item>10: 71-76</item>
+                     <item>13: 497-498</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">McDougal, Governor John, 1818-1866</persname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 10, 22-27, 68-69, 73</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Montez, Lola, 1821-1861</persname>
+               <ref>
+                  <list type="simple">
+                     <item>13: 26-27</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Napoleon III (Charles Louis Napoleon Bonaparte), 1808-1873</persname>
+               <ref>
+                  <list type="simple">
+                     <item>21: 73-75</item>
+                     <item>22: 179, 210-213</item>
+                     <item>23: 355</item>
+                     <item>24: 262</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Owen, James Jerome, 1827-1895</persname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 71-72</item>
+                     <item>5: 43-48</item>
+                     <item>7: 72-74, 98</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Peebles, James Martin, 1822-1922</persname>
+               <ref>
+                  <list type="simple">
+                     <item>12: 123</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Rowe, Gen. George</persname>
+               <ref>
+                  <list type="simple">
+                     <item>3: 10, 279-280, 350-352, 389-395, 405-409</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Stow, Marietta L., d. 1902</persname>
+               <ref>
+                  <list type="simple">
+                     <item>13: 69-75, 179, 407</item>
+                     <item>14: 154</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Stidger, O.B.</persname>
+               <ref>
+                  <list type="simple">
+                     <item>27: 352, 465-470</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Strickland, Edward F.</persname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Twiggs, David Emanuel, 1790-1862</persname>
+               <ref>
+                  <list type="simple">
+                     <item>6: 112</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <persname encodinganalog="600" source="lcnaf">Young, Brigham, 1801-1877</persname>
+               <ref>
+                  <list type="simple">
+                     <item>8: 16</item>
+                     <item>15: 15-16</item>
+                  </list>
+               </ref>
+            </indexentry>
+         </index>
+         <index>
+            <head>Partial Geographical Index</head>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Alcatraz Island, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>6: 13-18</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Baltimore, Maryland</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>November 18, 1859</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Benicia, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>12: 24-25</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Boston, Massachusetts</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>4: 131</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Chelsea, Massachusetts</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Denver, Colorado</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>July 8, 1877</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Grass Valley, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>13: 5</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Marysville, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>11</item>
+                     <item>12: 46-47, 96-99</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Napa, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>11: 41-42, 48-50, 67, 107</item>
+                     <item>19: 178</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">New York City, New York</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Paris, France</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>June 18, 1874: 42-43</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Philadelphia, Pennsylvania</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>April 27, 1860</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Sacramento, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>2: 62</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">San Francisco, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Sierra Nevada Mountains, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>12: 46-47</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Sonoma, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>22: 207</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Virginia City, Nevada</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>27: pasim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Washoe County, Nevada</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>passim</item>
+                  </list>
+               </ref>
+            </indexentry>
+            <indexentry>
+               <geogname encodinganalog="651" source="lcsh">Yuba County, California</geogname>
+               <ref>
+                  <list type="simple">
+                     <item>13: 418</item>
+                  </list>
+               </ref>
+            </indexentry>
+         </index>
+      </descgrp>
+   </archdesc>
+</ead>
