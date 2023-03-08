@@ -1,4 +1,7 @@
 require 'dul_arclight/errors'
+require 'um_arclight/errors'
+
+require_dependency "um_arclight/package/generator"
 
 class IndexFindingAidJob < ApplicationJob
   queue_as :index
@@ -10,12 +13,15 @@ class IndexFindingAidJob < ApplicationJob
     stdout_and_stderr, process_status = Open3.capture2e(env, cmd)
 
     if process_status.success?
+      ead_id = eadid_slug(path)
       dest_path = File.join(DulArclight.finding_aid_data, "xml", repo_id)
       FileUtils.mkdir_p(dest_path)
-      dest = File.join(dest_path, "#{eadid_slug(path)}.xml")
+      dest = File.join(dest_path, "#{ead_id}.xml")
       FileUtils.copy_file(path, dest, preserve: true, dereference: true, remove_destination: true)
       puts stdout_and_stderr
+      ::IngestAutomationJob.perform_later('index.success', src_path: path, archive_path: dest, ead_id: ead_id)
     else
+      ::IngestAutomationJob.perform_later('index.failure', src_path: path, archive_path: dest, ead_id: ead_id)
       raise DulArclight::IndexError, stdout_and_stderr
     end
   end
