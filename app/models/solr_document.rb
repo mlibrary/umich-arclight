@@ -101,6 +101,19 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     end
   end
 
+  ### Inheritred containers
+  def has_inherited_containers?
+    fetch('has_inherited_containers_ssi', 'false') == 'true'
+  end
+
+  def inherited_containers
+    return [] unless has_inherited_containers?
+    fetch('inherited_containers_ssim', []).map do |container|
+      container[0] = container[0].capitalize
+      container
+    end
+  end
+
   # DUL override ArcLight core method; fall back to the ID if ref_ssm isn't present.
   # Currently only components get a ref_ssm.
   def reference
