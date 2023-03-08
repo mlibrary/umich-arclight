@@ -4,6 +4,15 @@ class IngestAutomationJob < ApplicationJob
   queue_as :automation
 
   def perform(event, details)
+    unless Rails.configuration.x.arclight.enable_automation
+      logger.debug <<~EOM
+        Ingest automation attempted, but disabled...
+        Set config.x.arclight.enable_automation = true if you want it to run.
+        event: #{event}, details: #{details}
+      EOM
+      return
+    end
+
     case event
     when 'ingest.file'
       logger.info "Beginning Finding Aid ingest to repository '#{details[:repo_id]}' of EAD file #{details[:file_path]}"
