@@ -33,6 +33,7 @@ class IndexFindingAidJob < ApplicationJob
     eadid_slug = nil
     File.open(path, "r:UTF-8:UTF-8") do |f|
       doc = Nokogiri::XML(f)
+      doc.remove_namespaces!
       eadid_node = doc.at_xpath('/ead/eadheader/eadid')
       eadid_slug = eadid_node.text.strip.tr(".", "-").to_s if eadid_node && eadid_node.text.present?
     end
