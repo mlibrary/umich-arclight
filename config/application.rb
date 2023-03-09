@@ -26,5 +26,7 @@ module DulArclight
     # config.action_mailer.default_url_options = {
     #   host: ENV.fetch('APPLICATION_HOSTNAME', 'localhost')
     # }
+
+    config.x.arclight.enable_automation = true
   end
 end
