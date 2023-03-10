@@ -129,7 +129,7 @@ module DulArclight
     # Overriding the Blacklight method so that hierarchy does not get stored as
     # the preferred view
     def store_preferred_view
-      return if %w[online_contents collection_context child_components].include?(params[:view])
+      return if %w[online_contents collection_context child_components expanded_child_components].include?(params[:view])
 
       super
     end
