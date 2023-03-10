@@ -110,5 +110,40 @@ RSpec.describe IndexFindingAidJob, type: :job do
       expect(FileUtils).not_to have_received(:copy_file).with(src_path, dest_path, {dereference: true, preserve: true, remove_destination: true})
     end
   end
+
+  context 'when repo nil' do
+    let(:repo_id) { nil }
+    let(:err_msg) { /no implicit conversion of nil into String/ }
+
+    it 'raises an exception' do
+      expect { described_class.perform_now(src_path, repo_id) }.to raise_exception(DulArclight::IndexError, err_msg)
+      expect(IngestAutomationJob).to have_received(:perform_later).with('index.failure', src_path: src_path, archive_path: nil, ead_id: eadid_slug, err_msg: err_msg)
+    end
+
+    it 'does NOT copy source file to data xml repo directory' do
+      expect { described_class.perform_now(src_path, repo_id) }.to raise_exception(DulArclight::IndexError, err_msg)
+      expect(FileUtils).not_to have_received(:mkdir_p).with(dest_path)
+      expect(FileUtils).not_to have_received(:copy_file).with(src_path, dest_path, {dereference: true, preserve: true, remove_destination: true})
+    end
+  end
+
+  context 'when missing repo' do
+    let(:err_msg) { /undefined method `name' for nil:NilClass/ }
+
+    before do
+      allow(Arclight::Repository).to receive(:find_by).with(slug: repo_id).and_return(nil)
+    end
+
+    it 'raises an exception' do
+      expect { described_class.perform_now(src_path, repo_id) }.to raise_exception(DulArclight::IndexError, err_msg)
+      expect(IngestAutomationJob).to have_received(:perform_later).with('index.failure', src_path: src_path, archive_path: nil, ead_id: nil, err_msg: err_msg)
+    end
+
+    it 'does NOT copy source file to data xml repo directory' do
+      expect { described_class.perform_now(src_path, repo_id) }.to raise_exception(DulArclight::IndexError, err_msg)
+      expect(FileUtils).not_to have_received(:mkdir_p).with(dest_path)
+      expect(FileUtils).not_to have_received(:copy_file).with(src_path, dest_path, {dereference: true, preserve: true, remove_destination: true})
+    end
+  end
 end
 # rubocop:enable RSpec/MultipleMemoizedHelpers
