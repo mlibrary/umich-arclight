@@ -867,6 +867,12 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
     end
   end
 
+  to_field 'container_types_ssim' do |record, accumulator|
+    record.xpath('./did/container[normalize-space(@type)]').each do |node|
+      accumulator << node['type']
+    end
+  end
+
   SEARCHABLE_NOTES_FIELDS.map do |selector|
     to_field "#{selector}_tesim", extract_xpath("./#{selector}/*[local-name()!='head']", to_text: false)
     to_field "#{selector}_heading_ssm", extract_xpath("./#{selector}/head")

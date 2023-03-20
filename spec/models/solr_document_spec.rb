@@ -153,4 +153,36 @@ RSpec.describe SolrDocument do
       expect(document.multiple_ddr_daos?).to be true
     end
   end
+
+  describe '#is_checkbox_requestable?' do
+    context 'with requestable types' do
+      let(:document) do
+        described_class.new(
+          container_types_ssim: [
+            'map-case'
+          ],
+          repository_ssm: ['University of Michigan Bentley Historical Library']
+        )
+      end
+
+      it 'returns true for map case' do
+        expect(document.is_checkbox_requestable?).to be true
+      end
+    end
+
+    context 'without requestable types' do
+      let(:document) do
+        described_class.new(
+          container_types_ssim: [
+            'thermos'
+          ],
+          repository_ssm: ['University of Michigan Bentley Historical Library']
+        )
+      end
+
+      it 'returns false for thermos' do
+        expect(document.is_checkbox_requestable?).to be false
+      end
+    end
+  end
 end
