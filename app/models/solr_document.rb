@@ -101,6 +101,10 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     end
   end
 
+  def container_types
+    fetch('container_types_ssim', [])
+  end
+
   ### Inheritred containers
   def has_inherited_containers?
     fetch('has_inherited_containers_ssi', 'false') == 'true'
@@ -172,12 +176,12 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
 
   def is_checkbox_requestable? # rubocop:disable Naming/PredicateName
     config_present = repository_config.request_config_present_for_type?('aeon_hidden_form_request')
-    container_requestable = containers.all? do |container|
-      %w[Box Folder Reel Map-case Tube Object Volume Bundle].any? do |type|
-        container.match(/#{type}/)
+    container_requestable = container_types.all? do |container_type|
+      %w[box folder reel map-case tube object volume bundle].any? do |type|
+        container_type.casecmp(type) == 0
       end
     end
-    config_present && !containers.empty? && container_requestable
+    config_present && !container_types.empty? && container_requestable
   end
 
   def is_linkable?
