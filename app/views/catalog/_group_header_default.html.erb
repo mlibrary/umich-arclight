@@ -10,7 +10,7 @@
       <div class='d-flex justify-content-between'>
         <% if document.repository_config.present? %>
           <div class='al-grouped-repository breadcrumb-links'>
-            <%= link_to(document.repository_config.name, repository_collections_path(document.repository_config)) %>
+            <%= link_to(document.repository_config.name, search_action_path(group: true, f: { repository_sim: [document.repository_config.name] })) %>
           </div>
         <% end %>
 

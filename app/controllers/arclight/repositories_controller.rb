@@ -8,7 +8,7 @@ module Arclight
 
     def show
       @repository = Arclight::Repository.find_by!(slug: params[:id])
-      redirect_to search_catalog_path(f: {level_sim: "Collection", repository_sim: @repository.name}) and return
+      redirect_to search_catalog_path(group: true, f: {repository_sim: @repository.name}) and return
     end
 
     def about

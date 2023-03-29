@@ -9,9 +9,7 @@
     </div>
   <% end %>
   <div>
-    <%# The repository_collections_path method doesn't seem to work here: returns absolute URL %>
-    <%# beginning with http://example.org %>
-    <%= link_to(repository.name, search_action_path(f: { level_sim: ["Collection"], repository_sim: [repository.name] })) %>
+    <%= link_to(repository.name, search_action_path(group: true, f: { repository_sim: [repository.name] })) %>
   </div>
 </div>
 <div class='al-in-person-repository-location'>

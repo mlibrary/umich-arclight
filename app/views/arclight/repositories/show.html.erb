@@ -9,7 +9,7 @@
   </div>
   <div class="col text-right">
     <span class="al-repository-collections">
-      <%= link_to(t(:'arclight.views.repositories.view_all_collections'), repository_collections_path(@repository)) %>
+      <%= link_to(t(:'arclight.views.repositories.view_all_collections'), search_action_path(group: true, f: { repository_sim: [repository.name] })) %>
     </span>
   </div>
 </div>

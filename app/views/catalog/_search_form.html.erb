@@ -4,9 +4,11 @@
 <%# https://github.com/projectblacklight/arclight/blob/master/app/views/catalog/_search_form.html.erb #%>
 
 <%= form_tag search_action_url, method: :get, class: 'search-query-form pr-0 flex-fill', role: 'search' do %>
-  <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8).merge(f: (search_state.params_for_search[:f] || {}).except(:collection_sim))) %>
+  <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8).merge(f: (search_state.params_for_search[:f] || {}).except(:repository_sim, :collection_sim))) %>
   <%# DUL CUSTOMIZATION: default to group by collection %>
   <%= hidden_field_tag :group, 'true' %>
+  <%= hidden_field_tag "f[repository_sim][]", Array(params.dig(:f, :repository_sim)).first || @document && @document.repository if within_repository_context? %>
+  <%= hidden_field_tag "f[collection_sim][]", Array(params.dig(:f, :collection_sim)).first || @document && @document.collection_name if within_collection_context? %>
 
   <%# DUL CUSTOMIZATION: just use all_fields for search field scoping %>
   <%# TBD: refactor if reintroducing fielded search in future, e.g.   %>
@@ -17,7 +19,7 @@
 
     <div class="input-group flex-nowrap">
       <%# select options %>
-      <%= render 'catalog/within_collection_dropdown' %>
+      <%#= render 'catalog/within_collection_dropdown' %>
 
       <%# text input %>
       <div class="text-input-wrapper">

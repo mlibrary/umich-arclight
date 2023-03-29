@@ -12,7 +12,7 @@
     </div>
     <div class="card-body">
       <h2 class="card-title text-center">
-        <%= link_to_unless(params[:id] == repository.slug, repository.name, repository_collections_path(repository)) %>
+        <%= link_to(repository.name, search_action_path(group: true, f: { repository_sim: [repository.name] })) %>
       </h2>
 
       <p class="card-text" data-arclight-truncate="false">
@@ -23,7 +23,7 @@
 
     <div class="card-footer">
        <div class="collection-count-wrapper text-center">
-        <%= link_to(repository_collections_path(repository), class: 'btn btn-primary')  do %>
+        <%= link_to(search_action_path(group: true, f: { repository_sim: [repository.name] }), class: 'btn btn-primary')  do %>
           <%= t('arclight.views.repositories.browse') %> <%= t(:'arclight.views.repositories.number_of_collections', count: repository.collection_count) %>
         <% end %>
       </div>
@@ -44,16 +44,16 @@
 
     <div class="card-body">
       <h2 class="card-title page-sub-sub-heading">
-        <%= link_to_unless(params[:id] == repository.slug, repository.name, repository_collections_path(repository)) %>
-      </h2>
+        <%= link_to(repository.name, search_action_path(group: true, f: { repository_sim: [repository.name] })) %>
+    </h2>
       <p class="card-text" data-arclight-truncate="false">
-        <%= link_to_unless(params[:id] == repository.slug, "See More About This Repository", repository.about_url) %>
+        <%= link_to("See More About This Repository", repository.about_url) %>
       </p>
     </div>
 
 
     <div class="card-footer">
-      
+
       <address>
         <h3><%= t('arclight.views.repositories.address') %>:</h3>
         <div class="al-repository-street-address">
