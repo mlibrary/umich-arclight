@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+def add_facet_field_collection_sim?
+  return true if params["f"].blank?
+  return true if params["f"]["level_sim"].blank?
+  return false if params["scope"].blank?
+  true
+end
+
 class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
@@ -21,6 +28,8 @@ class CatalogController < ApplicationController
     _, @document = search_service.fetch(params[:id])
     render json: @document
   end
+
+  self.search_service_class = SearchService
 
   configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
@@ -122,7 +131,7 @@ class CatalogController < ApplicationController
                            }
     config.add_facet_field 'repository_sim', label: 'Repository', limit: 10
     config.add_facet_field 'subarea_sim', label: 'Subarea', limit: 10
-    config.add_facet_field 'collection_sim', label: 'Collection', limit: 10
+    config.add_facet_field 'collection_sim', label: 'Collection', limit: 10, if: :add_facet_field_collection_sim?
     config.add_facet_field 'creator_ssim', label: 'Creator', show: false
     config.add_facet_field 'creators_ssim', label: 'Creator', limit: 10
     config.add_facet_field 'date_range_sim', label: 'Date range', range: true
