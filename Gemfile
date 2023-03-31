@@ -26,6 +26,11 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'
 
+gem 'yabeda-rails', '~> 0.8'
+gem 'yabeda-puma-plugin', '~> 0.7'
+gem 'yabeda-prometheus', '~> 0.8'
+gem 'yabeda-activejob', '~> 0.4'
+
 gem 'puppeteer-ruby'
 
 group :development, :test do
