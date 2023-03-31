@@ -71,4 +71,10 @@ module UmArclightHelper
       (SKIPPABLE_KEYS.exclude?(key) && document.fetch(key, nil).present?)
     end) || document.is_linkable?
   end
+
+  def within_repository_context?
+    return true if within_collection_context?
+
+    results_view? && params.dig(:f, 'repository_sim')
+  end
 end
