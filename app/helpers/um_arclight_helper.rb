@@ -71,4 +71,20 @@ module UmArclightHelper
       (SKIPPABLE_KEYS.exclude?(key) && document.fetch(key, nil).present?)
     end) || document.is_linkable?
   end
+
+  def um_within_repository_context?
+    return true if um_within_collection_context?
+
+    return false if %w[all].include?(params["scope"])
+
+    results_view? && params.dig(:f, 'repository_sim')
+  end
+
+  def um_within_collection_context?
+    return true if record_view?
+
+    return false if %w[all repository].include?(params["scope"])
+
+    results_view? && params.dig(:f, 'collection_sim')
+  end
 end

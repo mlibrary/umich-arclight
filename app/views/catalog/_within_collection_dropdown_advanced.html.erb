@@ -6,25 +6,32 @@
 
 
 <div class="within-collection-dropdown input-group-prepend">
-  
+
   <span class="sr-only" id="within_collection_label_advanced"><%= t('arclight.within_collection_dropdown.label_html') %></span>
 
     <select
       id="within_collection_advanced"
       class="custom-select search-field rounded-0"
-      aria-labelledby="within_collection_label_advanced" 
-      <%= 'name="f[collection_sim][]"'.html_safe if within_collection_context? %>
+      aria-labelledby="within_collection_label_advanced"
+      name="scope"
     >
       <option
-        <%= "selected" unless within_collection_context? %>
-        value=""
+        value="all"
+        <%= "selected" unless um_within_repository_context? || um_within_collection_context? %>
       >
         <%= t('arclight.within_collection_dropdown.all_collections') %>
       </option>
       <option
-        value="<%= Array(params.dig(:f, :collection_sim)).first || @document && @document.collection_name %>"
-        <%= 'selected' if within_collection_context? %>
-        <%= 'disabled' unless within_collection_context? %>
+        value="repository"
+        <%= 'selected' if um_within_repository_context? && !um_within_collection_context? %>
+        <%= 'disabled' unless um_within_repository_context? %>
+      >
+        <%= t('arclight.within_collection_dropdown.this_repository') %>
+      </option>
+      <option
+        value="collection"
+        <%= 'selected' if um_within_collection_context? %>
+        <%= 'disabled' unless um_within_collection_context? %>
       >
         <%= t('arclight.within_collection_dropdown.this_collection') %>
       </option>
