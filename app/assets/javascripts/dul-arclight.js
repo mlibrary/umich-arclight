@@ -49,8 +49,18 @@ Blacklight.onLoad(function () {
   /* grouped by collection. */
 
   $('form.search-query-form').submit(() => {
-    if ($('select#within_collection').val()) {
-      $('input#group').remove();
+    switch ($('select#scope').val()) {
+      case 'all':
+        $('input#repository').remove();
+        $('input#collection').remove();
+        break;
+      case 'repository':
+        $('input#collection').remove();
+        break;
+      case 'collection':
+        $('input#group').remove();
+        break;
+      default:
     }
   });
 
