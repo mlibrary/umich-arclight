@@ -3,7 +3,7 @@
   <% [:success, :notice, :error, :alert].each do |type| %>
     <% if flash[type] %>
       <m-callout icon="<%= icon_map.fetch(type, type) %>" dismissable>
-        <p><%= flash[type] %></p>
+        <p><%= flash[type].html_safe %></p>
       </m-callout>
     <% end %>
   <% end %>
