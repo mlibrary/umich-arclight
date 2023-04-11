@@ -10,11 +10,11 @@ module QualtricsLinkHelper
   private
 
   def build_contact_link(link, repository)
-    retval = [link]
-    if repository
-      retval << "repository=#{repository}"
+    uri = URI(link)
+    unless repository.nil?
+      uri.query = "repository=#{repository}"
     end
-    retval.join("?")
+    uri.to_s
   end
 
   def repository_id
