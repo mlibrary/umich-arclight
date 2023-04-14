@@ -106,3 +106,10 @@ namespace :dul_arclight do
   rescue LoadError => _e
   end
 end
+
+desc 'Start the Prometheus exporter (for persistent processes like resque workers)'
+task start_prometheus: :environment do
+  Yabeda::Prometheus::Exporter.start_metrics_server!
+end
+
+task('resque:work').enhance([:start_prometheus])
