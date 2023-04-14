@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # Helpers for building a link to Qualtrics
-module QualtricsLinkHelper
+module ContactLinkHelper
   def contact_link
-    return "#" unless Settings.key?(:qualtrics_survey_link)
+    return "mailto:digital-collections-help@umich.edu" unless Settings.key?(:qualtrics_survey_link)
     build_contact_link Settings.qualtrics_survey_link, repository_id
   end
 
