@@ -31,7 +31,8 @@ gem 'yabeda-puma-plugin', '~> 0.7'
 gem 'yabeda-prometheus', '~> 0.8'
 gem 'yabeda-activejob', '~> 0.4'
 
-gem 'puppeteer-ruby'
+gem 'config', '~> 3.1'
+## gem 'puppeteer-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

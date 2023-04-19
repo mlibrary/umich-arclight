@@ -38,7 +38,10 @@ module DulArclight
       rescue Blacklight::Exceptions::RecordNotFound
         # see if we can resolve this to the collection
         deprecated_response, @document = find_possible_collection
-        flash[:notice] = I18n.t("um_arclight.errors.redirected_to_collection")
+        flash[:notice] = I18n.t(
+          "um_arclight.errors.redirected_to_collection",
+          contact_link: helpers.contact_link
+        )
         return redirect_to action: 'show', id: @document.id
       end
 
