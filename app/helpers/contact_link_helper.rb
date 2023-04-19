@@ -3,7 +3,7 @@
 # Helpers for building a link to Qualtrics
 module ContactLinkHelper
   def contact_link
-    return "mailto:digital-collections-help@umich.edu" unless Settings.key?(:qualtrics_survey_link)
+    return Settings.default_contact_link unless Settings.key?(:qualtrics_survey_link)
     build_contact_link Settings.qualtrics_survey_link, repository_id
   end
 
