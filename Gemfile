@@ -29,7 +29,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'yabeda-rails', '~> 0.8'
 gem 'yabeda-puma-plugin', '~> 0.7'
 gem 'yabeda-prometheus', '~> 0.8'
-gem 'yabeda-activejob', '~> 0.4'
 
 gem 'config', '~> 3.1'
 ## gem 'puppeteer-ruby'
