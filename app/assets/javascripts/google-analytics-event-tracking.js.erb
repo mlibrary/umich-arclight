@@ -155,6 +155,12 @@ from propagating up to parent elements to prevent unwanted click events. E.g.:
     label: "$('input#q').val()"
   },
 
+  "form.search-query-form:not(.advanced-search) select#within_collection": {
+    category: "'search box'",
+    action: "'search scope selector'",
+    label: "'search within collection dropdown click'"
+  },
+
   "form.search-query-form.advanced-search": {
     event: "submit",
     category: "'search box'",
@@ -470,15 +476,15 @@ var eventTracking = (function () {
 
   // PRIVATE METHODS
   // ===============
-  
+
   function defaultCategory (link) {
     var category;
 
-    // Default Category Determination Progression: 
+    // Default Category Determination Progression:
     // 1. a@data-ga-category
     // 2. id of 1st parent element with id
 
-    if (link.data(config.categoryDataAttribute)) { 
+    if (link.data(config.categoryDataAttribute)) {
       category = link.data(config.categoryDataAttribute);
     } else if (link.parent().closest('[id]').attr('id')) {
       category = link.parent().closest('[id]').attr('id'); // id from nearest ancestor with one
@@ -491,7 +497,7 @@ var eventTracking = (function () {
   function defaultAction (link) {
     var action;
 
-    // Default Action Determination Progression: 
+    // Default Action Determination Progression:
     // 1. a@data-ga-action
     // 2. a@id self
     // 3. id of 1st parent element w/id
@@ -509,7 +515,7 @@ var eventTracking = (function () {
   function defaultLabel (link) {
     var label;
 
-    // Default Label Determination Progression: 
+    // Default Label Determination Progression:
     // 1. @data-ga-label
     // 2. use the link text or a property, different for <a>, <button>, <input> elements
 

@@ -157,7 +157,6 @@ NOTES
 * The default application data directory is **/data** and is declared in **./lib/dul_arclight.rb**.
 * The environment variable **FINDING_AID_DATA** takes precedence over the default value.
 * Environment variable **FINDING_AID_DATA** is set to **/var/opt/app/data** in the **Dockerfile**.
-* The **./sample-ead** directory is mapped to **/var/opt/app/data** in the **docker-compose.yml** file.
 ## Continuous Integration
 Continuous integration is the default rake task and is defined in the **./lib/tasks/default.rake** file.
 ```shell

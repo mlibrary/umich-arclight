@@ -48,8 +48,24 @@ Blacklight.onLoad(function () {
   /* Searching within a collection should not yield results */
   /* grouped by collection. */
 
-  $('form.search-query-form').submit(() => {
-    switch ($('select#scope').val()) {
+  $('form.search-query-form:not(.advanced-search)').submit(() => {
+    switch ($('select#within_collection').val()) {
+      case 'all':
+        $('input#repository').remove();
+        $('input#collection').remove();
+        break;
+      case 'repository':
+        $('input#collection').remove();
+        break;
+      case 'collection':
+        $('input#group').remove();
+        break;
+      default:
+    }
+  });
+
+  $('form.search-query-form.advanced-search').submit(() => {
+    switch ($('select#within_collection_advanced').val()) {
       case 'all':
         $('input#repository').remove();
         $('input#collection').remove();
