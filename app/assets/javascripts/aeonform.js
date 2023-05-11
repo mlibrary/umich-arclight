@@ -15,14 +15,15 @@ function sessionSave(key, value) {
 
 function ClearAllCheckboxes() {
     $(':checkbox').prop('checked', false);
-    selectedItems.clear(); collectionItems.clear();
-    sessionSave('selectedItems', selectedItems);
-    sessionSave('collectionItems', collectionItems);
+    collectionItems().clear();
+    saveCollectionItems();
+    selectedItems().clear();
+    saveSelectedItems();
     updateSelectedItemsCount();
 }
 
 function _RestoreSelectedCheckboxes() {
-    selectedItems.forEach((identifier) => {
+    selectedItems().forEach((identifier) => {
         let $inputEl = $(`input[name="Request"][value="${identifier}"]`);
         $inputEl.prop('checked', true);
         console.log("-- NAVIGATION al-contents", identifier, $inputEl.get(0));
@@ -33,7 +34,7 @@ function _RestoreSelectedCheckboxes() {
 // Submit handler
 
 function SubmitAeonRequestForm() {
-    if (selectedItems.size == 0) {
+    if (selectedItems().size == 0) {
         msg = `Please select one or more items to request.
 (You may need to scroll down to see the checkboxes)`;
         alert(msg);
@@ -46,8 +47,8 @@ function SubmitAeonRequestForm() {
     // clone the aeon request form to add the hidden inputs
     let $aeonForm = $("#EADRequestFormId").clone().attr('id', `EADRequestFormId-${(new Date).getTime()}`);
     $aeonForm.css({ display: 'none' }).addClass('aeon-submitted-form');
-    selectedItems.forEach((identifier) => {
-        let metaData = collectionItems.get(identifier);
+    selectedItems().forEach((identifier) => {
+        let metaData = collectionItems().get(identifier);
         $('<input/>')
             .attr("type", "hidden")
             .attr("name", "Request")
@@ -71,20 +72,83 @@ function SubmitAeonRequestForm() {
 }
 
 function updateSelectedItemsCount() {
+    if ( selectedItems() === undefined ) {
+        switchedCollections();
+    }
     let $span = $("#selected-items-count");
-    if ( selectedItems.size == 0 ) {
+    if ( selectedItems().size == 0 ) {
         $span.html('');
     } else {
-        let description = selectedItems.size == 1 ? 'item' : 'items';
-        $span.html(`<span class="sr-only">Request </span>${selectedItems.size}<span class="sr-only"> ${description}</span>`)
+        let description = selectedItems().size == 1 ? 'item' : 'items';
+        $span.html(`<span class="sr-only">Request </span>${selectedItems().size}<span class="sr-only"> ${description}</span>`);
     }
 }
 
 //----------------------------------------------------------------------
 // Document ready set up
 
-let selectedItems;
-let collectionItems;
+let _documentId;
+let _selectedItems;
+let _collectionItems;
+
+function documentId() {
+    let $docEL = $("#document");
+    if ( $docEL.length === 0 ) {
+        _documentId = "null-document";
+    } else {
+        _documentId = $docEL.data("documentId");
+    }
+    return _documentId;
+}
+
+function selectedItemsKey() {
+    return documentId() + '_selectedItems';
+}
+
+function collectionItemsKey() {
+    return documentId() + '_collectionItems';
+}
+
+function selectedItems() {
+    return _selectedItems;
+}
+
+function collectionItems() {
+    return _collectionItems;
+}
+
+function saveSelectedItems() {
+    sessionSave(selectedItemsKey(), _selectedItems);
+}
+
+function saveCollectionItems() {
+    sessionSave(collectionItemsKey(), _collectionItems);
+}
+
+function retrieveSelectedItems() {
+    let jsonValue = sessionStorage.getItem(selectedItemsKey());
+    if ( jsonValue === null ) {
+        _selectedItems = new Set();
+        saveSelectedItems();
+    } else {
+        _selectedItems = new Set(JSON.parse(jsonValue) || []);
+    }
+}
+
+function retrieveCollectionItems() {
+    let jsonValue = sessionStorage.getItem(collectionItemsKey());
+    if ( jsonValue === null ) {
+        _collectionItems = new Map();
+        saveCollectionItems();
+    } else {
+        _collectionItems = new Map(Object.entries(JSON.parse(jsonValue) || {}));
+    }
+}
+
+function switchedCollections() {
+    retrieveSelectedItems();
+    retrieveCollectionItems();
+}
 
 // collect the requeset metadata for each identifier
 // so it can be submitted even if the checkbox is no longer
@@ -101,25 +165,25 @@ function _buildCollectionItemsMap() {
                 datum[key] = value;
             }
         })
-        collectionItems.set(identifier, datum);
-        sessionSave('collectionItems', collectionItems);
+        collectionItems().set(identifier, datum);
+        saveCollectionItems();
     })
 }
 
 function _SelectCheckbox() {
     let target = this;
     let identifier = target.value;
-    if (!collectionItems.get(identifier)) {
+    if (!collectionItems().get(identifier)) {
         // either initial page load, or user has loaded
         // another page of checkboxes
         _buildCollectionItemsMap();
     }
     if (target.checked) {
-        selectedItems.add(identifier);
+        selectedItems().add(identifier);
     } else {
-        selectedItems.delete(identifier);
+        selectedItems().delete(identifier);
     }
-    sessionSave('selectedItems', selectedItems);
+    saveSelectedItems();
 
     updateSelectedItemsCount();
 }
@@ -135,17 +199,9 @@ function _BindEvents() {
 document.addEventListener('turbolinks:load', function(event) {
     // user has switched collections; reset the data structures
 
-    if ( selectedItems === undefined ) {
-        let jsonValue = sessionStorage.getItem('selectedItems');
-        if ( jsonValue === null ) {
-            selectedItems = new Set();
-            collectionItems = new Map();
-        } else {
-            selectedItems = new Set(JSON.parse(jsonValue) || []);
-            collectionItems = new Map(Object.entries(JSON.parse(sessionStorage.getItem('collectionItems')) || {}));
-        }
-    }
-    updateSelectedItemsCount();        
+    switchedCollections();
+
+    updateSelectedItemsCount();
 
     _BindEvents();
     _RestoreSelectedCheckboxes();
