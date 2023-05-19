@@ -6,9 +6,9 @@ image_list:
     image: sclib_24627_0028_full_872_624__0_native.jpg
   2:
     caption_html: |
-      1997 University of Michigan Football Team from <a href="/catalog/umich-bhl-943">
-      Athletic Department (University of Michigan) records</a>
-    image: bhl_bl001282_full_897_492__0_native.jpg
+      Souvenir program from the November 25, 1897 University of Chicago v. Michigan football game
+      from <a href="/catalog/umich-bhl-943">Athletic Department (University of Michigan) records</a>
+    image: 1897chif.jpg
   3:
     caption_html: |
       African American family, 1889? from <a href="/catalog/umich-wcl-F-830tin">
@@ -89,4 +89,27 @@ image_list:
       Watercolor poking fun at the 1825 fashions of Philadelphia from <a href="/catalog/umich-wcl-P-2510cla">
       Edward Williams Clay watercolors, scrapbook fragments, and silhouettes</a>
     image: Tea-fight_EdwardWilliamsClay.jpg
-
+  19:
+    caption_html: |
+      A general [planting] plan for the grounds of the Henry Ford Hospital from <a href="/catalog/umich-bhl-97105">Jens Jensen drawings and papers</a>
+    image:  bhl_bl002207_full_5280_5197__0_native.jpg
+  20:
+    caption_html: |
+      Plan for Grounds of Camp Algonquin, Algonquin, IL, February 1911 from <a href="/catalog/umich-bhl-97105">Jens Jensen drawings and papers</a>
+    image:  bhl_hs15706_full_5148_3088__0_native.jpg
+  21:
+     caption_html: |
+       George Romney with the Supremes, 1965 Michigan State Fair from <a href="/catalog/umich-bhl-852178">George Romney papers</a>
+     image:  bhl_bl004042_full_4800_6794__0_native.jpg 
+  22:
+     caption_html: |
+       Howlin' Wolf and Muddy Waters with others backstage, 1st Ann Arbor Blues Festival from <a href="/catalog/umich-bhl-03124">Frank and Peggy Bach Papers</a>
+     image:  bhl_hs10699_full_5748_4490__0_native.jpg 
+  23:
+     caption_html: |
+       Using the Fitz telescope, U-M’s Detroit Observatory, 2015 from <a href="/catalog/umich-bhl-0713">Detroit Observatory (University of Michigan) records, 1860-2004</a>
+     image:  bhl_hs14631_full_3680_2456__0_native.jpg
+  24:
+     caption_html: |
+       Interior of Cahow Drug Store, 213 S. Main, Ann Arbor, 10 May 1957 from <a href="/catalog/umich-bhl-92324">Ivory Photo photograph collection, circa 1927-1971</a>
+     image:  bhl_hs17962_full_5615_4459__0_native.jpg 
