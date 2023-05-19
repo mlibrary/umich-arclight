@@ -176,7 +176,7 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
 
   def is_checkbox_requestable? # rubocop:disable Naming/PredicateName
     config_present = repository_config.request_config_present_for_type?('aeon_hidden_form_request')
-    container_requestable = container_types.all? do |container_type|
+    container_requestable = container_types.any? do |container_type|
       %w[box folder reel map-case tube object volume bundle].any? do |type|
         container_type.casecmp(type) == 0
       end
