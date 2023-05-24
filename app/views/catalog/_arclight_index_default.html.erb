@@ -17,14 +17,14 @@
   </div>
 
   <div class="col pl-0 d-flex flex-wrap" data-has-containers="<%= document.containers.present? %>">
-    <div class="documentHeader order-0" data-document-id="<%= document.id %>" data-repository-id="<%= document&.repository_id %>">
+    <hgroup class="documentHeader order-0" data-document-id="<%= document.id %>" data-repository-id="<%= document&.repository_id %>" role="group" aria-roledescription="Heading group">
       <h3 class="index_title document-title-heading">
         <%= link_to_document document, document.title_with_highlighting || document_show_link_field(document), counter: document_counter %>
-        <%= content_tag('span', class: 'al-document-extent badge') do %>
-          <%= document.extent %>
-        <% end if document.extent %>
       </h3>
-    </div>
+      <%= content_tag('p', class: 'al-document-extent border border-light rounded',  'aria-roledescription' => 'subtitle') do %>
+        <%= document.extent %>
+      <% end if document.extent %>
+    </hgroup>
 
     <div class="documentContent order-md-1">
       <%= render_index_doc_actions document, wrapping_class: 'd-flex justify-content-end' %>

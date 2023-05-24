@@ -46,7 +46,7 @@
 
     </div>
 
-    <div class="d-flex" xclass="documentHeader d-flex order-1" data-document-id="<%= document.id %>">
+    <hgroup class="d-flex flex-column" data-document-id="<%= document.id %>" role="group" aria-roledescription="Heading group">
       <h3 xclass="index_title document-title-heading">
         <!-- def link_to_document(doc, field_or_opts = nil, opts = { counter: nil }, url_options = { anchor: nil })-->
         <% if (is_interesting_component?(document)) %>
@@ -59,11 +59,11 @@
         <% if document.children? %>
           <span class="badge badge-pill badge-secondary al-number-of-children-badge"><%= document.number_of_children %> <%= t(:'um_arclight.views.index.number_of_components', count: document.number_of_children) %></span>
         <% end %>
-        <%= content_tag('span', class: 'al-document-extent badge') do %>
-          <%= document.extent %>
-        <% end if document.extent %>
       </h3>
-    </div>
+      <%= content_tag('p', class: 'al-document-extent border border-light rounded',  'aria-roledescription' => 'subtitle') do %>
+        <%= document.extent %>
+      <% end if document.extent %>
+    </hgroup>
 
     <div class="ml-auto" xclass="documentContent">
       <%= render_index_doc_actions document, wrapping_class: 'd-flex justify-content-end' %>
