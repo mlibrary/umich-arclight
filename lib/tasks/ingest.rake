@@ -1,6 +1,9 @@
 require 'arclight'
 require 'arclight/repository'
 
+# Read the repository configuration
+repo_config = YAML.safe_load(File.read('./config/repositories.yml'))
+
 namespace :arclight do
   # FIXME: SHAMELESS copy of dul_arclight:reindex_everything for now
   desc 'Reingest all finding aids in the data directory via background jobs'
