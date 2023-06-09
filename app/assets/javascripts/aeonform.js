@@ -87,26 +87,26 @@ function updateSelectedItemsCount() {
 //----------------------------------------------------------------------
 // Document ready set up
 
-let _documentId;
+let _collectionId;
 let _selectedItems;
 let _collectionItems;
 
-function documentId() {
-    let $docEL = $("#document");
-    if ( $docEL.length === 0 ) {
-        _documentId = "null-document";
+function collectionId() {
+    let $eadEL = $("#eadid");
+    if ( $eadEL.length === 0 ) {
+        _collectionId = "null-collection";
     } else {
-        _documentId = $docEL.data("documentId");
+        _collectionId = $eadEL.data("eadId");
     }
-    return _documentId;
+    return _collectionId;
 }
 
 function selectedItemsKey() {
-    return documentId() + '_selectedItems';
+    return collectionId() + '_selectedItems';
 }
 
 function collectionItemsKey() {
-    return documentId() + '_collectionItems';
+    return collectionId() + '_collectionItems';
 }
 
 function selectedItems() {
