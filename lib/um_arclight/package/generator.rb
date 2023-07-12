@@ -179,7 +179,7 @@ module UmArclight
       def fetch_doc(id)
         params = {
           fl: '*', # COMPONENT_FIELDS.join(','),
-          q: ["id:#{id.tr(".", "-")}"],
+          q: ["id:#{id}"],
           start: 0,
           rows: 1
         }
@@ -487,7 +487,7 @@ module UmArclight
 
       def setup(**kw)
         identifiers = if kw[:eadid]
-          [kw[:eadid].tr('.', '-')]
+          [kw[:eadid]]
         else
           fetch_collection_identifiers(kw[:repository_ssm])
         end

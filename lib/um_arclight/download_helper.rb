@@ -45,7 +45,7 @@ module UmArclight
     end
 
     def ead_slug
-      document&.eadid&.tr(".", "-") || "ead_slug"
+      document&.eadid || "ead_slug"
     end
   end
 end

@@ -1,14 +1,19 @@
 Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   # FYI: Routes declared at the top of the file will mask routes that have yet to be declared.
   # The engines are mounted last so you may override engine routes.
-  concern :exportable, Blacklight::Routes::Exportable.new
-  concern :searchable, Blacklight::Routes::Searchable.new
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
   # Note that component URLs have underscores; collections don't
   def collection_slug_constraint
-    /[a-zA-Z0-9-]+/
+    /[a-zA-Z0-9.-]+/
   end
+
+  def dynamic_constraint
+    /[^\/]+/
+  end
+
+  concern :exportable, Blacklight::Routes::Exportable.new
+  concern :searchable, Blacklight::Routes::Searchable.new({}, {id: dynamic_constraint})
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
   if ENV['FINDING_AID_INGEST'] == 'true'
     resources :findingaids do
@@ -27,6 +32,11 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     end
   end
 
+  # https://mlit.atlassian.net/browse/ARC-84
+  # ARC-84: Remove ban on periods in eadid field.
+  # Redirects for normalized URLs in the wild.
+  get '/catalog/:id', to: redirect { |path_params, req| "/catalog/#{ARC_84_EADID_MAP[path_params[:id]]}" }, constraints: lambda { |request| ARC_84_EADID_MAP.has_key?(request.path_parameters[:id]) }
+
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
@@ -43,7 +53,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
 
   root to: "catalog#index"
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog', constraints: {id: dynamic_constraint} do
     concerns :exportable
   end
 

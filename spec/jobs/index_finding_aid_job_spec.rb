@@ -22,7 +22,7 @@ RSpec.describe IndexFindingAidJob, type: :job do
   end
   let(:eadid_tag) { "<eadid>#{eadid}</eadid>" }
   let(:eadid) { "eadid.slug" }
-  let(:eadid_slug) { "eadid-slug" }
+  let(:eadid_slug) { "eadid.slug" }
   let(:repo_id) { 'repo' }
   let(:repository) { class_double("Arclight::Repository", "repository", name: "repository") }
   let(:dest_dir) { "#{DulArclight.finding_aid_data}/xml/#{repo_id}" }

@@ -130,7 +130,7 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
 
   def parent_ids_keyed
     parent_ids.map do |parent_id|
-      parent_id.gsub('.', '-')
+      parent_id
     end
   end
 
