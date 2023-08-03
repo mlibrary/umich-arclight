@@ -48,8 +48,11 @@ module DulArclight
       result = []
       result << inclusive if inclusive.present?
       result << other if other.present?
-      result << "(majority within #{bulk})" if bulk.present?
-      result.compact.map(&:strip).join(', ')
+      result = result.compact.map(&:strip).join(', ')
+      final = []
+      final << result if result.present?
+      final << "(majority within #{bulk})" if bulk.present?
+      final.compact.map(&:strip).join(' ')
     end
   end
 end
