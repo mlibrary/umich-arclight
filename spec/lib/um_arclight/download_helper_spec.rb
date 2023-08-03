@@ -76,7 +76,7 @@ RSpec.describe UmArclight::DownloadHelper do
     context "when dot in eadid" do
       let(:eadid) { "ead.id" }
 
-      it { expect(helper.send(:ead_slug)).to eq("ead-id") }
+      it { expect(helper.send(:ead_slug)).to eq("ead.id") }
     end
   end
 end

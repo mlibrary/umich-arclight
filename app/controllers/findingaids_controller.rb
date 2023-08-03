@@ -224,7 +224,7 @@ class FindingaidsController < ApplicationController
   end
 
   def ead_slug(eadid)
-    eadid.tr(".", "-").to_s
+    eadid.to_s
   end
 
   def repo_slug(_eadid, corpname)
