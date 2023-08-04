@@ -15,13 +15,15 @@
         <% end %>
 
       </div>
-      <div class='d-flex justify-content-between'>
-      <h3><%= link_to_document document, document_show_link_field(document) %></h3>
-      <%= render_index_doc_actions document, wrapping_class: 'd-flex justify-content-end group-doc-actions' %>
-      </div>
-      <%= content_tag('span', class: 'al-document-extent badge') do %>
-        <%= document.extent %>
-      <% end if document.extent %>
+      <hgroup role="group" aria-roledescription="Heading group">
+        <div class='d-flex justify-content-between'>
+        <h3><%= link_to_document document, document_show_link_field(document) %></h3>
+        <%= render_index_doc_actions document, wrapping_class: 'd-flex justify-content-end group-doc-actions' %>
+        </div>
+        <%= content_tag('p', class: 'al-document-extent border border-light rounded',  'aria-roledescription' => 'subtitle') do %>
+          <%= document.extent %>
+        <% end if document.extent %>
+      </hgroup>
 
       <%= content_tag('div', class: 'al-document-abstract-or-scope') do %>
         <%= content_tag('div', 'data-arclight-truncate' => true) do %>

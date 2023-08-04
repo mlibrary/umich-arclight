@@ -60,14 +60,14 @@
   }
 
   .al-document-extent {
+    @include extent-badge;
     position: relative;
     font-size: .75rem;
     margin-left: 0;
-    margin-top: .125rem;
-    max-width: 20em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-top: .5rem;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
     vertical-align: top;
   }
 

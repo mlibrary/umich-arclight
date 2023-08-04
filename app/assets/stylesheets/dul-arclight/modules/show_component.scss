@@ -32,7 +32,7 @@
   .al-document-extent {
     @include extent-badge;
     display: block;
-    width: min-content;
+    // width: min-content;
     font-size: 0.75rem;
   }
 
