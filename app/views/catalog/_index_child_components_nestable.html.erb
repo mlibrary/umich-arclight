@@ -29,7 +29,7 @@
 
     <div class="align-self-center d-flex align-items-center flex-nowrap gap-1" style="margin-left: -3.5rem;">
       <% if document.children? %>
-        <button aria-label="View" data-toggle="collapse" data-target="#<%= target %>" class="btn btn-outline-light btn-toggle" style="" type="button">
+        <button aria-label="View" data-toggle="collapse" data-target="#<%= target.gsub('.','\.') %>" class="btn btn-outline-light btn-toggle" style="" type="button">
           <i class="text-dark fas <%= show_expanded?(document) ? 'fa-minus-circle' : 'fa-plus-circle' %>"></i>
         </button>
       <% else %>

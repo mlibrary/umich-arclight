@@ -20,7 +20,7 @@
       <div class="al-toggle-children-container">
         <%= link_to(
           '',
-          "#nav_#{document.id}-collapsible-hierarchy",
+          "#nav_#{document.id.gsub('.', '\.')}-collapsible-hierarchy",
           class: "al-toggle-view-children #{!show_expanded?(document) ? 'collapsed' : ''}",
           'aria-label': t('arclight.hierarchy.view_all'),
             data: {
