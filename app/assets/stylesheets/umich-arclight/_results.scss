@@ -6,7 +6,7 @@
 }
 
 #content #documents {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .al-repositories {
@@ -69,4 +69,12 @@
       clip: unset !important;
     }
   }
+}
+
+/* Show Contents Child Components */
+
+.documents-child_components {
+  position: relative;
+  height: calc(100vh/2);
+  overflow-y: scroll;
 }
