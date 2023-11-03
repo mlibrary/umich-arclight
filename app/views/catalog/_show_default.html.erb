@@ -250,9 +250,17 @@
   <%# Child Components           %>
   <%# ========================== %>
 
+  <div class="contents-wrapper">
   <h2 class="al-show-sub-heading" id="<%= t("arclight.views.show.sections.contents").parameterize %>">
     <%= t("arclight.views.show.sections.contents") %>
   </h2>
+  <div class="d-flex mt-3 mb-3">
+    <div class="flex-fill">
+      <%= render partial: 'arclight/requests', locals: { document: document } %>
+    </div>
+   </div>
+  </div>
+  
   <%= document.non_component_contents %>
   <% if document.children? %>
     <%= content_tag(
