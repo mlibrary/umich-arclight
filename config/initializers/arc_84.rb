@@ -1114,4 +1114,5 @@ ARC_84_EADID_MAP = {
   "umich-wcl-P-2863-1smi" => "umich-wcl-P-2863.1smi",
   "umich-wcl-P-2863-25for" => "umich-wcl-P-2863.25for",
   "umich-scl-kramera" => "umich-scl-ams0185"
+  "umich-scl-hungarywar" => "umich-scl-ams0195"
 }
