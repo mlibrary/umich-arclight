@@ -32,7 +32,7 @@
     <div class="order-3 scope-wrapper">
       <div class="row">
         <%= content_tag('div', class: 'al-document-highlight col') do %>
-          <%= document.highlights.join('<br/>').html_safe %>
+          <%= document.highlights.join('[...]').html_safe %>
         <% end if document.highlights %>
       </div>
 

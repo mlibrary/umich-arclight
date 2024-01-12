@@ -32,7 +32,7 @@
 
     <div class="order-2 scope-wrapper">
       <%= content_tag('div', class: 'al-document-highlight highlight-snippets') do %>
-        <%= document.highlights_without_title&.join('<br/>')&.html_safe %>
+        <%= document.highlights_without_title&.join('[...]')&.html_safe %>
       <% end if document.highlights_without_title.present? %>
 
       <%= content_tag('div', class: 'al-document-abstract-or-scope') do %>
