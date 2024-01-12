@@ -5,7 +5,13 @@
   </div>
   <div class="row">
     <div class="col-md-4"><%= I18n.t("helpers.label.findingaid.eadurl") %> [ <%= findingaid.eadslug %> ]</div>
-    <div class="col-md-8"><%= link_to_if findingaid.eadurl.present?, findingaid.eadurl,  solr_document_url(findingaid.eadslug) %></div>
+    <div class="col-md-8">
+      <% if findingaid.error.present? %>
+        <%= findingaid.error %>
+      <% else %>
+        <%= link_to_if findingaid.eadurl.present?, findingaid.eadurl, solr_document_url(findingaid.eadslug) %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4">&nbsp;</div>
