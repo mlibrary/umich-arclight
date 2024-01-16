@@ -318,6 +318,10 @@ GEM
       actionview (> 3.1)
       activesupport (> 3.1)
       railties (> 3.1)
+    rails_semantic_logger (4.14.0)
+      rack
+      railties (>= 5.1)
+      semantic_logger (~> 4.13)
     railties (5.2.8.1)
       actionpack (= 5.2.8.1)
       activesupport (= 5.2.8.1)
@@ -426,6 +430,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_logger (4.15.0)
+      concurrent-ruby (~> 1.0)
     sinatra (3.0.5)
       mustermann (~> 3.0)
       rack (~> 2.2, >= 2.2.4)
@@ -551,6 +557,7 @@ DEPENDENCIES
   puma
   rails (~> 5.2.3)
   rails_autolink
+  rails_semantic_logger (~> 4.14)
   resque (~> 2.0)
   resque-pool
   rsolr (>= 2.4, < 3)
