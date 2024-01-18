@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -12,21 +12,13 @@ module DulArclight
     config.load_defaults 5.2
     config.autoload_paths += %W[#{config.root}/lib]
 
-    # use custom error pages
+    # Use custom error pages
     config.exceptions_app = routes
 
-    # # Settings in config/environments/* take precedence over those specified here.
-    # # Application configuration can go into files in config/initializers
-    # # -- all .rb files in that directory are automatically loaded after loading
-    # # the framework and any gems in your application.
-    # config.action_mailer.default_options = {
-    #   from: 'dul-arclight@%s' % ENV.fetch('APPLICATION_HOSTNAME', 'localhost'),
-    #   reply_to: 'no-reply@duke.edu'
-    # }
-    # config.action_mailer.default_url_options = {
-    #   host: ENV.fetch('APPLICATION_HOSTNAME', 'localhost')
-    # }
-
+    # Enable IngestAutomationJob
     config.x.arclight.enable_automation = true
+
+    # Turn off Blacklight search history tracking
+    config.blacklight.enable_search_history = false
   end
 end

@@ -4,7 +4,9 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = Socket.ip_address_list.reduce([]) do |res, addrinfo|
     addrinfo.ipv4? ? res << IPAddr.new(addrinfo.ip_address).mask(24) : res
   end
-  config.web_console.whitelisted_ips << ENV['SSH_CLIENT'] if ENV['SSH_CLIENT']
+  config.web_console.whitelisted_ips << ENV["SSH_CLIENT"] if ENV["SSH_CLIENT"]
+
+  config.web_console.whiny_requests = false
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -19,12 +21,12 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
