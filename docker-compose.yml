@@ -16,7 +16,6 @@ services:
     environment:
       - FINDING_AID_INGEST=true
       - REDIS_URL=redis://redis:6379
-      - RAILS_LOG_TO_STDOUT=true
     volumes:
       - .:/opt/app
       - data:/var/opt/app/data

@@ -80,4 +80,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Prepend all log lines with the following tags.
+  config.log_tags = {
+    request_id: :request_id,
+    remote_ip: :remote_ip
+  }
+
+  # Use logfmt formatter
+  config.rails_semantic_logger.format = :logfmt
+
+  # Don't write to a log file if logging to STDOUT.
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    $stdout.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(
+      io: $stdout, formatter: config.rails_semantic_logger.format
+    )
+  end
 end
