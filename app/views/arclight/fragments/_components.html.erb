@@ -8,11 +8,11 @@
               <label class="btn btn-outline-secondary btn-outline-request squat p-2 mb-0">
                 <input type="checkbox" name="Request" value="<%= component.id %>">
                 <input type="hidden" name="Request" value="<%= component.id %>">
-                <input type="hidden" name="ItemSubTitle_<%= component.id %>" value="<%= raw(strip_tags(component.normalized_title)) %><%= if component.extent then " (#{component.extent})" end %>">
-                <input type="hidden" name="ItemVolume_<%= component.id %>" value="<%= component.containers.join(', ') %>">
-                <input type="hidden" name="ItemCitation_<%= component.id %>" value="<%= component.reference %>">
-                <input type="hidden" name="ItemInfo1" value="<%= component.accessrestrict %>">
-                <span class="sr-only">Request "<%= raw(strip_tags(component.normalized_title)) %><%= if component.extent then " (#{component.extent})" end %>"</span>
+                <input type="hidden" name="ItemSubTitle_<%= component.id %>" value="<%= component.aeon_item_sub_title_value %>">
+                <input type="hidden" name="ItemVolume_<%= component.id %>" value="<%= component.aeon_item_volume_value %>">
+                <input type="hidden" name="ItemCitation_<%= component.id %>" value="<%= component.aeon_item_citation_value %>">
+                <input type="hidden" name="ItemInfo1" value="<%= component.aeon_item_info_1_value %>">
+                <span class="sr-only">Request "<%= component.aeon_item_sub_title_sr_only %>"</span>
               </label>
             </div>
           <% else %>

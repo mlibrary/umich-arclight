@@ -10,14 +10,14 @@
   <label class="<%= local_assigns[:label_class] || '' %>" title="">
     <input type="checkbox" name="Request" value="<%= document.id %>">
     <input type="hidden" name="Request" value="<%= document.id %>">
-    <input type="hidden" name="ItemSubTitle_<%= document.id %>" value="<%= raw(strip_tags(document.normalized_title)) %><%= if document.extent then " (#{document.extent})" end %>">
-    <input type="hidden" name="ItemVolume_<%= document.id %>" value="<%= document.containers.join(', ') %>">
-    <input type="hidden" name="ItemCitation_<%= document.id %>" value="<%= document.reference %>">
-    <input type="hidden" name="ItemInfo1" value="<%= document.accessrestrict %>">
+    <input type="hidden" name="ItemSubTitle_<%= document.id %>" value="<%= document.aeon_item_sub_title_value %>">
+    <input type="hidden" name="ItemVolume_<%= document.id %>" value="<%= document.aeon_item_volume_value %>">
+    <input type="hidden" name="ItemCitation_<%= document.id %>" value="<%= document.aeon_item_citation_value %>">
+    <input type="hidden" name="ItemInfo1" value="<%= document.aeon_item_info_1_value %>">
     <% if local_assigns[:label] %>
       <span><%= label %></span>
     <% else %>
-      <span class="sr-only">Request "<%= raw(strip_tags(document.normalized_title)) %><%= if document.extent then " (#{document.extent})" end %>"</span>
+      <span class="sr-only">Request "<%= document.aeon_item_sub_title_sr_only %>"</span>
     <% end %>
   </label>
 </div>
