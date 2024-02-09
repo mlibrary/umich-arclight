@@ -88,7 +88,7 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
   # DUL custom property for a tagless short description of a collection or component.
   # Can be used e.g., in meta tags or popovers/tooltips.
   def short_description
-    truncate(strip_tags(abstract_or_scope), length: 400, separator: ' ')
+    truncate(ActionController::Base.helpers.strip_tags(abstract_or_scope), length: 400, separator: ' ')
   end
 
   # DUL override ArcLight core method, which was incorrectly lowercasing subsequent characters in
@@ -209,6 +209,33 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
   def subseries_title
     i = parent_levels.find_index('Subseries')
     parent_labels[i] if i.present?
+  end
+
+  # ========================
+  # AEON Request Item Values
+  # ========================
+
+  def aeon_item_sub_title_value
+    rv = ActionController::Base.helpers.strip_tags(normalized_title)
+    rv += " (#{extent})" if extent
+    # CGI.escapeHTML(rv)
+    rv
+  end
+
+  def aeon_item_sub_title_sr_only
+    aeon_item_sub_title_value
+  end
+
+  def aeon_item_volume_value
+    containers.join(', ')
+  end
+
+  def aeon_item_citation_value
+    reference
+  end
+
+  def aeon_item_info_1_value
+    accessrestrict
   end
 
   # ==============================
