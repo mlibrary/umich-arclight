@@ -238,16 +238,16 @@ end
 
 # DUL CUSTOMIZATION: use DUL rules for NormalizedDate in title normalization
 to_field 'normalized_title_ssm' do |_record, accumulator, context|
-  dates = context.output_hash['normalized_date_ssm']&.first
+  date = context.output_hash['normalized_date_ssm']&.first
   title = context.output_hash['title_ssm']&.first
-  accumulator << Arclight::NormalizedTitle.new(title, dates).to_s
+  accumulator << Arclight::NormalizedTitle.new(title, date).to_s
 end
 
 # DUL CUSTOMIZATION: preserve formatting tags in titles
 to_field 'normalized_title_formatted_ssm' do |_record, accumulator, context|
-  dates = context.output_hash['normalized_date_ssm']&.first
+  date = context.output_hash['normalized_date_ssm']&.first
   title = context.output_hash['title_formatted_ssm']&.first.to_s
-  accumulator << Arclight::NormalizedTitle.new(title, dates).to_s
+  accumulator << Arclight::NormalizedTitle.new(title, date).to_s
 end
 
 to_field 'collection_ssm' do |_record, accumulator, context|
@@ -556,16 +556,16 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
   # DUL CUSTOMIZATION: use DUL rules for NormalizedDate in title normalization
   to_field 'normalized_title_ssm' do |_record, accumulator, context|
-    dates = context.output_hash['normalized_date_ssm']&.first
+    date = context.output_hash['normalized_date_ssm']&.first
     title = context.output_hash['title_ssm']&.first
-    accumulator << Arclight::NormalizedTitle.new(title, dates).to_s
+    accumulator << Arclight::NormalizedTitle.new(title, date).to_s
   end
 
   # DUL CUSTOMIZATION: use DUL rules for NormalizedDate
   to_field 'normalized_title_formatted_ssm' do |_record, accumulator, context|
-    dates = context.output_hash['normalized_date_ssm']&.first
+    date = context.output_hash['normalized_date_ssm']&.first
     title = context.output_hash['title_formatted_ssm']&.first.to_s
-    accumulator << Arclight::NormalizedTitle.new(title, dates).to_s
+    accumulator << Arclight::NormalizedTitle.new(title, date).to_s
   end
 
   # Aleph ID (esp. for request integration)
