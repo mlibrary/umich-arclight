@@ -22,6 +22,9 @@ RUN mkdir -p /gems && chown $UID:$GID /gems
 RUN wget -q https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
 RUN apt-get install -yqq --no-install-recommends ./wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
 
+RUN apt-get install -yqq --no-install-recommends libjemalloc2 && rm -rf /var/lib/apt/lists/*
+ENV LD_PRELOAD=libjemalloc.so.2
+
 USER $UNAME
 COPY --chown=$UID:$GID Gemfile* /opt/app-root/
 
