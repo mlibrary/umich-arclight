@@ -70,7 +70,7 @@ scrc:
   country: 'USA'
   phone: ''
   contact_info: 'special.collections@umich.edu'
-  thumbnail_url: 'https://upload.wikimedia.org/wikipedia/commons/9/96/University_of_Michigan_library_stacks.JPG'
+  thumbnail_url: '/thumbnails/SCRC-x400.jpg'
   repo_about:
     using_materials: 'Finding aids describe collections of primary sources and other unique, original, or rare materials. Collections are non-circulating and must be used in the Special Collections Research Center reading room. Requests for collection material must be made at least 7 days in advance of a planned visit.'
     visitor_info: 'For more information <a href="https://www.lib.umich.edu/locations-and-hours/special-collections-research-center">Special Collections Research Center -- Visit</a>.'
