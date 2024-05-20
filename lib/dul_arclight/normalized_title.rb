@@ -8,7 +8,8 @@ module Arclight
     # @param [String] `title` from the `unittitle`
     # @param [String] `date` from the `unitdate`
     def initialize(title, date = nil)
-      @title = title.gsub(/\s*,\s*$/, '').strip if title.present?
+      # @title = title.gsub(/\s*,\s*$/, '').strip if title.present?
+      @title = title.strip if title.present?
       @date = date.strip if date.present?
     end
 
@@ -19,10 +20,11 @@ module Arclight
 
     private
 
-    attr_reader :title, :date, :default
+    attr_reader :title, :date
 
     def normalize
-      result = [title, date].compact.join(', ')
+      # result = [title, date].compact.join(', ')
+      result = title
       raise Arclight::Exceptions::TitleNotFound if result.blank?
 
       result
