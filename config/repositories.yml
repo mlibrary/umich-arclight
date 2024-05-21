@@ -45,6 +45,7 @@ bhl:
     text:
       - alumnae
       - angell
+      - bhlcivilwar
       - blydenburgh
       - daas
       - hudson
@@ -151,6 +152,7 @@ clements:
       - marshallfam
       - mitchill
       - rochester
+      - shelburne
       - sterlingj
       - stothert
       - unitedsons
@@ -181,7 +183,7 @@ vrc:
   description: "The VRC maintains nearly two million images of art. The collection's roots are more than 90 years old and developed as a teaching collection to support University of Michigan faculty and students. Through these online finding aids, we hope to help you connect with our vast resources of images of art, architecture, and artifacts."
   visit_note: ''
   building: '45 Tappan Hall'
-  address1: '2855 South University Avenue'
+  address1: '855 South University Avenue'
   address2: ''
   city: 'Ann Arbor'
   state: 'MI'
