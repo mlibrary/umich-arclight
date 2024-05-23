@@ -172,19 +172,43 @@ to_field 'publicid_ssi', extract_xpath('/ead/eadheader/eadid/@publicid')
 
 to_field 'title_filing_si', extract_xpath('/ead/eadheader/filedesc/titlestmt/titleproper[@type="filing"]')
 to_field 'title_ssm' do |record, accumulator|
-  result = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
-  result = result.collect do |n|
+  result = String.new
+  nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
+  nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').map(&:text)
-    n.xpath('child::node()').map(&:text)
-  end.join(' ')
+    n.children.each do |c|
+      result << case c.name
+                when 'unitdate'
+                  if c['type'] == 'bulk'
+                    "(majority within " + c.text + ")"
+                  else
+                    c.text
+                  end
+                else
+                  c.text
+                end
+    end
+  end
   accumulator << result
 end
 to_field 'title_formatted_ssm' do |record, accumulator|
-  result = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
-  result = result.collect do |n|
+  result = String.new
+  nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
+  nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').to_s
-    n.xpath('child::node()').to_s
-  end.join(' ')
+    n.children.each do |c|
+      result << case c.name
+                when 'unitdate'
+                  if c['type'] == 'bulk'
+                    "(majority within " + c.to_s + ")"
+                  else
+                    c.to_s
+                  end
+                else
+                  c.to_s
+                end
+    end
+  end
   accumulator << result
 end
 to_field 'title_teim', extract_xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
@@ -528,19 +552,44 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
 
   to_field 'title_filing_si', extract_xpath('./did/unittitle[not(@type) or ( @type != "sort" )]'), first_only
   to_field 'title_ssm' do |record, accumulator|
-    result = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
-    result = result.collect do |n|
+    result = String.new
+    nodeset = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
+    nodeset.each do |n|
       # n.xpath('child::node()[not(self::unitdate)]').map(&:text)
-      n.xpath('child::node()').map(&:text)
-    end.join(' ')
+      n.children.each do |c|
+        result << case c.name
+                  when 'unitdate'
+                    if c['type'] == 'bulk'
+                      "(majority within " + c.text + ")"
+                    else
+                      c.text
+                    end
+                  else
+                    c.text
+                  end
+      end
+    end
+
     accumulator << result
   end
   to_field 'title_formatted_ssm' do |record, accumulator|
-    result = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
-    result = result.collect do |n|
+    result = String.new
+    nodeset = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
+    nodeset.each do |n|
       # n.xpath('child::node()[not(self::unitdate)]').to_s
-      n.xpath('child::node()').to_s
-    end.join(' ')
+      n.children.each do |c|
+        result << case c.name
+                  when 'unitdate'
+                    if c['type'] == 'bulk'
+                      "(majority within " + c.to_s + ")"
+                    else
+                      c.to_s
+                    end
+                  else
+                    c.to_s
+                  end
+      end
+    end
     accumulator << result
   end
   to_field 'title_teim', extract_xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
