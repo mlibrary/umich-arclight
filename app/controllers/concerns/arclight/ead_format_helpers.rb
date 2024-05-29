@@ -39,7 +39,7 @@ module Arclight
     end
 
     def condense_whitespace(str)
-      str.squish.strip.gsub(/>[\n\s]+</, '><')
+      str.squish.strip.gsub(/>[\n\s]+</, '> <')
     end
 
     def ead_to_html_scrubber
