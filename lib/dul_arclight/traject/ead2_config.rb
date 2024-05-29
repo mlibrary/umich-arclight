@@ -171,14 +171,16 @@ to_field 'publicid_ssi', extract_xpath('/ead/eadheader/eadid/@publicid')
 # end
 
 to_field 'title_filing_si', extract_xpath('/ead/eadheader/filedesc/titlestmt/titleproper[@type="filing"]')
-to_field 'title_ssm' do |record, accumulator|
-  result = String.new
+to_field 'title_ssm' do |record, accumulator, context|
+  context.clipboard[:title_ssm] = true
+  result = +''
   nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
   nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').map(&:text)
     n.children.each do |c|
       result << case c.name
                 when 'unitdate'
+                  context.clipboard[:title_ssm] = false
                   if c['type'] == 'bulk'
                     ", (majority within " + c.text.strip + ")"
                   else
@@ -199,14 +201,16 @@ to_field 'title_ssm' do |record, accumulator|
   result = result.gsub(/^,\s/, '') # remove leading comma
   accumulator << result
 end
-to_field 'title_formatted_ssm' do |record, accumulator|
-  result = String.new
+to_field 'title_formatted_ssm' do |record, accumulator, context|
+  context.clipboard[:title_formatted_ssm] = true
+  result = +''
   nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
   nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').to_s
     n.children.each do |c|
       result << case c.name
                 when 'unitdate'
+                  context.clipboard[:title_formatted_ssm] = false
                   if c['type'] == 'bulk'
                     ", (majority within " + c.to_s.strip + ")"
                   else
@@ -282,14 +286,14 @@ end
 to_field 'normalized_title_ssm' do |_record, accumulator, context|
   date = context.output_hash['normalized_date_ssm']&.first
   title = context.output_hash['title_ssm']&.first
-  accumulator << Arclight::NormalizedTitle.new(title, date).to_s
+  accumulator << Arclight::NormalizedTitle.new(title, date, context.clipboard[:title_ssm]).to_s
 end
 
 # DUL CUSTOMIZATION: preserve formatting tags in titles
 to_field 'normalized_title_formatted_ssm' do |_record, accumulator, context|
   date = context.output_hash['normalized_date_ssm']&.first
   title = context.output_hash['title_formatted_ssm']&.first.to_s
-  accumulator << Arclight::NormalizedTitle.new(title, date).to_s
+  accumulator << Arclight::NormalizedTitle.new(title, date, context.clipboard[:title_formatted_ssm]).to_s
 end
 
 to_field 'collection_ssm' do |_record, accumulator, context|
@@ -567,14 +571,16 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
   end
 
   to_field 'title_filing_si', extract_xpath('./did/unittitle[not(@type) or ( @type != "sort" )]'), first_only
-  to_field 'title_ssm' do |record, accumulator|
-    result = String.new
+  to_field 'title_ssm' do |record, accumulator, context|
+    context.clipboard[:title_ssm] = true
+    result = +''
     nodeset = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
     nodeset.each do |n|
       # n.xpath('child::node()[not(self::unitdate)]').map(&:text)
       n.children.each do |c|
         result << case c.name
                   when 'unitdate'
+                    context.clipboard[:title_ssm] = false
                     if c['type'] == 'bulk'
                       "(majority within " + c.text.strip + ")"
                     else
@@ -595,14 +601,16 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
     result = result.gsub(/^,\s/, '') # remove leading comma
     accumulator << result
   end
-  to_field 'title_formatted_ssm' do |record, accumulator|
-    result = String.new
+  to_field 'title_formatted_ssm' do |record, accumulator, context|
+    context.clipboard[:title_formatted_ssm] = true
+    result = +''
     nodeset = record.xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
     nodeset.each do |n|
       # n.xpath('child::node()[not(self::unitdate)]').to_s
       n.children.each do |c|
         result << case c.name
                   when 'unitdate'
+                    context.clipboard[:title_formatted_ssm] = false
                     if c['type'] == 'bulk'
                       "(majority within " + c.to_s.strip + ")"
                     else
@@ -642,14 +650,14 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
   to_field 'normalized_title_ssm' do |_record, accumulator, context|
     date = context.output_hash['normalized_date_ssm']&.first
     title = context.output_hash['title_ssm']&.first
-    accumulator << Arclight::NormalizedTitle.new(title, date).to_s
+    accumulator << Arclight::NormalizedTitle.new(title, date, context.clipboard[:title_ssm]).to_s
   end
 
   # DUL CUSTOMIZATION: use DUL rules for NormalizedDate
   to_field 'normalized_title_formatted_ssm' do |_record, accumulator, context|
     date = context.output_hash['normalized_date_ssm']&.first
     title = context.output_hash['title_formatted_ssm']&.first.to_s
-    accumulator << Arclight::NormalizedTitle.new(title, date).to_s
+    accumulator << Arclight::NormalizedTitle.new(title, date, context.clipboard[:title_formatted_ssm]).to_s
   end
 
   # Aleph ID (esp. for request integration)
