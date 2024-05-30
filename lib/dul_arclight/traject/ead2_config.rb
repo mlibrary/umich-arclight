@@ -187,14 +187,10 @@ to_field 'title_ssm' do |record, accumulator, context|
                     ", " + c.text.strip
                   end
                 else
-                  # span = c.text.strip
-                  # span == ' ' ? '' : span
-                  c.text.strip
+                  c.text
                 end
     end
   end
-  # result = result.gsub(/\n/, '') # remove newlines
-  # result = result.gsub(/\s+\./, '.') # remove leading whitespace before period
   result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
   result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
   result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
@@ -217,14 +213,10 @@ to_field 'title_formatted_ssm' do |record, accumulator, context|
                     ", " + c.to_s.strip
                   end
                 else
-                  # span = c.to_s.strip
-                  # span == ' ' ? '' : span
-                  c.to_s.strip
+                  c.to_s
                 end
     end
   end
-  # result = result.gsub(/\n/, '') # remove newlines
-  # result = result.gsub(/\s+\./, '.') # remove leading whitespace before period
   result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
   result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
   result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
@@ -587,14 +579,10 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
                       ", " + c.text.strip
                     end
                   else
-                    # span = c.text.strip
-                    # span == ' ' ? '' : span
-                    c.text.strip
+                    c.text
                   end
       end
     end
-    # result = result.gsub(/\n/, '') # remove newlines
-    # result = result.gsub(/\s+\./, '.') # remove leading whitespace before period
     result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
     result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
     result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
@@ -617,14 +605,10 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
                       ", " + c.to_s.strip
                     end
                   else
-                    # span = c.to_s.strip
-                    # span == ' ' ? '' : span
-                    c.to_s.strip
+                    c.to_s
                   end
       end
     end
-    # result = result.gsub(/\n/, '') # remove newlines
-    # result = result.gsub(/\s+\./, '.') # remove leading whitespace before period
     result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
     result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
     result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
