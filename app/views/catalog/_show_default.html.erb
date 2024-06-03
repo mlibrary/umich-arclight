@@ -167,7 +167,13 @@
 <% end %>
 
 <% if document.is_checkbox_requestable? %>
-  <%= render "aeon_request_checkbox", document: document, class: 'px-0 pb-3 mt-n3', label_class: 'btn btn-outline-secondary btn-outline-request p-2', label: 'Request Item' %>
+  <%= render "aeon_request_checkbox", document: document, class: 'px-0 pb-3 mt-n3 d-flex align-items-center', label_class: 'btn btn-outline-secondary btn-outline-request p-2 m-0', label: 'Select Item' %>
+<% else %>
+  <% unless document.collection_has_requestable_components? || document.children? %>
+    <div class="mb-3">
+      <%= render partial: 'arclight/requests', locals: { document: document } %>
+    </div>
+  <% end %>
 <% end %>
 
 <%# ================ %>
@@ -251,16 +257,16 @@
   <%# ========================== %>
 
   <div class="contents-wrapper">
-  <h2 class="al-show-sub-heading" id="<%= t("arclight.views.show.sections.contents").parameterize %>">
-    <%= t("arclight.views.show.sections.contents") %>
-  </h2>
-  <div class="d-flex mt-3 mb-3">
-    <div class="flex-fill">
-      <%= render partial: 'arclight/requests', locals: { document: document } %>
+    <h2 class="al-show-sub-heading" id="<%= t("arclight.views.show.sections.contents").parameterize %>">
+      <%= t("arclight.views.show.sections.contents") %>
+    </h2>
+    <div class="d-flex mt-3 mb-3">
+      <div class="flex-fill">
+        <%= render partial: 'arclight/requests', locals: { document: document } %>
+      </div>
     </div>
-   </div>
   </div>
-  
+
   <%= document.non_component_contents %>
   <% if document.children? %>
     <%= content_tag(

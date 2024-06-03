@@ -20,4 +20,10 @@
       <span class="sr-only">Request "<%= document.aeon_item_sub_title_sr_only %>"</span>
     <% end %>
   </label>
+
+  <% if local_assigns[:label] %>
+    <div class="d-flex align-items-center" style="gap: 0.5rem">
+      <%= render "arclight/requests/aeon_hidden_form_request" %>
+    </div>
+  <% end %>
 </div>
