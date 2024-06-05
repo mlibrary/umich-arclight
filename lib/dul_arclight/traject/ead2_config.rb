@@ -177,15 +177,19 @@ to_field 'title_ssm' do |record, accumulator, context|
   nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
   nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').map(&:text)
+    first_date = true
     n.children.each do |c|
       result << case c.name
                 when 'unitdate'
                   context.clipboard[:title_ssm] = false
-                  if c['type'] == 'bulk'
-                    " (majority within " + c.text.strip + ")"
-                  else
-                    " " + c.text.strip
-                  end
+                  rv = +""
+                  rv << "," if first_date
+                  first_date = false
+                  rv << if c['type'] == 'bulk'
+                          " (majority within " + c.text.strip + ")"
+                        else
+                          " " + c.text.strip
+                        end
                 else
                   c.text
                 end
@@ -194,7 +198,7 @@ to_field 'title_ssm' do |record, accumulator, context|
   result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
   result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
   result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
-  result = result.gsub(/^,\s?/, '') # remove leading comma
+  result = result.gsub(/^,\s*/, '') # remove leading comma
   accumulator << result
 end
 to_field 'title_formatted_ssm' do |record, accumulator, context|
@@ -203,15 +207,19 @@ to_field 'title_formatted_ssm' do |record, accumulator, context|
   nodeset = record.xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
   nodeset.each do |n|
     # n.xpath('child::node()[not(self::unitdate)]').to_s
+    first_date = true
     n.children.each do |c|
       result << case c.name
                 when 'unitdate'
                   context.clipboard[:title_formatted_ssm] = false
-                  if c['type'] == 'bulk'
-                    " (majority within " + c.to_s.strip + ")"
-                  else
-                    " " + c.to_s.strip
-                  end
+                  rv = +""
+                  rv << "," if first_date
+                  first_date = false
+                  rv << if c['type'] == 'bulk'
+                          " (majority within " + c.to_s.strip + ")"
+                        else
+                          " " + c.to_s.strip
+                        end
                 else
                   c.to_s
                 end
@@ -220,7 +228,7 @@ to_field 'title_formatted_ssm' do |record, accumulator, context|
   result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
   result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
   result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
-  result = result.gsub(/^,\s?/, '') # remove leading comma
+  result = result.gsub(/^,\s*/, '') # remove leading comma
   accumulator << result
 end
 to_field 'title_teim', extract_xpath('/ead/archdesc/did/unittitle[not(@type) or ( @type != "sort" )]')
@@ -586,7 +594,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
     result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
     result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
     result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
-    result = result.gsub(/^,\s?/, '') # remove leading comma
+    result = result.gsub(/^,\s*/, '') # remove leading comma
     accumulator << result
   end
   to_field 'title_formatted_ssm' do |record, accumulator, context|
@@ -612,7 +620,7 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
     result = result.gsub(/\s+,/, ',') # remove leading whitespace before comma
     result = result.gsub(/,(\s|,)*,/, ',') # reduce multiple commas and interior whitespace to single comma
     result = result.gsub(/(,)(\S)/, '\1 \2') # add whitespace after comma
-    result = result.gsub(/^,\s?/, '') # remove leading comma
+    result = result.gsub(/^,\s*/, '') # remove leading comma
     accumulator << result
   end
   to_field 'title_teim', extract_xpath('./did/unittitle[not(@type) or ( @type != "sort" )]')
