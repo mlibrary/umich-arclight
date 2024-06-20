@@ -73,7 +73,9 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
   def abstract_or_scope
     abstracts = fetch('abstract_tesim', [])
     scopes = fetch('scopecontent_tesim', [])
-    values = (abstracts + scopes).uniq { |v| ActionController::Base.helpers.strip_tags(v) }.join(' ')
+    odds = fetch('odd_tesim', [])
+    notes = fetch('note_tesim', [])
+    values = (abstracts + scopes + odds + notes).uniq { |v| ActionController::Base.helpers.strip_tags(v) }.join(' ')
     render_html_tags(value: [values]) if values.present?
   end
 
