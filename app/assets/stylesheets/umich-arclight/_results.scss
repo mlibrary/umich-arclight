@@ -81,8 +81,6 @@
 
 /* Request/clear show actions toolbar */
 
-/* Show actions toolbar buttons for Request and Clear*/
-
 #context .actions-wrapper .al-show-actions {
   background-color: var(--color-blue-100);
 }
@@ -97,13 +95,20 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
+  position: relative;
   margin-bottom: .5rem;
   border-bottom: solid 1px var(--color-teal-300);
-  background-image: linear-gradient(to bottom, #f7f8f9, #f9fafb, #fbfbfc, #fdfdfd, #ffffff);
+  box-shadow: 0px 3px 3px -3px rgba(23, 130, 166, 0.58);
+  background-image: linear-gradient(to top, #f7f8f9, #f9fafb, #fbfbfc, #fdfdfd, #ffffff);
 }
 
 .al-show-actions-box-request > button {
   margin-right: .25rem;
+}
+
+.al-show-actions-box-request > button:hover {
+  box-shadow: 0 0 0 2px var(--color-maize-400), 0 0 0 3px var(--color-neutral-400);
+  border-radius: 2px !important;
 }
 
 .al-show-actions-toolbar > .request-checkbox {
@@ -124,4 +129,5 @@
 .badge-request {
   background-color: var(--color-pink-500);
   color: #fff;
+  font-size: 85%;
 }
