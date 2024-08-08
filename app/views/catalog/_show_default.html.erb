@@ -108,8 +108,8 @@
   <% end %>
 <% end %>
 
- <% if request_button_flag %>
- <div class="sticky-toolbar-top">
+<% if request_button_flag and document.is_possibly_requestable? %>
+<div class="sticky-toolbar-top">
   <nav class="al-show-actions-toolbar" aria-label="Actions">
       <div class="d-flex mt-3 mb-3">
         <div class="flex-fill">
