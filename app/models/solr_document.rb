@@ -186,6 +186,14 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     config_present && !container_types.empty? && container_requestable
   end
 
+  def is_aeon_requestable?
+    repository_config.request_config_present_for_type?('aeon_web_ead')
+  end
+
+  def is_possibly_requestable?
+    is_aeon_requestable? or collection_has_requestable_components?
+  end
+
   def is_linkable?
     (online_content? || number_of_children > 0 || restricted_component?)
   end

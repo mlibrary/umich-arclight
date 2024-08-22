@@ -17,6 +17,14 @@
   color: var(--color-neutral-400) !important;
 }
 
+#content #component-restrictions {
+  background-color: var(--color-maize-200);
+}
+
+#component-restrictions > p> a {
+  color: var(--color-teal-500);
+}
+
 /* Facets */
 
 #facets .facet-limit-active .card-header {
@@ -69,4 +77,57 @@
       clip: unset !important;
     }
   }
+}
+
+/* Request/clear show actions toolbar */
+
+#context .actions-wrapper .al-show-actions {
+  background-color: var(--color-blue-100);
+}
+
+.sticky-toolbar-top {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.al-show-actions-toolbar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  position: relative;
+  margin-bottom: .5rem;
+  border-bottom: solid 1px var(--color-teal-300);
+  box-shadow: 0px 3px 3px -3px rgba(23, 130, 166, 0.58);
+  background-image: linear-gradient(to top, #f7f8f9, #f9fafb, #fbfbfc, #fdfdfd, #ffffff);
+}
+
+.al-show-actions-box-request > button {
+  margin-right: .25rem;
+}
+
+.al-show-actions-box-request > button:hover {
+  box-shadow: 0 0 0 2px var(--color-maize-400), 0 0 0 3px var(--color-neutral-400);
+  border-radius: 2px !important;
+}
+
+.al-show-actions-toolbar > .request-checkbox {
+  display: flex;
+  align-items: center;
+  padding: .5rem 0;
+}
+
+.al-show-actions-toolbar > .request-checkbox > label {
+  color: var(--color-neutral-400);
+}
+
+.contents-wrapper > .al-show-sub-heading {
+  padding-top: 0;
+  border-top: none;
+}
+
+.badge-request {
+  background-color: var(--color-pink-500);
+  color: #fff;
+  font-size: 85%;
 }
