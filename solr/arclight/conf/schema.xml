@@ -406,6 +406,10 @@
    <copyField source="scopecontent_teim" dest="text" />
    <copyField source="separatedmaterial_teim" dest="text" />
    <copyField source="userestrict_teim" dest="text" />
+
+   <!-- grab Additional Descriptive Data section - <descgrp type="add"> -->
+   <copyField source="add_teim" dest="text" />
+
    <!-- grab structured data that's important -->
    <copyField source="unitid_ssm" dest="text" />
    <copyField source="unitid_ssm" dest="unitid_identifier_match" />

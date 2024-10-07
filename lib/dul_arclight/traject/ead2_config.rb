@@ -458,12 +458,6 @@ end
 to_field "add_tesim", extract_xpath("/ead/archdesc/descgrp[@type = 'add']", to_text: false)
 to_field "add_teim", extract_xpath("/ead/archdesc/descgrp[@type = 'add']")
 
-# to_field "para_tesim", extract_xpath("/ead/archdesc/descgrp/p", to_text: false)
-# to_field "para_teim", extract_xpath("/ead/archdesc/descgrp/p")
-#
-# to_field "index_tesim", extract_xpath("/ead/archdesc/index|/ead/archdesc/descgrp/index", to_text: false)
-# to_field "index_teim", extract_xpath("/ead/archdesc/index|/ead/archdesc/descgrp/index")
-
 DID_SEARCHABLE_NOTES_FIELDS.map do |selector|
   to_field "#{selector}_tesim", extract_xpath("/ead/archdesc/did/#{selector}", to_text: false)
   to_field "#{selector}_teim", extract_xpath("/ead/archdesc/did/#{selector}/*[local-name()!='head']")
@@ -994,6 +988,10 @@ compose 'components', ->(record, accumulator, _context) { accumulator.concat rec
     to_field "#{selector}_heading_ssm", extract_xpath("./#{selector}/head")
     to_field "#{selector}_teim", extract_xpath("./#{selector}/*[local-name()!='head']")
   end
+
+  to_field "add_tesim", extract_xpath("./descgrp[@type = 'add']", to_text: false)
+  to_field "add_teim", extract_xpath("./descgrp[@type = 'add']")
+
   DID_SEARCHABLE_NOTES_FIELDS.map do |selector|
     to_field "#{selector}_tesim", extract_xpath("./did/#{selector}", to_text: false)
     to_field "#{selector}_teim", extract_xpath("./did/#{selector}/*[local-name()!='head']")
