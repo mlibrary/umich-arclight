@@ -19,6 +19,9 @@ RUN apt-get update -yqq && \
 RUN wget -q https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
 RUN apt-get install -yqq --no-install-recommends ./wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
 
+RUN apt-get install -yqq --no-install-recommends libjemalloc2 && rm -rf /var/lib/apt/lists/*
+ENV LD_PRELOAD=libjemalloc.so.2
+
 ENV APP_PATH /opt/app
 RUN groupadd -g $GID -o $UNAME
 RUN useradd -m -d $APP_PATH -u $UID -g $GID -o -s /bin/bash $UNAME
