@@ -4,7 +4,7 @@ ARG UNAME=app-user
 ARG UID=1000
 ARG GID=1000
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN curl https://deb.nodesource.com/setup_12.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -28,7 +28,7 @@ ENV LD_PRELOAD=libjemalloc.so.2
 USER $UNAME
 COPY --chown=$UID:$GID Gemfile* /opt/app-root/
 
-ENV BUNDLE_PATH /gems
+ENV BUNDLE_PATH=/gems
 
 WORKDIR /opt/app-root
 RUN gem install 'bundler:~>2.2.21'

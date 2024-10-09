@@ -4,7 +4,7 @@ ARG UNAME=app
 ARG UID=1000
 ARG GID=1000
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN curl https://deb.nodesource.com/setup_12.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -22,17 +22,17 @@ RUN apt-get install -yqq --no-install-recommends ./wkhtmltox_0.12.6.1-2.bullseye
 RUN apt-get install -yqq --no-install-recommends libjemalloc2 && rm -rf /var/lib/apt/lists/*
 ENV LD_PRELOAD=libjemalloc.so.2
 
-ENV APP_PATH /opt/app
+ENV APP_PATH=/opt/app
 RUN groupadd -g $GID -o $UNAME
 RUN useradd -m -d $APP_PATH -u $UID -g $GID -o -s /bin/bash $UNAME
 
-ENV DATA_PATH /var/opt/app
+ENV DATA_PATH=/var/opt/app
 RUN mkdir -p $DATA_PATH && chown $UID:$GID $DATA_PATH
 
-ENV BUNDLE_PATH /var/opt/app/gems
+ENV BUNDLE_PATH=/var/opt/app/gems
 RUN mkdir -p $BUNDLE_PATH && chown $UID:$GID $BUNDLE_PATH
 
-ENV FINDING_AID_DATA /var/opt/app/data
+ENV FINDING_AID_DATA=/var/opt/app/data
 RUN mkdir -p $FINDING_AID_DATA && chown $UID:$GID $FINDING_AID_DATA
 
 COPY --chown=$UID:$GID . $APP_PATH
@@ -47,7 +47,7 @@ RUN bundle config --local build.sassc --disable-march-tune-native
 RUN bundle install
 #RUN yarn install
 
-ENV RAILS_ENV production
+ENV RAILS_ENV=production
 RUN bundle exec rails assets:precompile
 
 CMD ["bundle", "exec", "bin/rails", "s", "-b", "0.0.0.0"]
