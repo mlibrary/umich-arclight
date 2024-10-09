@@ -41,11 +41,11 @@ COPY --chown=$UID:$GID ./sample-ead $FINDING_AID_DATA
 USER $UNAME
 WORKDIR $APP_PATH
 
-RUN rm *.lock
+#RUN rm *.lock
 RUN gem install 'bundler:~>2.2.21'
 RUN bundle config --local build.sassc --disable-march-tune-native
 RUN bundle install
-RUN yarn install
+#RUN yarn install
 
 ENV RAILS_ENV production
 RUN bundle exec rails assets:precompile
