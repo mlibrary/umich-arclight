@@ -1119,5 +1119,9 @@ ARC_84_EADID_MAP = {
   "umich-scl-weber" => "umich-scl-ams0197",
   "umich-scl-inglisa" => "umich-scl-ams0198",
   "umich-scl-warresisters" => "umich-scl-ams0199",
-  "umich-bhl-85307" => "umich-bhl-2009195"
+  "umich-bhl-85307" => "umich-bhl-2009195",
+  "umich-scl-stover" => "umich-scl-ams0209",
+  "umich-scl-jacobsc" => "umich-scl-ams0210",
+  "umich-scl-broadside" => "umich-scl-ams0211",
+  "umich-scl-bloor" => "umich-scl-ams0212"
 }
