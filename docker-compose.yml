@@ -60,6 +60,11 @@ services:
       - data:/var/opt/app/data
       - gems:/var/opt/app/gems
     healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8282" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
       disable: true
     stop_signal: SIGQUIT
     command: bundle exec rake resque:pool
@@ -73,10 +78,16 @@ services:
       - .:/opt/app
       - gems:/var/opt/app/gems
     healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
       disable: true
     command: bundle exec resque-web -p 8080 -r redis:6379 -F
 volumes:
   data:
+    driver: local
     driver_opts:
       type: none
       device: ${PWD}/data
@@ -84,6 +95,7 @@ volumes:
   gems:
   db-data:
   solr-conf:
+    driver: local
     driver_opts:
       type: none
       device: ${PWD}/solr/arclight

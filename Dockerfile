@@ -5,8 +5,8 @@ ARG UID=1000
 ARG GID=1000
 ARG ARCH=amd64
 
-ENV BUNDLE_PATH /var/opt/app/gems
-ENV FINDING_AID_DATA /var/opt/app/data
+ENV BUNDLE_PATH=/var/opt/app/gems
+ENV FINDING_AID_DATA=/var/opt/app/data
 
 RUN curl https://deb.nodesource.com/setup_12.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
