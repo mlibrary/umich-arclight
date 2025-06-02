@@ -234,3 +234,22 @@ mlibraryead:
     using_materials: 'Finding aids describe collections of primary sources and other unique, original, or rare materials. Access to the original physical items, when available, requires requesting items for use in the reading room associated with a given collection. Items may not be requested for offsite use.'
     visitor_info: '<p>The Evangeline Marie Lehman Papers and Voice of America African Music Collection recordings are held at the Music Library.  Please contact them for access: <a href="https://www.lib.umich.edu/locations-and-hours/music-library">https://www.lib.umich.edu/locations-and-hours/music-library</a></p>
                   <p>The Jon Cohen AIDS Research Collection is held in the Special Collections Research Center.  Please contact them for access: <a href="https://www.lib.umich.edu/locations-and-hours/special-collections-research-center">Special Collections Research Center -- Visit</a></p>'
+asialibrary:
+  name: 'University of Michigan Asia Library'
+  about_url: https://www.lib.umich.edu/locations-and-hours/asia-library
+  description: "The Asia Library is home to one of the largest East Asian language collections in North America. We provide collection access and research services to support the robust academic communities in Chinese, Japanese, and Korean studies at U-M and beyond. This site contains finding aids of Asia Library's unique archival collections that span a variety of topics in East Asian studies."
+  building: 'Harlan Hatcher Graduate Library (North)'
+  address1: '913 S. University Avenue'
+  address2: ''
+  city: 'Ann Arbor'
+  state: 'MI'
+  zip: '48109-1190'
+  country: 'USA'
+  phone: ''
+  contact_info: 'asialibrary@umich.edu'
+  thumbnail_url: 'https://www.lib.umich.edu/static/5b35df0d52e5aeb7ad9fa7adae1b4398/057ba/Hatcher-Asia-Lib-Sep2022-1185x790_edited.jpg'
+  repo_about:
+    using_materials: 'Finding aids describe collections of unique, original, or rare materials located at the Asia Library Special Collection room. These collections are non-circulating and must be used in the Asia Library reading room. Requests for collection material must be made at least 7 days in advance of a planned visit.'
+    visitor_info: 'For more information <a href="https://www.lib.umich.edu/locations-and-hours/asia-library">Asia Library -- Visit</a>.'
+    how_to_request: 'To request material, please email asialibrary@umich.edu for assistance at least 7 days in advance of a planned visit.'
+
