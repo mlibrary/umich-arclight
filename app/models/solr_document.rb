@@ -294,6 +294,10 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
     first('total_digital_object_count_isim') || 0
   end
 
+  def has_digital_objects?
+    total_digital_object_count.positive?
+  end
+
   # All unique values for @role in DAOs found anywhere in a collection
   def all_dao_roles
     fetch('all_dao_roles_ssim', [])
