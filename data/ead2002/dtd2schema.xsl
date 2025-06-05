@@ -56,7 +56,7 @@
 	<!-- Path to schema -->
 
 	<xsl:variable name="schemaPath">
-		<xsl:text>../xsd</xsl:text>
+		<xsl:text>../</xsl:text>
 	</xsl:variable>
 
 	<!-- Variables for namespace and processing instructions -->
