@@ -62,7 +62,7 @@ class FindingaidsController < ApplicationController
         if @findingaid.error.blank?
           doc = Nokogiri::XML(uploaded_file)
           if doc.errors.present?
-            @findingaid.error = "Error XML parse: " + errors.join("<br>")
+            @findingaid.error = "Error XML parse:<br>" + errors.join("<br>")
             @findingaid.state = "errored"
           end
         end
@@ -80,7 +80,7 @@ class FindingaidsController < ApplicationController
           doc_with_dtd_loaded = Nokogiri::XML::Document.parse(uploaded_file, nil, nil, options)
           errors = doc_with_dtd_loaded.external_subset&.validate(doc_with_dtd_loaded)
           if errors.present?
-            @findingaid.error = "Error XML DTD validate: " + errors.join("<br>")
+            @findingaid.error = "Error XML DTD validate:<br>" + errors.join("<br>")
             @findingaid.state = "errored"
           end
         end
@@ -98,7 +98,7 @@ class FindingaidsController < ApplicationController
           stylesheet = Nokogiri::XSLT.parse(Rails.root.join("data/ead2002/dtd2schema.xsl").read)
           doc_with_xlink = stylesheet.transform(doc)
           if doc_with_xlink.errors.present?
-            @findingaid.error = "Error XML transform: " + errors.join("<br>")
+            @findingaid.error = "Error XML transform:<br>" + errors.join("<br>")
             @findingaid.state = "errored"
           end
         end
@@ -113,7 +113,10 @@ class FindingaidsController < ApplicationController
           schema = Nokogiri::XML::Schema(Rails.root.join("data/ead2002/ead2002.xsd").read, Nokogiri::XML::ParseOptions::DEFAULT_SCHEMA & ~Nokogiri::XML::ParseOptions::NONET)
           errors = schema.validate(doc_with_xlink)
           if errors.present?
-            @findingaid.error = "Error XML schema validate: " + errors.join("; ")
+            @findingaid.error = "Error XML schema validate:<br>" +
+                                "Document after DTD to Schema transformation:<br>" +
+                                "<textarea id=\"TxtXmlAfter\" rows=\"25\" cols=\"120\" style=\"white-space: pre;\" readonly=\"readonly\">" + doc_with_xlink.to_xml + "</textarea><br>" +
+                                errors.join("<br>")
             @findingaid.state = "errored"
           end
         end
