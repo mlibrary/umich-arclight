@@ -93,7 +93,7 @@
   <nav class="al-show-actions-toolbar">
   <%= render "aeon_request_checkbox", document: document, label_class: 'btn btn-outline-secondary btn-outline-request m-0', label: 'Select Item' %>
   </nav>
-</div>  
+</div>
   <% request_button_flag = false %>
 <% else %>
   <% unless document.collection_has_requestable_components? || (document.level == 'collection') %>
@@ -163,6 +163,36 @@
   <div class='collection-banner flex-grow-1'>
     <i class="fas fa-archive"></i>
     <h1><%= document.normalized_title %></h1>
+    <% if document.has_digital_objects? %>
+    <div class="card online-contents border-0">
+      <div class="col-md-12 banner-wrapper rounded-2 banner-online d-flex flex-row">
+        <div class="banner-part banner-heading rounded-start-2">
+          <div class="al-online-content-icon me-2">
+        <span class="blacklight-icons blacklight-icons-online">
+<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 640 512"><path d="M608 0H160a32 32 0 0 0-32 32v96h160V64h192v320h128a32 32 0 0 0 32-32V32a32 32 0 0 0-32-32zM232 103a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm352 208a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm-168 57H32a32 32 0 0 0-32 32v288a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32V192a32 32 0 0 0-32-32zM96 224a32 32 0 1 1-32 32 32 32 0 0 1 32-32zm288 224H64v-32l64-64 32 32 128-128 96 96z"></path></svg>
+</span>
+          </div>
+
+          <span class="banner-heading-text d-none d-xl-inline">Digital Materials</span>
+        </div>
+        <div class="banner-part banner-shadow"></div>
+        <div class="banner-part banner-message flex-grow-1">
+          <div class="mb-0 banner-message-text">
+            Some materials from this collection are available online or by request.<br>
+            <div class="dc-links d-flex flex-wrap">
+              <%= link_to search_action_path(f: { has_online_content_ssim: ["online"], repository_sim: [document.repository], collection_sim: [document.collection_name] }),
+                           class: "banner-link banner-link-filter",
+                           aria: { label: 'limit to components with online access' },
+                           data: { ga_label: 'filter to online access' } do %>
+                <span class="fas fa-filter"></span> Only view items with digital materials
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
   </div>
 
   <%# =================== %>
@@ -173,7 +203,6 @@
       <%#= render partial: 'catalog/arclight_bookmark_control', locals: { document: document } %>
 <!--    </div>-->
 <!--  </div>-->
-
 </div>
 
 <div class="mb-2 d-lg-none">
