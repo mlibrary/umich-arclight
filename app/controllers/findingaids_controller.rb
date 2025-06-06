@@ -113,10 +113,10 @@ class FindingaidsController < ApplicationController
           schema = Nokogiri::XML::Schema(Rails.root.join("data/ead2002/ead2002.xsd").read, Nokogiri::XML::ParseOptions::DEFAULT_SCHEMA & ~Nokogiri::XML::ParseOptions::NONET)
           errors = schema.validate(doc_with_xlink)
           if errors.present?
-            @findingaid.error = "Error XML schema validate:<br>" +
-                                "Document after DTD to Schema transformation:<br>" +
-                                "<textarea id=\"TxtXmlAfter\" rows=\"25\" cols=\"120\" style=\"white-space: pre;\" readonly=\"readonly\">" + doc_with_xlink.to_xml + "</textarea><br>" +
-                                errors.join("<br>")
+            @findingaid.error = "Error XML schema validate:<br>" \
+              "Document after DTD to Schema transformation:<br>" \
+              "<textarea id=\"TxtXmlAfter\" rows=\"25\" cols=\"120\" style=\"white-space: pre;\" readonly=\"readonly\">" + doc_with_xlink.to_xml + "</textarea><br>" +
+              errors.join("<br>")
             @findingaid.state = "errored"
           end
         end
