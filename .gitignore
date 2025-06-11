@@ -5,8 +5,9 @@
 /.local
 /.yarn
 /.vegas
-/data
+/data/*
 !/data/ead2002
+!/data/fonts
 /log
 /node_modules
 /resque_web
