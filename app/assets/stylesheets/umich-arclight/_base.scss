@@ -244,3 +244,46 @@ mark, .mark {
     padding-top:1rem;
   }
 }
+
+/* ======================== */
+/* Banners / Callouts      */
+/* ====================== */
+
+.umich-lib-callout {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: solid 1px #E5E9ED;
+  border-radius: 4px;
+}
+
+.umich-lib-callout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.callout--content > p {
+  font-weight: var(--semibold);
+  margin-bottom: .35rem;
+}
+
+.callout--content > a.callout--link {
+  color: var(--color-neutral-400);
+}
+
+.umich-lib-callout.callout--content {
+  display: flex;
+}
+
+.callout--content h2 {
+  font-size: 1.15rem;
+}
+
+.umich-lib-callout.success {
+  background-color: var(--color-green-100);
+  border-left: solid 4px var(--color-green-400);
+  &::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='24' viewBox='0 0 640 512'%3E%3Cpath fill='%23198539' d='M608 0H160a32 32 0 0 0-32 32v96h160V64h192v320h128a32 32 0 0 0 32-32V32a32 32 0 0 0-32-32zM232 103a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm352 208a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm-168 57H32a32 32 0 0 0-32 32v288a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32V192a32 32 0 0 0-32-32zM96 224a32 32 0 1 1-32 32 32 32 0 0 1 32-32zm288 224H64v-32l64-64 32 32 128-128 96 96z'%3E%3C/path%3E%3C/svg%3E%0A");    
+    margin-right: .75rem;
+    padding-top: .25rem; 
+  }
+}
