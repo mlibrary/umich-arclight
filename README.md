@@ -16,7 +16,7 @@ alias abe="dce app bundle exec"
 ```shell
 docker-compose build app
 ```
-### Bring up development environment
+### Bring up the development environment
 ```shell
 docker-compose up -d
 ```
@@ -27,7 +27,7 @@ NOTES
 > docker-compose exec -- app gem install 'bundler:~>2.2.21'
 > docker-compose exec -- app bundle config --local build.sassc --disable-march-tune-native
 > ```
-> This was moved into the Dockerfile so it is no longer is necessary but is left here as a reminder so it will not be forgotten.  
+> This was moved into the Dockerfile, so it is no longer necessary but is left here as a reminder so it will not be forgotten.  
 > 
 > Need to revisit why this is necessary in the first place!
 ### Bundle install
@@ -41,12 +41,12 @@ NOTES
 docker-compose exec -- app yarn install
 ```
 NOTES
-* Investigate using a volume for **node_modules** directory like we do for **gems**
+* Investigate using a volume for the **node_modules** directory like we do for **gems**
 ### Setup databases
 ```shell
 docker-compose exec -- app bundle exec rails db:setup
 ```
-If you need to recreate the databases run db:drop and then db:setup.
+If you need to recreate the databases, run db:drop and then db:setup.
 ```shell
 docker-compose exec -- app bundle exec rails db:drop
 docker-compose exec -- app bundle exec rails db:setup
@@ -59,7 +59,7 @@ NOTES
 docker-compose exec -- solr solr create_core -d umich-arclight -c umich-arclight-development 
 docker-compose exec -- solr solr create_core -d umich-arclight -c umich-arclight-test 
 ```
-If you need to recreate a core run delete and create_core (e.g. umich-arclight-test)
+If you need to recreate a core, run delete and create_core (e.g., umich-arclight-test)
 ```shell
 docker-compose exec -- solr solr delete -c umich-arclight-test
 docker-compose exec -- solr solr create_core -d umich-arclight -c umich-arclight-test 
@@ -97,8 +97,8 @@ docker-compose up -d
 docker-compose exec -- app bundle exec rails s -b 0.0.0.0
 ```
 The gems, database, solr, and redis use volumes to persit between the ups and downs of development.
-When things get flakey you have the option to simply delete any or all volumes after you bring it all down.
-If you remove all volumes just repeat the [Development quick start](#development-quick-start), otherwise
+When things get flakey, you can delete any or all volumes after you bring it all down.
+If you remove all volumes, just repeat the [Development quick start;](#development-quick-start) otherwise
 you'll need to run the appropriate steps depending on which volumes you deleted:
 * For gems run the [Bundle install](#bundle-install) and [Restart Resque and Resque-Web](#restart-resque-and-resque-web) steps.
 * For database run the [Setup databases](#setup-databases) step.
@@ -127,7 +127,7 @@ The convention is for EAD XML files to be located in the appropriate repository 
     /clements
     ...
 ```
-If you don't have any particular EAD XML files you can just copy the **sample-ead** directory into the application data directory.
+If you don't have any particular EAD XML files, you can just copy the **sample-ead** directory into the application data directory.
 ```shell
 docker-compose exec -- app cp -r sample-ead /var/opt/app/data/ead
 ```
