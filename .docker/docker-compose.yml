@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_DB=arclight
+      - POSTGRES_PASSWORD=arclight
+
+  solr:
+    image: solr:8-slim
+    volumes:
+      - ../solr/arclight/conf:/solr_config:ro
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - arclight
+      - /solr_config
+
+  app:
+    image: dul-arclight
+    build:
+      dockerfile: Dockerfile.staging
+      context: ../.bundle/ruby/2.7.0/gems/blacklight_range_limit-7.4.0/vendor/assets/javascripts
+    depends_on:
+      - db
+      - solr
+    # container_name: app
+    environment:
+      - DATABASE_URL=postgresql://postgres:arclight@db/arclight
+      - GOOGLE_ANALYTICS_DEBUG=false
+      - REDIS_URL=redis://redis:6379
+      - SOLR_URL=http://solr:8983/solr/arclight
