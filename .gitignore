@@ -5,18 +5,15 @@
 /.local
 /.yarn
 /.vegas
-/data
-!/data/ead2002
 /log
 /node_modules
 /resque_web
-/sample-ead
-!/sample-ead/ead
 /spec/examples.txt
 **/tmp
 /vendor/bundle
-
+.bash_history
 .byebug_history
+.gitconfig
 .rspec_status
 
 # Ignore master key for decrypting credentials and more.

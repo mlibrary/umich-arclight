@@ -3,7 +3,6 @@ FROM ruby:2.7
 ARG UNAME=app
 ARG UID=1000
 ARG GID=1000
-ARG ARCH=amd64
 
 ENV BUNDLE_PATH=/var/opt/app/gems
 ENV FINDING_AID_DATA=/var/opt/app/data
@@ -15,8 +14,10 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update -yqq && \
     apt-get install -yqq --no-install-recommends vim nodejs yarn
 
-RUN wget -q https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb
-RUN apt-get install -yqq --no-install-recommends ./wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb
+# Download and install wkhtmltopdf matching the target architecture (amd64/arm64)
+RUN ARCH="$(dpkg --print-architecture)" && \
+    wget -q "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb" && \
+    apt-get install -yqq --no-install-recommends "./wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb"
 
 RUN groupadd -g $GID -o $UNAME
 RUN useradd -m -d /opt/app -u $UID -g $GID -o -s /bin/bash $UNAME
