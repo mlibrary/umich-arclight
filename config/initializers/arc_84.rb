@@ -1127,5 +1127,12 @@ ARC_84_EADID_MAP = {
   "umich-scl-kaczynski" => "umich-scl-ams0239",
   "umich-scl-sayles" => "umich-scl-ams0220",
   "umich-scl-potter" => "umich-scl-ams0011",
-  "umich-scl-ardis" => "umich-scl-ams0191"
+  "umich-scl-ardis" => "umich-scl-ams0191",
+  "umich-scl-madgett" => "umich-scl-ams0243",
+  "umich-scl-vvb" => "umich-scl-ams0244",
+  "umich-scl-labadie-waren" => "umich-scl-ams0247",
+  "umich-scl-swinburne" => "umich-scl-ams0262",
+  "umich-scl-power-kruger" => "umich-scl-ams0263",
+  "umich-scl-walp" => "umich-scl-ams0265"
+
 }
