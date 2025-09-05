@@ -329,6 +329,8 @@ module UmArclight
             link['href'] = CGI.unescape(link['href'])
           end
         end
+        # ARC-114 Chinese characters were missing (Hack to include font as fallback font)
+        doc.css("body").first << '<div style="font-family: UnifontExMono; visibility: hidden; font-size: 1px;">x</div>'
       end
 
       def build_package_html_toc
@@ -384,6 +386,16 @@ module UmArclight
         @fonts.each do |filename|
           placeholder_el.add_next_sibling "<link rel='stylesheet' href='./assets/#{filename}'>"
         end
+
+        # ARC-114 Chinese characters were missing (Hack to include font as fallback font)
+        placeholder_el.add_next_sibling <<~STYLE
+          <style>
+            @font-face {
+              font-family: 'UnifontExMono';
+              src: url('../../../fonts/UnifontExMono.woff') format('woff');
+            }
+          </style>
+        STYLE
 
         placeholder_el.unlink
       end
