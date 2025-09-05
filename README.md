@@ -11,16 +11,10 @@ alias dc="docker-compose"
 alias dce="dc exec --"
 alias abe="dce app bundle exec"
 ```
-NOTES
-* To revert back to the old way just copy **docker-compose.bak** over **docker-compose.yml** file. a.k.a. `cp docker-compose.bak docker-compose.yml`
 ### Build application image
-The default is **amd64** architecture a.k.a. Intel
+
 ```shell
 docker-compose build app
-```
-For Apple Silicon use **arm64** architecture 
-```shell
-docker-compose build --build-arg ARCH=arm64 app
 ```
 ### Bring up development environment
 ```shell
@@ -83,6 +77,10 @@ NOTES
 * The **REDIS_URL** is referenced in the **./config/cable.yml** file.
 * The environment variable **REDIS_URL** takes precedence over configured values.
 * Environment variable **REDIS_URL** is set to **redis://redis:6379** in the **docker-compose.yml** file.
+### Initialize the data directory
+```shell
+docker-compose exec -- app cp -r data /var/opt/app/data
+```
 ### Start development rails server
 ```shell
 docker-compose exec -- app bundle exec rails s -b 0.0.0.0
@@ -107,7 +105,7 @@ you'll need to run the appropriate steps depending on which volumes you deleted:
 * For solr run the [Create solr cores](#create-solr-cores) step.
 * For redis there is nothing else to do.
 ## Indexing [Encoded Archival Description (EAD)](https://www.loc.gov/ead/eadschema.html) Files
-Initially the application data directory contains only the **ead2002** directory which contains the 2002 specifications.
+The application data directory contains the **ead2002** directory which contains the 2002 specifications.
 ```text
 /var/opt/app/data/ead2002
   /related_optional
@@ -115,7 +113,12 @@ Initially the application data directory contains only the **ead2002** directory
   ead.dtd
   ead2002.xsd
 ```
-The convention is for finding aid EAD XML files to be located in the appropriate repository subdirectory under the **ead** directory in the application data directory where the repository **slug** is used as the subdirectory name.
+and the **fonts** directory which contains additional fonts used by the application.
+```text
+/var/opt/app/data/fonts
+  /UnifontExMono.woff
+ ```
+The convention is for EAD XML files to be located in the appropriate repository subdirectory under the **ead** directory in the application data directory where the repository **slug** is used as the subdirectory name.
 ```text
 /var/opt/app/data
   /ead
@@ -124,17 +127,12 @@ The convention is for finding aid EAD XML files to be located in the appropriate
     /clements
     ...
 ```
-If you don't have any particular finding aid EAD XML files you can just copy the **sample-ead/ead** directory into the application data directory.
+If you don't have any particular EAD XML files you can just copy the **sample-ead** directory into the application data directory.
 ```shell
-docker-compose exec -- app cp -r sample-ead/ead /var/opt/app/data
-```
-or equivalently (because of the way the volume is mapped in the docker-compose.yml file)
-```shell
-cp -r ./sample-ead/ead ./data
+docker-compose exec -- app cp -r sample-ead /var/opt/app/data/ead
 ```
 NOTES
 * Environment variable **FINDING_AID_DATA** is set to /var/opt/app/data in the **Dockerfile**.
-* The docker volume **data** is mapped to **${PWD}/data** (a.k.a. /opt/app/data) in the **docker-compose.yml** file.
 ### Index all the EAD files.
 ```shell
 docker-compose exec -- app bundle exec rake dul_arclight:reindex_everything

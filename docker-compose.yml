@@ -37,7 +37,7 @@ services:
       - SOLR_JAVA_MEM=-Xms1024m -Xmx1024m
       - SOLR_HEAP=1024m
     volumes:
-      - solr-conf:/opt/solr/server/solr/configsets/umich-arclight
+      - ./solr/arclight:/opt/solr/server/solr/configsets/umich-arclight
       - solr-data:/var/solr
   redis:
     image: redis:6-buster
@@ -87,18 +87,7 @@ services:
     command: bundle exec resque-web -p 8080 -r redis:6379 -F
 volumes:
   data:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${PWD}/data
-      o: bind
   gems:
   db-data:
-  solr-conf:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${PWD}/solr/arclight
-      o: bind
   solr-data:
   redis-data:
