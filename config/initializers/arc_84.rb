@@ -1146,5 +1146,4 @@ ARC_84_EADID_MAP = {
   "umich-scl-culephemeradairy" => "umich-scl-ams0304",
   "umich-scl-culephemeracocoaandchocolate" => "umich-scl-ams0305",
   "umich-scl-faulkner" => "umich-scl-ams0308"
-
 }
