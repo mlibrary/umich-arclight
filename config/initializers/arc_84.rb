@@ -1133,6 +1133,18 @@ ARC_84_EADID_MAP = {
   "umich-scl-labadie-waren" => "umich-scl-ams0247",
   "umich-scl-swinburne" => "umich-scl-ams0262",
   "umich-scl-power-kruger" => "umich-scl-ams0263",
-  "umich-scl-walp" => "umich-scl-ams0265"
+  "umich-scl-walp" => "umich-scl-ams0265",
+  "umich-scl-vvb" => "umich-scl-ams0244",
+  "umich-scl-madgett" => "umich-scl-ams0243",
+  "umich-scl-kaufman" => "umich-scl-ams0286",
+  "umich-scl-hayden" => "umich-scl-ams0287",
+  "umich-scl-mills" => "umich-scl-ams0288",
+  "umich-scl-reuben" => "umich-scl-ams0289",
+  "umich-scl-culephemeracondiments" => "umich-scl-ams0299",
+  "umich-scl-culephemerabeverages" => "umich-scl-ams0301",
+  "umich-scl-culephemerachildren" => "umich-scl-ams0303",
+  "umich-scl-culephemeradairy" => "umich-scl-ams0304",
+  "umich-scl-culephemeracocoaandchocolate" => "umich-scl-ams0305",
+  "umich-scl-faulkner" => "umich-scl-ams0308"
 
 }
