@@ -40,7 +40,7 @@ services:
       - ./solr/arclight:/opt/solr/server/solr/configsets/umich-arclight
       - solr-data:/var/solr
   redis:
-    image: redis:6-buster
+    image: redis:8-bookworm
     ports:
       - "6379:6379"
     volumes:
