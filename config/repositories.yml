@@ -253,3 +253,21 @@ ghcc:
     using_materials: 'Materials do not circulate and must be accessed in the reading room at the Frances Willson Thompson Library on the University of Michigan Flint campus. The archive is open for public use from 10 am - 6 pm Monday-Friday. Although we prefer patrons to contact the archive before their visit to prepare requested materials, it is not necessary. All are welcome.'
     visitor_info: 'For more information and to request material, please email <a href="mailto:ghcc-archives@umich.edu">ghcc-archives@umich.edu</a>.'
     how_to_request: ''
+asialibrary:
+  name: 'University of Michigan Asia Library'
+  about_url: https://www.lib.umich.edu/locations-and-hours/asia-library
+  description: "The Asia Library is home to one of the largest East Asian language collections in North America. We provide collection access and research services to support the robust academic communities in Chinese, Japanese, and Korean studies at U-M and beyond. This site contains finding aids of Asia Library's unique archival collections that span a variety of topics in East Asian studies."
+  building: 'Harlan Hatcher Graduate Library (North)'
+  address1: '913 S. University Avenue'
+  address2: ''
+  city: 'Ann Arbor'
+  state: 'MI'
+  zip: '48109-1190'
+  country: 'USA'
+  phone: ''
+  contact_info: 'asialibrary@umich.edu'
+  thumbnail_url: 'https://www.lib.umich.edu/static/5b35df0d52e5aeb7ad9fa7adae1b4398/057ba/Hatcher-Asia-Lib-Sep2022-1185x790_edited.jpg'
+  repo_about:
+    using_materials: 'Finding aids describe collections of unique, original, or rare materials located at the Asia Library Special Collection room. These collections are non-circulating and must be used in the Asia Library reading room. Requests for collection material must be made at least 7 days in advance of a planned visit.'
+    visitor_info: 'For more information <a href="https://www.lib.umich.edu/locations-and-hours/asia-library">Asia Library -- Visit</a>.'
+    how_to_request: 'To request material, please email asialibrary@umich.edu for assistance at least 7 days in advance of a planned visit.'
