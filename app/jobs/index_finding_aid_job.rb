@@ -49,7 +49,10 @@ class IndexFindingAidJob < ApplicationJob
       end
     end
   rescue => e
-    ::IngestAutomationJob.perform_later('index.failure', src_path: src_path, archive_path: dest_path, ead_id: ead_id, err_msg: e.message)
-    raise DulArclight::IndexError, e.message
+    error_msg = "#{e.class}: #{e.message}"
+    Rails.logger.error "IndexFindingAidJob failed for #{src_path}: #{error_msg}"
+    Rails.logger.error e.backtrace.join("\n") if e.backtrace
+    ::IngestAutomationJob.perform_later('index.failure', src_path: src_path, archive_path: dest_path, ead_id: ead_id, err_msg: error_msg)
+    raise DulArclight::IndexError, error_msg
   end
 end
