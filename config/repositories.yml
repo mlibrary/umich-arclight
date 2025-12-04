@@ -235,3 +235,21 @@ mlibraryead:
     using_materials: 'Finding aids describe collections of primary sources and other unique, original, or rare materials. Access to the original physical items, when available, requires requesting items for use in the reading room associated with a given collection. Items may not be requested for offsite use.'
     visitor_info: '<p>The Evangeline Marie Lehman Papers and Voice of America African Music Collection recordings are held at the Music Library.  Please contact them for access: <a href="https://www.lib.umich.edu/locations-and-hours/music-library">https://www.lib.umich.edu/locations-and-hours/music-library</a></p>
                   <p>The Jon Cohen AIDS Research Collection is held in the Special Collections Research Center.  Please contact them for access: <a href="https://www.lib.umich.edu/locations-and-hours/special-collections-research-center">Special Collections Research Center -- Visit</a></p>'
+ghcc:
+  name: 'University of Michigan Genesee Historical Collections Center'
+  about_url: https://libguides.umflint.edu/ghcc
+  description: "The Genesee Historical Collections Center is the University of Michigan-Flint's institutional and community archive. It is located on the second floor of the Frances Willson Thompson Library on the UM-Flint campus. In addition to UM-Flint history, the archive focuses on the political, social, and civic life of Flint residents. Important collections include the UAW/599 Sitdown Strike collection, the Olive Beasley collection, and the Donald Reigle collection."
+  building: 'Frances Willson Thompson Library'
+  address1: '227 Frances Willson Thompson Library'
+  address2: ''
+  city: 'Flint'
+  state: 'MI'
+  zip: '48502'
+  country: 'USA'
+  phone: '810-762-3402'
+  contact_info: 'ghcc-archives@umich.edu'
+  thumbnail_url: '/thumbnails/1000002543.jpg'
+  repo_about:
+    using_materials: 'Materials do not circulate and must be accessed in the reading room at the Frances Willson Thompson Library on the University of Michigan Flint campus. The archive is open for public use from 10 am - 6 pm Monday-Friday. Although we prefer patrons to contact the archive before their visit to prepare requested materials, it is not necessary. All are welcome.'
+    visitor_info: 'For more information and to request material, please email <a href="mailto:ghcc-archives@umich.edu">ghcc-archives@umich.edu</a>.'
+    how_to_request: ''
