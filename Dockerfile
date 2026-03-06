@@ -7,7 +7,7 @@ ARG GID=1000
 ENV BUNDLE_PATH=/var/opt/app/gems
 ENV FINDING_AID_DATA=/var/opt/app/data
 
-RUN curl https://deb.nodesource.com/setup_12.x | bash
+RUN curl https://deb.nodesource.com/setup_18.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
