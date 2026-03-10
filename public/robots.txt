@@ -3,6 +3,7 @@ Sitemap: https://findingaids.lib.umich.edu/sitemap
 
 # Block crawlers from crawling the raw EAD and derivatives
 User-agent: *
+Crawl-delay: 5
 Disallow: /*/xml$
 Disallow: /*/pdf$
 Disallow: /*/html$
