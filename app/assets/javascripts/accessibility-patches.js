@@ -38,6 +38,27 @@ function applyAccessibilityPatches() {
   
   $('nav[role="region"]').attr('role', 'navigation');
 
+  /* Issue: aria-label is not permitted on a non-interactive <span>. The active   */
+  /* page indicator uses <span class="page-link" aria-label="Current Page, Page N"*/
+  /* aria-current="true">; aria-current="true" is sufficient. */
+  /* Platform: Blacklight */
+  /* Version fixed in: (not fixed) */
+
+  $('li.page-item.active span.page-link').removeAttr('aria-label');
+
+  /* ---------------------------------- */
+  /* Area: Facet panel collapse divs    */
+  /* ---------------------------------- */
+  /* Issue: aria-labelledby is not a supported property on a plain <div> (implicit  */
+  /* role "generic"). Siteimprove flags this as "Use supported states and properties */
+  /* only." Adding role="group" makes aria-labelledby valid and is semantically      */
+  /* appropriate for a collapsible facet panel labelled by its heading.              */
+  /* Platform: Blacklight */
+  /* Version fixed in: (not fixed) */
+  /* https://github.com/projectblacklight/blacklight/blob/master/app/components/blacklight/facet_field_component.html.erb */
+
+  $('div.facet-content[aria-labelledby]').attr('role', 'group');
+
 
   /* ---------------------------------- */
   /* Area: Bookmark Checkboxes          */

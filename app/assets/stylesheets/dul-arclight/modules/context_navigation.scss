@@ -48,7 +48,7 @@
       }
       background-image: image-url('blacklight/plus.svg');
       background-repeat: no-repeat;
-      background-size: 1rem;
+      background-size: 1.05rem;
       background-position: center;
       &:not(.collapsed) {
         background-image: image-url('blacklight/minus.svg');
@@ -56,7 +56,6 @@
     }
 
     .al-toggle-view-children .blacklight-icons svg {
-      fill: black; /* gets inverted */
       vertical-align: top;
     }
     .document-title-heading {
@@ -87,7 +86,8 @@
       text-align: left;
       text-transform: lowercase;
       padding-left: 2.25rem;
-      background-color: #999;
+      color: #fff;
+      background-color: #1D7491;
       border: none;
       background-repeat: no-repeat;
       background-size: 1rem auto;
