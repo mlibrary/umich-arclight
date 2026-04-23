@@ -10,7 +10,7 @@ on:
       minimum_runs:
         description: 'The minimum runs to keep for each workflow.'
         required: true
-        default: 6
+        default: 2
       delete_workflow_pattern:
         description: 'The name or filename of the workflow. if not set then it will target all workflows.'
         required: false
@@ -39,14 +39,16 @@ on:
           - success
       dry_run:
         description: 'Only log actions, do not perform any delete operations.'
-        required: false
+        required: true
+        type: boolean
+        default: true
 
 jobs:
   del_runs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
+        uses: Mattraks/delete-workflow-runs@v2.1.0
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
