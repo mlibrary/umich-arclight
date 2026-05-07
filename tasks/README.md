@@ -7,10 +7,9 @@ rules, see [`AGENTS.md`](../AGENTS.md).
 
 ## Active Tasks
 
-| Ticket  | Branch                                   | Summary                                                                                 |
-|---------|------------------------------------------|-----------------------------------------------------------------------------------------|
-| DOR-142 | `DOR-142/ingest-validation`              | Implement ingest validation (Roger Algorithm) and rename IntegrityCheck* → FixityCheck* |
-| DOR-146 | `DOR-146/agent-options-and-implications` | Document agent design choices and trade-offs in dor-depot preservation metadata         |
+| Ticket       | Branch | Summary |
+|--------------|--------|---------|
+| *(none yet)* |        |         |
 
 ---
 
@@ -28,7 +27,7 @@ Each Jira ticket gets a subdirectory under `tasks/`:
 
 ```
 tasks/
-  DOR-nnn/
+  ARC-nnn/
     TODO.md      ← subtask checklist (follow AGENTS.md § Task Tracking format)
     STATUS.md    ← living session snapshot (follow AGENTS.md § Session State format)
     DONE.md      ← created when all subtasks complete; retained when archived
@@ -37,13 +36,13 @@ tasks/
 ```
 
 **Starting a new ticket:**
-1. `mkdir -p tasks/DOR-nnn/plans`
-2. Create `tasks/DOR-nnn/TODO.md` and `tasks/DOR-nnn/STATUS.md`.
+1. `mkdir -p tasks/ARC-nnn/plans`
+2. Create `tasks/ARC-nnn/TODO.md` and `tasks/ARC-nnn/STATUS.md`.
 3. Add a row to the Active Tasks table above.
-4. Work entirely within `tasks/DOR-nnn/` for all agent state and plans.
+4. Work entirely within `tasks/ARC-nnn/` for all agent state and plans.
 
 **Completing a ticket (after PR merges):**
-1. `git mv tasks/DOR-nnn archive/DOR-nnn`
+1. `git mv tasks/ARC-nnn archive/ARC-nnn`
 2. Move the row from Active to Archived in this file.
 3. Commit on the `agents` branch.
 

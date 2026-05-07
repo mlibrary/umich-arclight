@@ -15,20 +15,20 @@
   you have written out answers to all 30 questions **and** the developer has explicitly
   told you to compare. Reading the answer file in advance defeats the purpose of the quiz.
 
-## Session State (`tasks/DOR-nnn/STATUS.md`)
+## Session State (`tasks/ARC-nnn/STATUS.md`)
 
-Each Jira ticket has its own `tasks/DOR-nnn/STATUS.md` — the **living state
+Each Jira ticket has its own `tasks/ARC-nnn/STATUS.md` — the **living state
 snapshot** for that ticket's branch. It records the current branch, open
 subtasks, open plans, recent activity, and key context so any agent can pick
 up exactly where the previous one left off.
 
 **At the start of every session** (after reading `AGENTS.md`):
-1. Identify the active ticket from the branch name (e.g., `DOR-142/ingest-validation` → `DOR-142`).
-2. Read `tasks/DOR-nnn/STATUS.md` in full before touching any other file.
-3. Cross-check the open subtasks listed there against `tasks/DOR-nnn/TODO.md` —
+1. Identify the active ticket from the branch name (e.g., `ARC-123/my-feature` → `ARC-123`).
+2. Read `tasks/ARC-nnn/STATUS.md` in full before touching any other file.
+3. Cross-check the open subtasks listed there against `tasks/ARC-nnn/TODO.md` —
    if they differ, update `STATUS.md` to match `TODO.md` (the task file is authoritative).
 
-**During a session**, update `tasks/DOR-nnn/STATUS.md` whenever:
+**During a session**, update `tasks/ARC-nnn/STATUS.md` whenever:
 - A subtask is completed (update Open Tasks).
 - A plan file is created or significantly changed (update Open Plans).
 - A significant decision or discovery is made that the next agent needs to know.
@@ -37,7 +37,7 @@ up exactly where the previous one left off.
 - Update the **Last Updated** timestamp and write a one-line summary.
 - Update **Recent Activity** with a bullet list of key changes.
 - Update **Next Steps** so the next agent knows exactly where to resume.
-- Commit `tasks/DOR-nnn/STATUS.md` as part of the final commit of the session.
+- Commit `tasks/ARC-nnn/STATUS.md` as part of the final commit of the session.
 
 **What to keep in each section:**
 
@@ -46,7 +46,7 @@ up exactly where the previous one left off.
 | Last Updated    | ISO date + one-line session summary                                    |
 | Current Branch  | Active git branch name; brief note on other local branches if relevant |
 | Open Tasks      | Copy of unchecked subtasks from `TODO.md`; key files for each task     |
-| Open Plans      | Table of files in `tasks/DOR-nnn/plans/` with purpose and status       |
+| Open Plans      | Table of files in `tasks/ARC-nnn/plans/` with purpose and status       |
 | Recent Activity | Bullet list of meaningful changes made in the most recent session      |
 | Key Context     | Decisions, design notes, or gotchas the next agent needs to understand |
 | Next Steps      | Ordered list of what to do next, specific enough to act on immediately |
@@ -87,9 +87,9 @@ up exactly where the previous one left off.
   - **Dollar signs and backticks in double-quoted strings** are expanded by zsh; wrap them
     in single quotes or use a `$'...'` ANSI-C quote string only for truly simple one-liners.
 
-## Task Tracking (`tasks/DOR-nnn/TODO.md` / `tasks/DOR-nnn/DONE.md`)
+## Task Tracking (`tasks/ARC-nnn/TODO.md` / `tasks/ARC-nnn/DONE.md`)
 
-Each Jira ticket has its own `tasks/DOR-nnn/` directory containing:
+Each Jira ticket has its own `tasks/ARC-nnn/` directory containing:
 - `TODO.md` — the active subtask checklist for that ticket
 - `DONE.md` — created when all subtasks complete; moved to `archive/` with the ticket
 - `STATUS.md` — living session snapshot (see § Session State above)
@@ -97,10 +97,10 @@ Each Jira ticket has its own `tasks/DOR-nnn/` directory containing:
 
 **Starting a new ticket:**
 ```
-mkdir -p tasks/DOR-nnn/plans
+mkdir -p tasks/ARC-nnn/plans
 ```
-Create `tasks/DOR-nnn/TODO.md` and `tasks/DOR-nnn/STATUS.md`, then add a row
-to `tasks/README.md`. Work entirely within `tasks/DOR-nnn/` — never touch
+Create `tasks/ARC-nnn/TODO.md` and `tasks/ARC-nnn/STATUS.md`, then add a row
+to `tasks/README.md`. Work entirely within `tasks/ARC-nnn/` — never touch
 another ticket's directory or root `AGENT_*.md` files.
 
 **`TODO.md` format** — organise work as **tasks** with **subtasks**:
@@ -119,26 +119,26 @@ Short description of the overall goal.
 - **Check off subtasks** (`- [x]`) as they are completed.
 - **Every task must end with a developer-verification subtask** as its final item.
   When reached, ask: *"Are there any additional subtasks needed before this task is complete?"*
-- **Only when all subtasks are done**, create `tasks/DOR-nnn/DONE.md` with a
+- **Only when all subtasks are done**, create `tasks/ARC-nnn/DONE.md` with a
   timestamp, summary, and the completed checklist.
 
 **Completing a ticket** (after PR merges, on the `agents` branch):
 ```shell
-git mv tasks/DOR-nnn archive/DOR-nnn
+git mv tasks/ARC-nnn archive/ARC-nnn
 ```
 Update `tasks/README.md` to mark the ticket archived. Commit on `agents`.
 
-## Reordering Subtasks in `tasks/DOR-nnn/TODO.md`
+## Reordering Subtasks in `tasks/ARC-nnn/TODO.md`
 
 **Never use string-search-and-replace to reorder tasks.** Use Python instead:
 
 ```python
 import re
-content = open('tasks/DOR-nnn/TODO.md').read()
+content = open('tasks/ARC-nnn/TODO.md').read()
 parts = re.split(r'(?=^## )', content, flags=re.MULTILINE)
 header, tasks = parts[0], parts[1:]
 tasks.append(tasks.pop(2))  # example: move index 2 to end
-open('tasks/DOR-nnn/TODO.md', 'w').write(header + ''.join(tasks))
+open('tasks/ARC-nnn/TODO.md', 'w').write(header + ''.join(tasks))
 ```
 
 ## Python Utility Scripts (`dotpy/`)
@@ -235,22 +235,35 @@ git commit -m "chore: single line message" | cat
   - To validate alignment after editing, run: `python3 dotpy/check_tables.py <file.md>` — exits `0` if all tables are consistent, `1` with error details if not.
   - If a table requires very long lines (e.g., > 120 characters per row), prefer using a shorter link display text or a bullet-list format instead of a wide table.
 
-## Java / Gradle Conventions
+## Ruby on Rails Conventions
 
-- **Build tool**: Gradle with the Gradle wrapper (`./gradlew`). Never install or invoke a system `gradle` directly — always use `./gradlew` so the pinned version is used.
-- **Imports**: Always use import statements for annotations and types in method parameters and signatures, rather than fully qualified class names. Prefer imports throughout the code — including within method bodies and logic — instead of fully qualified class names.
-- **Code style**: Spotless is configured with Palantir Java Format (AOSP style). Before committing Java files, run:
+- **Runtime environment**: All application commands must be run inside the Docker container — never against a system Ruby or Node installation. Use `docker-compose exec -- app <command>` as the prefix.
+- **Code style**: RuboCop is configured with Standard, rubocop-rails, rubocop-rspec, and rubocop-rake. Before committing Ruby files, run:
   ```shell
-  ./gradlew spotlessApply | cat
+  docker-compose exec -- app bundle exec rubocop | cat
   ```
-  Then confirm there are no remaining issues:
+  Auto-fix safe offences with:
   ```shell
-  ./gradlew spotlessCheck | cat
+  docker-compose exec -- app bundle exec rubocop -a | cat
   ```
-- **Tests**: Use JUnit 5 with `./gradlew test`. Tests require Docker to be running (PostgreSQL and RabbitMQ are managed via Testcontainers).
-- **Running the app**: `./gradlew bootRun` starts the application. Docker must be running first (PostgreSQL + RabbitMQ via `compose.yaml`).
-- **Module boundaries**: This project uses Spring Modulith. Each top-level package under `edu.umich.lib.dor.depot` is a module. Cross-module communication must go through published application events — never call internal service classes from another module directly.
-- **Application properties**: Configuration lives in `src/main/resources/application.properties`. Key properties:
-  - `dor.inbox.path` — where incoming packages are placed before processing
-  - `dor.workingStorage.path` — transient working area during ingest
-  - `dor.ocfl.path` — root of the OCFL repository on disk
+- **JavaScript linting**: Uses Yarn with the `lint` script configured in `package.json`. Run:
+  ```shell
+  docker-compose exec -- app yarn lint | cat
+  ```
+- **Tests**: Two suites — MiniTest (`rake test`) and RSpec (`rspec`). Run them inside the container:
+  ```shell
+  docker-compose exec -- app bundle exec rake test | cat
+  docker-compose exec -- app bundle exec rspec | cat
+  ```
+  The default CI rake task runs both: `bundle exec rake` (equivalent to `rake rubocop test spec`).
+- **Running the app**: Bring up all services with `docker-compose up -d`, then start the Rails server:
+  ```shell
+  docker-compose exec -- app bundle exec rails s -b 0.0.0.0
+  ```
+  The app is available at http://localhost:3000/
+- **Background jobs**: Resque workers process indexing jobs. Monitor via Resque-Web at http://localhost:8080/overview. Start workers with `docker-compose restart resque`.
+- **Configuration files**: Key config locations:
+  - `config/repositories.yml` — defines repository slugs, names, and metadata for each institution
+  - `config/blacklight.yml` — configures the Solr connection URL per environment
+  - `config/database.yml` — PostgreSQL connection config (overridden by `DATABASE_URL`)
+  - `lib/dul_arclight.rb` — declares `DulArclight.finding_aid_data` (default `/data`, overridden by `FINDING_AID_DATA`)

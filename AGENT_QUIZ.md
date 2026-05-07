@@ -1,4 +1,4 @@
-# Agent Onboarding Quiz — dor-depot
+# Agent Onboarding Quiz — umich-arclight
 
 > 🚫 **DO NOT read `AGENT_QUIZ_ANSWERS.md`** until you have written out answers to all
 > questions below and the developer has told you to compare. Reading the answer file
@@ -27,7 +27,7 @@ the first step?
 
 ---
 
-**Q2.** You need to reorder two subtasks in `tasks/DOR-nnn/TODO.md`. What tool must you use, and what
+**Q2.** You need to reorder two subtasks in `tasks/ARC-nnn/TODO.md`. What tool must you use, and what
 tool must you **never** use for this operation?
 
 *(Hint: `AGENTS.md` § Reordering Subtasks)*
@@ -56,114 +56,101 @@ you run before committing, in order?
 
 ---
 
-**Q6.** Before committing changes to Java source files, what Gradle task should you run
-to auto-fix formatting, and what task confirms there are no remaining style violations?
-Write the exact commands as you would type them in the terminal, including any suffix
-needed to ensure output is captured without a pager.
+## Section 2 — Project Stack and Build
 
-*(Hint: `AGENTS.md` § Java / Gradle Conventions and § Command-Line Tool Usage)*
+**Q6.** What Ruby version does this project use?
 
----
-
-## Section 2 — Project Structure and Build
-
-**Q7.** What Java version does this project require?
-
-*(Hint: `build.gradle` — look for the `toolchain` block)*
+*(Hint: `Dockerfile` — look for the `FROM ruby:` line)*
 
 ---
 
-**Q8.** What is the main class of the application (the entry point Spring Boot will bootstrap)?
+**Q7.** What Rails version does this project require?
 
-*(Hint: `build.gradle` — look for `springBoot { mainClass = ... }`)*
-
----
-
-**Q9.** Name the Spring Modulith modules in this project (by their Java package names
-relative to `edu.umich.lib.dor.depot`).
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/` — identify the sub-packages that represent Modulith modules, excluding support packages such as `config` if they are not modules)*
+*(Hint: `Gemfile`)*
 
 ---
 
-**Q10.** What are the three application-specific path properties defined in
-`src/main/resources/application.properties`? Give the property key and its default value
-for each.
+**Q8.** What are the four Docker services that the application depends on at runtime?
+What port does each one expose on localhost?
 
-*(Hint: `src/main/resources/application.properties`)*
-
----
-
-**Q11.** What two infrastructure services does the application require at runtime, and
-how are they managed in the local development environment?
-
-*(Hint: `compose.yaml`; `README.md` § Usage)*
+*(Hint: `docker-compose.yml`)*
 
 ---
 
-**Q12.** What command starts the application as a running service?
-What command runs the full JUnit test suite?
+**Q9.** What command do you run to start the Rails development server (inside the
+container), and at what URL is the application available?
 
-*(Hint: `README.md` § Usage)*
-
----
-
-## Section 3 — Domain Concepts and Object Lifecycle
-
-**Q13.** What is a "Curio"? Describe its directory structure precisely — name the
-directories involved and what kind of file lives in each. Where can you find a
-concrete example of a Curio in the repository?
-
-*(Hint: `README.md` § Development — Ingesting Curios; inspect the fixture at
-`src/test/resources/inbox/e145de0c-8ffb-49fc-af26-c5b735622b3e`;
-`src/main/java/edu/umich/lib/dor/depot/preservation/HeaderFileUtility.java`)*
+*(Hint: `README.md` § Development Quick Start)*
 
 ---
 
-**Q14.** `AdminController` exposes four `POST` endpoints under `/admin`.
-Name all four paths, the query parameter(s) each accepts, and the Spring
-Modulith event each one publishes.
+**Q10.** What are the two test suites in this project, the rake task for each, and what
+single rake command runs *all* of them (plus linting)?
 
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/console/AdminController.java`)*
-
----
-
-**Q15.** Trace the **complete** event flow that occurs after `POST /admin/submit` is called
-with a `packageId`. Name each Spring Modulith event and the service class that handles it,
-in order — including any events published on the **error path**.
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/console/AdminController.java`;
-`src/main/java/edu/umich/lib/dor/depot/preservation/PackageImportService.java`;
-`src/main/java/edu/umich/lib/dor/depot/preservation/IntakeService.java`)*
+*(Hint: `README.md` § Continuous Integration; `lib/tasks/default.rake`)*
 
 ---
 
-**Q16.** What storage format does `OcflPreservationGateway` use to persist digital objects,
-and what layout algorithm does it use when building the repository on disk?
+**Q11.** Before committing Ruby source files, what command auto-fixes RuboCop offences,
+and what command reports remaining violations? Write both as full `docker-compose exec`
+invocations.
 
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/OcflPreservationGateway.java`)*
+*(Hint: `AGENTS.md` § Ruby on Rails Conventions; `README.md` § Ruby Linting)*
 
 ---
 
-**Q17.** `IntakeService.process()` stages and then optionally commits changes depending on
-a field in the submission label. What is that field, and what value triggers an immediate
-commit?
+## Section 3 — Domain Concepts
 
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/IntakeService.java`)*
+**Q12.** What is this application, and what XML format does it use for archival finding
+aid data? Where does the application store that data, and which environment variable
+overrides the default path?
+
+*(Hint: `README.md`; `lib/dul_arclight.rb`; `Dockerfile`)*
+
+---
+
+**Q13.** List every repository slug defined in `config/repositories.yml` and give the
+human-readable institution name for each.
+
+*(Hint: `config/repositories.yml` — look for top-level keys)*
+
+---
+
+**Q14.** What Rake task indexes *all* EAD files for all repositories at once?
+What Rake task indexes just one repository's files? Write both as full
+`docker-compose exec` invocations and name the environment variables each one accepts.
+
+*(Hint: `README.md` § Indexing EAD Files; `lib/tasks/reindex.rake`)*
+
+---
+
+**Q15.** What Rake task indexes a single EAD file? Write the full `docker-compose exec`
+invocation with example values for the required environment variables.
+
+*(Hint: `README.md` § Indexing EAD Files)*
+
+---
+
+**Q16.** What environment variable controls whether the finding aid ingest UI
+(`/findingaids`, `/slugmaps`) is enabled? Where is this variable set in the
+development environment?
+
+*(Hint: `config/routes.rb`; `docker-compose.yml`)*
 
 ---
 
 ## Section 4 — Active Work and Task Management
 
-**Q18.** Look at `tasks/README.md`. List every currently active ticket with its key and a
+**Q17.** Look at `tasks/README.md`. List every currently active ticket with its key and a
 one-sentence summary of what it is working on.
 
-*(Hint: `tasks/README.md` and each active `tasks/DOR-nnn/STATUS.md`)*
+*(Hint: `tasks/README.md` and each active `tasks/ARC-nnn/STATUS.md`)*
 
 ---
 
-**Q19.** A task in `tasks/DOR-nnn/TODO.md` has all subtasks checked off including the developer-verification
-subtask. What are the steps required to archive it, and where does the task directory move to?
+**Q18.** A task in `tasks/ARC-nnn/TODO.md` has all subtasks checked off including the
+developer-verification subtask. What are the steps required to archive it, and where
+does the task directory move to?
 
 *(Hint: `AGENTS.md` § Task Tracking)*
 
@@ -171,107 +158,27 @@ subtask. What are the steps required to archive it, and where does the task dire
 
 ## Section 5 — Reset and Maintenance
 
-**Q20.** How do you fully reset the local development environment (clear the OCFL repository
-**and** the database) so the application starts from a clean state?
-List each step in order.
+**Q19.** How do you fully recreate the development database from scratch? List the exact
+commands in order.
 
-*(Hint: `README.md` § Development — Ingesting Curios)*
-
----
-
-## Section 6 — Submission Packaging
-
-**Q21.** Every submission package must contain a label file at its root. What is
-that file called, and what are its six required fields (give the exact key names
-as they appear in the file)?
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/SubmissionLabel.java`;
-inspect `src/test/resources/inbox/e145de0c-8ffb-49fc-af26-c5b735622b3e/dor-info.txt`)*
+*(Hint: `README.md` § Setup databases)*
 
 ---
 
-**Q22.** What are the three valid values for the `Resource-Type` field in `dor-info.txt`?
-Give both the string value written in the file and the enum constant name for each.
+**Q20.** How do you delete and recreate a Solr core (e.g. `umich-arclight-test`)?
+List the exact commands in order.
 
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/ResourceType.java`)*
-
----
-
-**Q23.** What are the two valid values for the `Action` field in `dor-info.txt`?
-Describe the behavioural difference: what happens to OCFL changes when each value
-is used during ingest?
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/SubmissionAction.java`;
-`src/main/java/edu/umich/lib/dor/depot/preservation/IntakeService.java` lines 83–86)*
+*(Hint: `README.md` § Create solr cores)*
 
 ---
 
-**Q24.** After `IntakeService` publishes `BinContentsModified`, what service handles
-that event? What does it do, and what event does it publish when it completes
-successfully?
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/CatalogService.java`)*
-
----
-
-**Q25.** `POST /admin/publish` triggers a `PublishDraft` event. What service handles
-`PublishDraft`, and what are **all possible outcomes** — describe every code path,
-including the case where no event is published at all.
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/DraftPublicationService.java`)*
-
----
-
-**Q26.** What are the four database tables created by `schema.sql`?
-Give the table name and a one-sentence description of what each one stores.
-
-*(Hint: `src/main/resources/schema.sql`)*
-
----
-
-**Q27.** `IntegrityService` handles two different commands. For each one,
-name the command, the gateway method it calls, and all possible outcome events
-(success, failure, and missing-object cases).
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/IntegrityService.java`)*
-
----
-
-**Q28.** The console web UI is served by `ObjectController` at the `/console`
-prefix. It has four `GET` endpoints. Name all four paths and state what each one
-does (what it renders or streams).
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/console/ObjectController.java`)*
-
----
-
-**Q29.** `WorkingStorage.importPackage()` copies a package directory into working
-storage and returns a `SubmissionId`. What static method generates the
-`SubmissionId`, and what class reads and validates the package's label from disk?
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/preservation/WorkingStorage.java`;
-`src/main/java/edu/umich/lib/dor/depot/preservation/SubmissionLabel.java`)*
-
----
-
-**Q30.** Cross-module communication in this Spring Modulith application must go
-through published application events. However, the `console` module does directly
-inject two beans from the `preservation` module in `ObjectController`. Name those
-two beans, and explain why this is intentional (what kind of operations do they
-serve versus what goes through events)?
-
-*(Hint: `src/main/java/edu/umich/lib/dor/depot/console/ObjectController.java`;
-`AGENTS.md` § Java / Gradle Conventions — Module boundaries)*
-
----
-
-## When You Have Answered All 30 Questions
+## When You Have Answered All 20 Questions
 
 Stop here. Do **not** open `AGENT_QUIZ_ANSWERS.md`.
 
 Tell the developer:
 
-> "I have answered all 30 quiz questions. Please open `AGENT_QUIZ_ANSWERS.md` to grade
+> "I have answered all 20 quiz questions. Please open `AGENT_QUIZ_ANSWERS.md` to grade
 > my answers, or let me know when I may read it to self-grade."
 
 Wait for the developer's instruction before proceeding.
