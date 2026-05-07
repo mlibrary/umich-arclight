@@ -97,6 +97,8 @@ docker-compose exec -- app bundle exec rake
 This is defined in `lib/tasks/default.rake` as:
 `task(:default).clear.enhance %i[environment rubocop test spec]`
 
+Note: JavaScript linting (`rake lint`) is **not** included in the default task and must be run separately.
+
 *(Source: `README.md` § Continuous Integration; `lib/tasks/default.rake`)*
 
 ---
@@ -128,7 +130,7 @@ In the Docker container it is overridden to `/var/opt/app/data` (from `Dockerfil
 
 ---
 
-**A13.** Seven repository slugs:
+**A13.** Eight repository slugs:
 
 | Slug          | Institution name                                                  |
 |---------------|-------------------------------------------------------------------|
