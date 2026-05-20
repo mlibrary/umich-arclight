@@ -64,7 +64,7 @@ inner quotes, and has no `$` expansions.
 
 ---
 
-**A8.** Four services and their localhost ports:
+**A8.** Core local-development services and their localhost ports:
 
 | Service | Image              | Localhost port |
 |---------|--------------------|----------------|
@@ -72,6 +72,9 @@ inner quotes, and has no `$` expansions.
 | `solr`  | solr:8-slim        | 8983           |
 | `redis` | redis:8-bookworm   | 6379           |
 | `app`   | umich-arclight     | 3000           |
+
+(`resque` and `resque-web` are also defined in `docker-compose.yml`, but they are
+not part of the four core services asked in Q8.)
 
 *(Source: `docker-compose.yml`)*
 

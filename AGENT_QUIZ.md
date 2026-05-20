@@ -70,8 +70,8 @@ you run before committing, in order?
 
 ---
 
-**Q8.** What are the four Docker services that the application depends on at runtime?
-What port does each one expose on localhost?
+**Q8.** In local development, what localhost port is mapped for each core Docker
+service (`app`, `db`, `solr`, `redis`)?
 
 *(Hint: `docker-compose.yml`)*
 
