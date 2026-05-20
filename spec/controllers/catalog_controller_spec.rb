@@ -43,4 +43,22 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
   end
+
+  describe '#render_html_tags' do
+    it 'removes extref links with no visible text' do
+      rendered = controller.send(:render_html_tags, value: ["<extref href='https://example.com'></extref>"])
+      fragment = Nokogiri::HTML.fragment(rendered)
+
+      expect(fragment.css('a')).to be_empty
+    end
+
+    it 'preserves extref links when text is present' do
+      rendered = controller.send(:render_html_tags, value: ["<extref href='https://example.com'>Example</extref>"])
+      fragment = Nokogiri::HTML.fragment(rendered)
+
+      expect(fragment.css('a.external-link').length).to eq(1)
+      expect(fragment.at_css('a').text).to eq('Example')
+      expect(fragment.at_css('a')['href']).to eq('https://example.com')
+    end
+  end
 end
