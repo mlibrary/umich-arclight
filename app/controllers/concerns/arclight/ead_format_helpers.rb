@@ -314,7 +314,15 @@ module Arclight
         node['class'] = 'external-link'
       end
       node.content = node['title'] if (%w[extptr ptr].include? node.name) && node['title'].present?
-      node.name = 'a' if node['href'].present?
+      return unless node['href'].present?
+
+      # Avoid generating inaccessible empty links when EAD markup has href but no label.
+      if node.text.squish.blank?
+        node.remove
+        return
+      end
+
+      node.name = 'a'
     end
 
     def format_compound_elements(node)

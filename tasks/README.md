@@ -7,9 +7,9 @@ rules, see [`AGENTS.md`](../AGENTS.md).
 
 ## Active Tasks
 
-| Ticket       | Branch | Summary |
-|--------------|--------|---------|
-| *(none yet)* |        |         |
+| Ticket  | Branch                         | Summary                                                                          |
+|---------|--------------------------------|----------------------------------------------------------------------------------|
+| ARC-124 | `ARC-124-Page-with-empty-link` | Remove empty Processing Information link rendered on `catalog/umich-bhl-2011097` |
 
 ---
 
