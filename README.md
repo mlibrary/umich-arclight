@@ -161,10 +161,6 @@ Continuous integration is the default rake task and is defined in the **./lib/ta
 docker-compose exec -- app bundle exec rake
 ```
 It actually does nothing but is dependent on these rake tasks:
-### JavaScript Linting
-```shell
-docker-compose exec -- app bundle exec rake lint
-```
 ### Ruby Linting
 ```shell
 docker-compose exec -- app bundle exec rake rubocop
@@ -177,11 +173,15 @@ docker-compose exec -- app bundle exec rake test
 ```shell
 docker-compose exec -- app bundle exec rake spec
 ```
+### JavaScript Linting (not part of the default rake task — run separately)
+```shell
+docker-compose exec -- app bundle exec rake lint
+```
 ### You may also call these commands directly
 ```shell
 docker-compose exec -- app yarn lint
 docker-compose exec -- app bundle exec rubocop
-docker-compose exec -- app bundle exec test
+docker-compose exec -- app bundle exec rake test
 docker-compose exec -- app bundle exec rspec
 ```
 ### List all rake tasks
@@ -211,7 +211,7 @@ docker-compose exec -- app env
 | 26162 | app        | RubyMine IDE      |                                |
 | 5432  | db         | Postgres Server   |                                |
 | 8983  | solr       | Solr Server       | http://localhost:8983/solr     |
-| 6579  | redis      | Redis Server      |                                |
+| 6379  | redis      | Redis Server      |                                |
 | 8282  | resque     | Resque Workers    |                                |
 | 8080  | resque-web | Resque Web        | http://localhost:8080/overview |
 ## Volumes
