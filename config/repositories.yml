@@ -15,9 +15,9 @@ bhl:
   thumbnail_url: '/thumbnails/BHL-x400.jpg'
   repo_about:
     using_materials: 'Finding aids describe collections of primary sources and other unique, original, or rare materials. Some finding aids contain links to digitized versions of parts or all of a collection. Access to the original physical items, when available, requires requesting items for use in the reading room. Items may not be requested for use outside of the library.'
-    visitor_info: 'The Bentley is open to the general public for appointments and walk-in research; please see the Visiting page <a href="https://bentley.umich.edu/about/visiting/">for hours</a>.'
-    how_to_request: 'Please visit <a href="https://bentley.umich.edu/research/requesting-items-new2020/">Requesting Items</a>.'
-    how_to_order: 'Please visit <a href="https://bentley.umich.edu/research/duplication/">Duplication of Materials</a>.'
+    visitor_info: 'The Bentley is open to the general public for appointments and walk-in research; please see the Visiting page <a href="https://bentley.umich.edu/visit/">for hours</a>.'
+    how_to_request: 'Please visit <a href="https://bentley.umich.edu/discover/guide/how-to-request-items/">Requesting Items</a>.'
+    how_to_order: 'Please visit <a href="https://bentley.umich.edu/discover/guide/how-to-order-digital-copies/">Duplication of Materials</a>.'
   request_types:
     aeon_hidden_form_request:
       request_url: https://aeon.bentley.umich.edu/ead_request
