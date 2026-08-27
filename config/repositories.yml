@@ -221,7 +221,7 @@ archivemi:
 mlibraryead:
   name: 'MLibrary Finding Aids'
   about_url: http://lib.umich.edu/
-  description: "U-M Library's Finding Aids site provides access to finding aids or descriptive inventories for archival records and manuscript collections not held in the Special Collections Research Center."
+  description: "MLibrary's Finding Aids site provides access to finding aids or descriptive inventories for archival records and manuscript collections not held in the Special Collections Research Center."
   visit_note: ''
   building: ''
   address1: '913 South University Avenue'
