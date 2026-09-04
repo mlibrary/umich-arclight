@@ -7,6 +7,10 @@ ARG GID=1000
 ENV BUNDLE_PATH=/var/opt/app/gems
 ENV FINDING_AID_DATA=/var/opt/app/data
 
+RUN sed -i 's/# //g' /etc/apt/sources.list && \
+    sed -i '/deb.debian.org/d' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 RUN curl https://deb.nodesource.com/setup_18.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list

@@ -2,6 +2,8 @@
 #   This is a symbolic link to the actual directory,
 #   which is located outside of the repository.
 .agents
+# Junie's Agent Framework local settings and agents.
+.output.txt
 
 /.bundle
 /.cache
