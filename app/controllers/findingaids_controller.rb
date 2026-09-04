@@ -130,14 +130,14 @@ class FindingaidsController < ApplicationController
         if @findingaid.error.blank?
           doc.remove_namespaces!
 
-          cmd = "@findingaid.eadid = doc.at_xpath('/ead/eadheader/eadid').text.strip"
-          @findingaid.eadid = doc.at_xpath('/ead/eadheader/eadid').text.strip
+          cmd = "@findingaid.eadid = doc.at_xpath('/ead/eadheader/eadid')&.text&.strip"
+          @findingaid.eadid = doc.at_xpath('/ead/eadheader/eadid')&.text&.strip || ""
 
           cmd = "@findingaid.eadslug = ead_slug(@findingaid.eadid)"
           @findingaid.eadslug = ead_slug(@findingaid.eadid)
 
-          cmd = "@findingaid.corpname = doc.at_xpath('/ead/archdesc/did/repository/corpname').text.strip"
-          @findingaid.corpname = doc.at_xpath('/ead/archdesc/did/repository/corpname').text.strip
+          cmd = "@findingaid.corpname = doc.at_xpath('/ead/archdesc/did/repository/corpname')&.text&.strip"
+          @findingaid.corpname = doc.at_xpath('/ead/archdesc/did/repository/corpname')&.text&.strip || ""
 
           cmd = "@findingaid.reposlug = repo_slug(@findingaid.eadid, @findingaid.corpname)"
           @findingaid.reposlug = repo_slug(@findingaid.eadid, @findingaid.corpname)
