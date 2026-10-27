@@ -14,12 +14,12 @@ env:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Ruby ${{ matrix.ruby }}
     strategy:
       matrix:
         ruby:
-          - '2.7.7'
+          - '2.7.8'
     services:
       db:
         image: postgres
