@@ -6,6 +6,10 @@ ARG GID=1000
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN sed -i 's/# //g' /etc/apt/sources.list && \
+    sed -i '/deb.debian.org/d' /etc/apt/sources.list && \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+
 RUN curl https://deb.nodesource.com/setup_18.x | bash
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
@@ -19,8 +23,9 @@ RUN mkdir -p /gems && chown $UID:$GID /gems
 # RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 # RUN apt-get install -yqq --no-install-recommends ./google-chrome-stable_current_amd64.deb
 
-RUN wget -q https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
-RUN apt-get install -yqq --no-install-recommends ./wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
+RUN ARCH="$(dpkg --print-architecture)" && \
+    wget -q "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb" && \
+    apt-get install -yqq --no-install-recommends "./wkhtmltox_0.12.6.1-2.bullseye_${ARCH}.deb"
 
 RUN apt-get install -yqq --no-install-recommends libjemalloc2 && rm -rf /var/lib/apt/lists/*
 ENV LD_PRELOAD=libjemalloc.so.2
